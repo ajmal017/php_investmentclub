@@ -1,0 +1,37 @@
+<?php
+
+class Common_model extends CI_Model
+{
+    
+    function __construct() {
+        parent::__construct();	
+    }
+    
+    function getPackages()
+    {
+    	$this->db->trans_start();
+    	$this->db->select('*');
+		$this->db->from('package_master');
+		$this->db->where('status','active');
+		$query = $this->db->get();
+		
+		$category_data = array();
+		$category_main_data = array();
+		$main_data = array();
+		foreach($query->result() as $row)
+		{
+			$data = array(
+							'package_id'=>$row->package_id,
+							'package_name'=>$row->package_name,
+							'package_amount'=>$row->package_amount,
+							'package_image'=>$row->package_image,
+							'package_desc'=>$row->package_desc,
+							'package_status'=>$row->package_status,
+							'package_created_date'=>$row->package_created_date,
+							);    	
+		}
+		//$main_data = $category_main_data;
+    	$this->db->trans_complete();
+		return $main_data;
+    } 
+}
