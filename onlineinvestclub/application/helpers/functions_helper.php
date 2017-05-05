@@ -53,41 +53,18 @@ function responseObject($response = array())
 	return json_encode($response);
 }
 
-function product_image($path,$width = 70,$height=70)
+function imagePath($path,$width = 70,$height=70)
 {
-	return base_url('timthumb.php?src='.base_url('uploads/products/'.$path).'&w='.$width.'&h='.$height);
+	//return base_url('timthumb.php?src='.base_url('uploads/'.$path).'&w='.$width.'&h='.$height);
+	return base_url('uploads/'.$path);
 }
 
-function getConfigurationsData($type = '')
+function getPackages($package_id=0)
 {
 	global $CI;
 	$CI->load->model('Common_model');
-	$result = $CI->Common_model->getConfigurationsData($type);
-	return $result;
-}
-
-function getPackages()
-{
-	global $CI;
-	$CI->load->model('Common_model');
-	$result = $CI->Common_model->getProducts();
+	$result = $CI->Common_model->getPackages($package_id);
 	return $result;	
-}
-
-function getProductList()
-{
-	global $CI;
-	$CI->load->model('Common_model');
-	$result = $CI->Common_model->getProductList();
-	return $result;	
-}
-
-function getCategoryProductList()
-{
-	global $CI;
-	$CI->load->model('Common_model');
-	$result = $CI->Common_model->getCategoryProductList();
-	return $result;		
 }
 
 //$CI->output->enable_profiler(TRUE);

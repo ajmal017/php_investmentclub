@@ -7,9 +7,9 @@ class Package_model extends CI_Model
         parent::__construct();	
     }
     
-    function addPackage($package_name,$package_amount,$package_desc){
+    function addPackage($package_name,$package_amount,$package_type,$package_desc){
 		$this->db->trans_start();
-        $array = array('package_amount' => $package_amount,'package_name'=>$package_name,'package_desc'=>$package_desc, 'package_created_date' => date("Y-m-d H:i:s"),'package_status'=>'active');
+        $array = array('package_amount' => $package_amount,'package_name'=>$package_name,'package_type'=>$package_type,'package_desc'=>$package_desc, 'package_created_date' => date("Y-m-d H:i:s"),'package_status'=>'active');
 		$this->db->set($array);
 		$this->db->insert('package_master');
 		$last_inserted_id = $this->db->insert_id();
@@ -17,17 +17,11 @@ class Package_model extends CI_Model
         return $last_inserted_id;
     }
 
-    function editProduct($category_id,$product_name,$product_description,$product_id){
-        $product_id = $product_id;
-		$category_id = $category_id;
-		$product_name = $product_name;
-		$product_description = $product_description;
-		
-		$this->db->trans_start();
-        $array = array('category_id' => $category_id,'product_name'=>$product_name,'description'=>$product_description, 'created_date' => date("Y-m-d H:i:s"),'status'=>'active');
-		$this->db->where('id', $product_id);
-		$res = $this->db->update('product_service', $array); 
-
+    function editPackage($package_id,$package_name,$package_amount,$package_type,$package_desc){
+        $this->db->trans_start();
+        $array = array('package_amount' => $package_amount,'package_name'=>$package_name,'package_type'=>$package_type,'package_desc'=>$package_desc);
+		$this->db->where('package_id', $package_id);
+		$res = $this->db->update('package_master', $array);
 		$this->db->trans_complete();
         return $res;
     }

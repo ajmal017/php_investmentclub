@@ -166,9 +166,9 @@ SSK = {
     },
 
     site_call : function($http, site_url,body, callback_func ,fail_cb,method ,headers,async){
-        body = JSON.stringify(body) || {};
+        body = body || {};
         method = method || 'POST';
-        headers = headers || {"Content-Type" : "application/json"};
+        headers = headers || {};
         async = async || true;
         show_loader(true);
 
@@ -202,7 +202,7 @@ SSK = {
                 async:async,
                 headers: headers,
                 success: function(data){
-                    data  = JSON.parse(data);
+                    //data  = JSON.parse(data);
                     show_loader(false);
                     callback_func(data);
                 },
