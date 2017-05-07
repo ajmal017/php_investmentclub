@@ -1,0 +1,8 @@
+1) 8 May => User Registration from frontend => normal registration from frontend which will store data in users table then userdetails table . 
+2) 9 May => Admin user listing so admin can activate that particular user from admin site
+3) 10 May => add packages for user frontend and view of tree view in frontend
+
+
+qstn to be ask:
+1) can user buy two or more packages
+2) if particular user wants to shift its lower level user from right to left then what should we do. because we will release payment weekly so after releasing payment its not right idea to shift user from that location.
