@@ -47,8 +47,9 @@ $config['charset'] = 'iso-8859-1';
     print_r($data);*/
 }
 
-function responseObject($response = array())
+function responseObject($response = array(),$status_code)
 {
+	http_response_code($status_code);
 	header('Content-type: application/json');
 	return json_encode($response);
 }
@@ -64,6 +65,22 @@ function getPackages($package_id=0)
 	global $CI;
 	$CI->load->model('Common_model');
 	$result = $CI->Common_model->getPackages($package_id);
+	return $result;	
+}
+
+function checkUsernameExists($username)
+{
+	global $CI;
+	$CI->load->model('Common_model');
+	$result = $CI->Common_model->checkUsernameExists($username);
+	return $result;	
+}
+
+function checkEmailIDExists($email)
+{
+	global $CI;
+	$CI->load->model('Common_model');
+	$result = $CI->Common_model->checkEmailIDExists($email);
 	return $result;	
 }
 

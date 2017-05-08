@@ -22,8 +22,6 @@
         <link rel="stylesheet" href="<?php echo base_url(); ?>assets/admin/css/plugins/jquery-dataTables.min.css">
         <script src="<?php echo base_url(); ?>assets/admin/assets/libs/jquery/jquery.min.js"></script>
         <script src="<?php echo base_url(); ?>assets/admin/assets/plugins/bootbox/bootbox.js"></script>
-        
-        <script src="<?php echo base_url(); ?>assets/js/libs/onlineinvestclub.js"></script>
         <script src="<?php echo base_url(); ?>assets/js/libs/functions.js"></script>
         <script src=https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js></script>
     </head>

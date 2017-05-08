@@ -1,5 +1,5 @@
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.form.js"></script>
-<script src="<?php echo base_url(); ?>assets/admin/js/angular/packages.js"></script>
+<script src="<?php echo base_url(); ?>assets/admin/js/libs/packages.js"></script>
 <div class="page-subheading page-subheading-md">
     <ol class="breadcrumb">
         <li class="active"><a href="javascript:;">Edit Package</a></li>

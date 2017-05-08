@@ -104,19 +104,16 @@ function checkVariable(data)
 	}
 }
 
-window._error_log = [];
+//window._error_log = {};
 function fail_callback(data)
 {
-    window._error_log.push(data['user_message']);
-    window._error_log = jQuery.unique( window._error_log);
-    $("#error_log_text").html('');
-    $.each(window._error_log, function( key, value ) {
-        $("#error_log_text").append('<li>'+value+'</li>');
+    //window._error_log.push(data['message']);
+    //window._error_log = jQuery.unique( window._error_log);
+    window._error_log = {};
+    $.each(data['message'], function( key, value ) {
+        window._error_log[key]=value;
     });
-    $('#error_log').modal({show:true});
-    $("#error_log").on("hide.bs.modal", function () {
-        window._error_log = [];
-    });
+    
 }
 
 SSK = {    

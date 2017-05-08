@@ -11,12 +11,19 @@
 <link href="<?= base_url(); ?>assets/frontend/css/jquery.bxslider.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="<?= base_url(); ?>assets/frontend/css/style.css"> 
 
-<script src="<?= base_url(); ?>assets/frontend/js/modernizr.js"></script>
 <script src="<?= base_url(); ?>assets/frontend/js/jquery-1.11.0.min.js"></script>
+<script src="<?= base_url(); ?>assets/frontend/js/modernizr.js"></script>
 <script src="<?= base_url(); ?>assets/frontend/js/jquery.bxslider.js"></script>
 <script src="<?= base_url(); ?>assets/frontend/js/main.js"></script>
+
+<script src=https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js></script>
+<script src="<?php echo base_url(); ?>assets/js/libs/functions.js"></script>
+<script src="<?php echo base_url(); ?>assets/frontend/js/libs/header.js"></script>
+<script type="text/javascript">
+        window._site_url = '<?php echo site_url(); ?>/';
+    </script>
 </head>
-<body>
+<body ng-app="MyApp" ng-controller="MyController">
 <div class="admin-sec">
     <div class="container">   
       <nav class="main-nav">
@@ -36,25 +43,25 @@
 			<div id="cd-login"> <!-- log in form -->
 				<form class="cd-form">
 					<p class="fieldset">
-						<label class="image-replace cd-email" for="signin-email">E-mail</label>
-						<input class="full-width has-padding has-border" id="signin-email" type="email" placeholder="E-mail">
-						<span class="cd-error-message">Error message here!</span>
+						<label class="image-replace cd-email" for="signin-username">Username</label>
+						<input class="full-width has-padding has-border" ng-model="username" type="text" placeholder="Username">
+						<span class="cd-error-message" >Error message here!</span>
 					</p>
 
 					<p class="fieldset">
 						<label class="image-replace cd-password" for="signin-password">Password</label>
-						<input class="full-width has-padding has-border" id="signin-password" type="text"  placeholder="Password">
+						<input class="full-width has-padding has-border" ng-model="password" type="text"  placeholder="Password">
 						<a href="#0" class="hide-password">Hide</a>
 						<span class="cd-error-message">Error message here!</span>
 					</p>
 
-					<p class="fieldset">
+					<!--<p class="fieldset">
 						<input type="checkbox" id="remember-me" checked>
 						<label for="remember-me">Remember me</label>
-					</p>
+					</p>-->
 
 					<p class="fieldset">
-						<input class="full-width" type="submit" value="Login">
+						<input class="full-width has-padding" type="button" value="Login" ng-click="login()">
 					</p>
 				</form>
 				
@@ -66,30 +73,36 @@
 				<form class="cd-form">
 					<p class="fieldset">
 						<label class="image-replace cd-username" for="signup-username">Username</label>
-						<input class="full-width has-padding has-border" id="signup-username" type="text" placeholder="Username">
-						<span class="cd-error-message">Error message here!</span>
+						<input class="full-width has-padding has-border" ng-model="r_username" type="text" placeholder="Username">
+						<span class="cd-error-message" id="r_username-error"></span>
 					</p>
 
 					<p class="fieldset">
 						<label class="image-replace cd-email" for="signup-email">E-mail</label>
-						<input class="full-width has-padding has-border" id="signup-email" type="email" placeholder="E-mail">
-						<span class="cd-error-message">Error message here!</span>
+						<input class="full-width has-padding has-border" ng-model="r_email" type="text" placeholder="E-mail">
+						<span class="cd-error-message" id="r_email-error"></span>
 					</p>
 
 					<p class="fieldset">
 						<label class="image-replace cd-password" for="signup-password">Password</label>
-						<input class="full-width has-padding has-border" id="signup-password" type="text"  placeholder="Password">
+						<input class="full-width has-padding has-border" ng-model="r_password" type="password"  placeholder="Password">
 						<a href="#0" class="hide-password">Hide</a>
-						<span class="cd-error-message">Error message here!</span>
+						<span class="cd-error-message" id="r_password-error"></span>
+					</p>
+					<p class="fieldset">
+						<label class="image-replace cd-password" for="signup-password">Re-enter Password</label>
+						<input class="full-width has-padding has-border" ng-model="r_password1" type="password"  placeholder="Password">
+						<a href="#0" class="hide-password">Hide</a>
+						<span class="cd-error-message"></span>
 					</p>
 
-					<p class="fieldset">
+					<!--<p class="fieldset">
 						<input type="checkbox" id="accept-terms">
 						<label for="accept-terms">I agree to the <a href="#0">Terms</a></label>
-					</p>
+					</p>-->
 
 					<p class="fieldset">
-						<input class="full-width has-padding" type="submit" value="Create account">
+						<input class="full-width has-padding" type="button" value="Create account" ng-click="register()">
 					</p>
 				</form>
 

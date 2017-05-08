@@ -45,5 +45,41 @@ class Common_model extends CI_Model
 		}
     	$this->db->trans_complete();
 		return $main_data;
-    } 
+    }
+
+    function checkUsernameExists($username)
+    {
+    	$this->db->trans_start();
+    	$this->db->select('*');
+		$this->db->from('users');
+		$this->db->where('username',$username);
+		$query = $this->db->get();
+		$count = $query->num_rows();
+		$this->db->trans_complete();
+		if($count > 0)
+		{
+			return true;
+		}else
+		{
+			return false;
+		}
+    }
+
+    function checkEmailIDExists($email)
+    {
+    	$this->db->trans_start();
+    	$this->db->select('*');
+		$this->db->from('users');
+		$this->db->where('email',$email);
+		$query = $this->db->get();
+		$count = $query->num_rows();
+		$this->db->trans_complete();
+		if($count > 0)
+		{
+			return true;
+		}else
+		{
+			return false;
+		}
+    }
 }
