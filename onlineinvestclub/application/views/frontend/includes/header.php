@@ -45,14 +45,14 @@
 					<p class="fieldset">
 						<label class="image-replace cd-email" for="signin-username">Username</label>
 						<input class="full-width has-padding has-border" ng-model="username" type="text" placeholder="Username">
-						<span class="cd-error-message" >Error message here!</span>
+						<span class="cd-error-message" id="username-error"></span>
 					</p>
 
 					<p class="fieldset">
 						<label class="image-replace cd-password" for="signin-password">Password</label>
 						<input class="full-width has-padding has-border" ng-model="password" type="text"  placeholder="Password">
 						<a href="#0" class="hide-password">Hide</a>
-						<span class="cd-error-message">Error message here!</span>
+						<span class="cd-error-message" id="password-error"></span>
 					</p>
 
 					<!--<p class="fieldset">

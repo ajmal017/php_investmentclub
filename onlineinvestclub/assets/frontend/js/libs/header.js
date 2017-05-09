@@ -43,6 +43,34 @@ angular.module("MyApp", []).controller("MyController", function($scope,$http) {
         request_data['email'] = $scope.r_email;
         request_data['password'] = $scope.r_password;
         
-        SSK.site_call("AJAX",window._site_url+"profile/register",request_data, register_success_cb,register_failure_cb);
+        SSK.site_call("AJAX",window._site_url+"register/register",request_data, register_success_cb,register_failure_cb);
+    }
+
+    $scope.login = function()
+    {
+        $('.cd-error-message').removeClass('is-visible');
+        login_success_cb = function(data)
+        {
+            if(data.status == "success")
+            {
+                window.location.href = window._site_url+"dashboard";
+            }else if(data.status == 'failed')
+            {
+                alert("Username and Password not matching.")
+            }
+        }
+
+        login_failure_cb = function(data)
+        {
+            $.each(data['message'], function( key, value ) {
+                $('#'+key+'-error').addClass('is-visible').html(value);
+            });
+        }
+
+        request_data = {}
+        request_data['username'] = $scope.username;
+        request_data['password'] = $scope.password;
+        
+        SSK.site_call("AJAX",window._site_url+"login/signIn",request_data, login_success_cb,login_failure_cb);
     }
 });

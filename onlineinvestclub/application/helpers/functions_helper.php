@@ -84,5 +84,19 @@ function checkEmailIDExists($email)
 	return $result;	
 }
 
+function checkAlignmentSetOfUser($userid)
+{
+	$this->db->trans_start();
+    $this->db->where('userid',$userid);
+	
+	$query = $this->db->get('user_settings');
+    $alignment = '';
+    if($query->num_rows()==1){
+        $row = $query->row()
+        $alignment = $row['user_alignment'] 
+    }    
+	$this->db->trans_complete();
+	return $alignment
+}
 //$CI->output->enable_profiler(TRUE);
 ?>
