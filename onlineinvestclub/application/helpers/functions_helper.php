@@ -84,19 +84,20 @@ function checkEmailIDExists($email)
 	return $result;	
 }
 
-function checkAlignmentSetOfUser($userid)
+function checkAlignmentSetOfUser($username)
 {
-	$this->db->trans_start();
-    $this->db->where('userid',$userid);
-	
-	$query = $this->db->get('user_settings');
-    $alignment = '';
-    if($query->num_rows()==1){
-        $row = $query->row()
-        $alignment = $row['user_alignment'] 
-    }    
-	$this->db->trans_complete();
-	return $alignment
+	global $CI;
+	$CI->load->model('Common_model');
+	$result = $CI->Common_model->checkAlignmentSetOfUser($username);
+	return $result;	
+}
+
+function getUserInfo($userid)
+{
+	global $CI;
+	$CI->load->model('Common_model');
+	$result = $CI->Common_model->getUserInfo($userid);
+	return $result;	
 }
 //$CI->output->enable_profiler(TRUE);
 ?>

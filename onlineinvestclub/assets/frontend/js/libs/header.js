@@ -14,8 +14,15 @@ angular.module("MyApp", []).controller("MyController", function($scope,$http) {
         }
     }
 
-    $scope.register = function()
+    $scope.r_username = '';
+    $scope.r_email = '';
+    $scope.r_password = '';
+    $scope.r_password1 = '';
+
+    $scope.register = function(sponsername='')
     {
+        alert(sponsername)
+        sponsername = sponsername || '';
         $('.cd-error-message').removeClass('is-visible');
         register_success_cb = function(data)
         {
@@ -42,8 +49,9 @@ angular.module("MyApp", []).controller("MyController", function($scope,$http) {
         request_data['username'] = $scope.r_username;
         request_data['email'] = $scope.r_email;
         request_data['password'] = $scope.r_password;
+        request_data['sponserUsername'] = sponsername;
         
-        SSK.site_call("AJAX",window._site_url+"register/register",request_data, register_success_cb,register_failure_cb);
+        SSK.site_call("AJAX",window._site_url+"register/signUp",request_data, register_success_cb,register_failure_cb);
     }
 
     $scope.login = function()

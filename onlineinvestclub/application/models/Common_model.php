@@ -82,4 +82,72 @@ class Common_model extends CI_Model
 			return false;
 		}
     }
+
+    function checkAlignmentSetOfUser($username)
+	{
+		$this->db->trans_start();
+		$this->db->select('user_settings.user_alignment,users.userid');
+		$this->db->where('users.username',$username);
+		$this->db->join('users', 'users.userid = user_settings.userid','left');
+		$query = $this->db->get('user_settings');
+		
+		$data = array();
+		if($query->num_rows()==1){
+		    foreach($query->result() as $row)
+			{
+				$data = array(
+							'userid'=>$row->userid,
+							'user_alignment'=>$row->user_alignment,
+							);
+			}
+		}    
+		$this->db->trans_complete();
+		return $data;
+	}
+
+	function getUserInfo($userid)
+    {
+    	$this->db->trans_start();
+    	$this->db->select('*');
+    	$this->db->where('users.userid',$userid);
+		$this->db->join('users', 'users.userid = userdetails.userid','left');
+		
+
+		$query = $this->db->get('userdetails');
+		
+		$data = array();
+		foreach($query->result() as $row)
+		{
+			$data = array(
+							'userid'=>$row->userid,
+							'firstname'=>$row->firstname,
+							'middlename'=>$row->middlename,
+							'lastname'=>$row->lastname,
+							'email'=>$row->email,
+							'profile_image'=>$row->profile_image,
+							'address'=>$row->address,
+							'city'=>$row->city,
+							'state'=>$row->state,
+							'country'=>$row->country,
+							'pincode'=>$row->pincode,
+							'dateofbirth'=>$row->dateofbirth,
+							'mobile'=>$row->mobile,
+							'gender'=>$row->gender,
+							'pancard'=>$row->pancard,
+							'pancard_image'=>$row->pancard_image,
+							'aadhaar_card'=>$row->aadhaar_card,
+							'aadhar_card_image'=>$row->aadhar_card_image,
+							'bank_account_holder_name'=>$row->bank_account_holder_name,
+							'bank_name'=>$row->bank_name,
+							'branch'=>$row->branch,
+							'account_number'=>$row->account_number,
+							'ifsc_code'=>$row->ifsc_code,
+							'role_id'=>$row->role_id,
+							'status'=>$row->status,
+							'created_date'=>$row->created_date
+							);
+		}
+    	$this->db->trans_complete();
+		return $data;
+    }
 }

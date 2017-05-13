@@ -10,8 +10,10 @@
 <link href="<?= base_url(); ?>assets/frontend/css/responsive.css" rel="stylesheet" type="text/css">
 <link href="<?= base_url(); ?>assets/frontend/css/jquery.bxslider.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="<?= base_url(); ?>assets/frontend/css/style.css"> 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 <script src="<?= base_url(); ?>assets/frontend/js/jquery-1.11.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="<?= base_url(); ?>assets/frontend/js/modernizr.js"></script>
 <script src="<?= base_url(); ?>assets/frontend/js/jquery.bxslider.js"></script>
 <script src="<?= base_url(); ?>assets/frontend/js/main.js"></script>
@@ -19,9 +21,12 @@
 <script src=https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js></script>
 <script src="<?php echo base_url(); ?>assets/js/libs/functions.js"></script>
 <script src="<?php echo base_url(); ?>assets/frontend/js/libs/header.js"></script>
+
+
+
 <script type="text/javascript">
         window._site_url = '<?php echo site_url(); ?>/';
-    </script>
+</script>
 </head>
 <body ng-app="MyApp" ng-controller="MyController">
 <div class="admin-sec">
@@ -35,10 +40,7 @@
 		</nav>
         <div class="cd-user-modal"> <!-- this is the entire modal form, including the background -->
 		<div class="cd-user-modal-container"> <!-- this is the container wrapper -->
-			<ul class="cd-switcher">
-				<li><a href="#0">Sign in</a></li>
-				<li><a href="#0">New account</a></li>
-			</ul>
+			
 
 			<div id="cd-login"> <!-- log in form -->
 				<form class="cd-form">
@@ -50,7 +52,7 @@
 
 					<p class="fieldset">
 						<label class="image-replace cd-password" for="signin-password">Password</label>
-						<input class="full-width has-padding has-border" ng-model="password" type="text"  placeholder="Password">
+						<input class="full-width has-padding has-border" ng-model="password" type="password"  placeholder="Password">
 						<a href="#0" class="hide-password">Hide</a>
 						<span class="cd-error-message" id="password-error"></span>
 					</p>
@@ -102,7 +104,7 @@
 					</p>-->
 
 					<p class="fieldset">
-						<input class="full-width has-padding" type="button" value="Create account" ng-click="register()">
+						<input class="full-width has-padding" type="button" value="Create account" ng-click="register('<?php echo @$sponserUsername; ?>')">
 					</p>
 				</form>
 

@@ -221,9 +221,9 @@ xsigin/signup popup
   clear: both;
 }
 .cd-user-modal-container .cd-switcher li {
-  width: 50%;
-  float: left;
+  display: inline-block;
   text-align: center;
+  width:100%;
 }
 .cd-user-modal-container .cd-switcher li:first-child a {
   border-radius: .25em 0 0 0;

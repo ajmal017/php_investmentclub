@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 09, 2017 at 02:30 AM
+-- Generation Time: May 13, 2017 at 02:14 PM
 -- Server version: 5.7.18-0ubuntu0.16.04.1
 -- PHP Version: 7.0.15-0ubuntu0.16.04.4
 
@@ -72,6 +72,13 @@ CREATE TABLE `userdetails` (
   `last_updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `userdetails`
+--
+
+INSERT INTO `userdetails` (`userid`, `address`, `city`, `state`, `country`, `pincode`, `dateofbirth`, `gender`, `mobile`, `pancard`, `pancard_image`, `aadhaar_card`, `aadhar_card_image`, `bank_name`, `branch`, `account_number`, `ifsc_code`, `last_updated`) VALUES
+(1, 'as', 'as', 'as', 'as', '123123', '2017-05-12', '', '123123', '', '', '', '', '', '', '', '', '2017-05-12 20:19:03');
+
 -- --------------------------------------------------------
 
 --
@@ -91,10 +98,13 @@ CREATE TABLE `users` (
   `middlename` varchar(255) NOT NULL,
   `lastname` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
+  `profile_image` text NOT NULL,
   `email_verification_token` text NOT NULL,
   `email_verified` varchar(50) NOT NULL,
-  `user_type` varchar(50) NOT NULL,
+  `role_id` varchar(50) NOT NULL,
   `status` varchar(50) NOT NULL,
+  `entry` int(10) NOT NULL,
+  `last_login` datetime DEFAULT NULL,
   `created_date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -102,10 +112,10 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`userid`, `username`, `password`, `sponsorid`, `placementid`, `placement`, `leftmember`, `rightmember`, `firstname`, `middlename`, `lastname`, `email`, `email_verification_token`, `email_verified`, `user_type`, `status`, `created_date`) VALUES
-(1, 'amitjain', 'e10adc3949ba59abbe56e057f20f883e', 0, 0, '', 0, 0, 'Amit', '', 'Jain', 'amit.jain@gmail.com', '', 'yes', 'admin', 'active', '2017-05-09 00:00:00'),
-(3, 'ambekar', '81dc9bdb52d04dc20036dbd8313ed055', 0, 0, '', 0, 0, '', '', '', 'amit@gmail.com', '123456', '', '', '', '2017-05-09 02:01:36'),
-(4, 'asds', '81dc9bdb52d04dc20036dbd8313ed055', 0, 0, '', 0, 0, '', '', '', 'as', '123456', '', '', '', '2017-05-09 02:04:36');
+INSERT INTO `users` (`userid`, `username`, `password`, `sponsorid`, `placementid`, `placement`, `leftmember`, `rightmember`, `firstname`, `middlename`, `lastname`, `email`, `profile_image`, `email_verification_token`, `email_verified`, `role_id`, `status`, `entry`, `last_login`, `created_date`) VALUES
+(1, 'amitjain', 'e10adc3949ba59abbe56e057f20f883e', 0, 0, '', 0, 60, 'asd', 'asd', 'asd', 'asd', '1494617287_7797_3291520494_da75bdb069.jpg', '', 'true', '1', 'active', 1, '2017-05-13 00:44:24', '2017-05-11 01:08:12'),
+(57, 'ambekar1', '123456', 0, 1, 'right', 0, 0, '', '', '', '', '', '', '', '', '', 1, '2017-05-11 00:00:00', '2017-05-11 00:00:00'),
+(60, 'ambekar1', '123456', 0, 1, 'right', 0, 0, '', '', '', '', '', '', '', '', '', 0, '2017-05-11 00:00:00', '2017-05-11 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -117,6 +127,21 @@ CREATE TABLE `user_settings` (
   `userid` bigint(255) NOT NULL,
   `user_alignment` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user_settings`
+--
+
+INSERT INTO `user_settings` (`userid`, `user_alignment`) VALUES
+(1, 'left'),
+(2, 'left'),
+(3, 'left'),
+(4, 'left'),
+(5, 'left'),
+(6, 'left'),
+(7, 'left'),
+(8, 'left'),
+(9, 'left');
 
 --
 -- Indexes for dumped tables
@@ -159,17 +184,17 @@ ALTER TABLE `package_master`
 -- AUTO_INCREMENT for table `userdetails`
 --
 ALTER TABLE `userdetails`
-  MODIFY `userid` bigint(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `userid` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `userid` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `userid` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 --
 -- AUTO_INCREMENT for table `user_settings`
 --
 ALTER TABLE `user_settings`
-  MODIFY `userid` bigint(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `userid` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Login extends CI_Controller {
+class Register extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -18,12 +18,13 @@ class Login extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index()
+	public function index($sponserUsername='')
 	{
-		$this->load->view('register');
+		$data = array('sponserUsername'=>$sponserUsername);
+		$this->load->view('frontend/register',$data);
 	}
 	
-	public function register()
+	public function signUp()
 	{
 		if($this->input->post())
 		{
@@ -33,7 +34,7 @@ class Login extends CI_Controller {
 			$username = $this->input->post('username');
 			$email = $this->input->post('email');
 			$password = $this->input->post('password');
-			$sponserid = 2;
+			$sponserUsername = $this->input->post('sponserUsername');
 
 			$this->form_validation->set_rules('username', 'Username', 'required');
 			$this->form_validation->set_rules('email', 'Email ID', 'required|valid_email');
@@ -56,14 +57,13 @@ class Login extends CI_Controller {
 				$this->load->model('Register_model');
 				$userid = $this->Register_model->register($username,$email,$password);
 				
-				if($sponserid > 0)
+				if($sponserUsername > 0)
 				{
-					$alignment = checkAlignmentSetOfUser($sponserid);	
+					$alignment_data = checkAlignmentSetOfUser($sponserUsername);	
 				}else
 				{
-					$alignment = checkAlignmentSetOfUser(1);
+					$alignment_data = checkAlignmentSetOfUser('amitjain');
 				}
-				
 
 				$status = 'success';
 			    $message = 'user registered successfully';
@@ -77,6 +77,16 @@ class Login extends CI_Controller {
 			$response = array('status'=>$status,'message'=>$message);
 			echo responseObject($response,$status_code);
 			
+		}
+	}
+
+	public function placementOfUser()
+	{
+		if($this->input->post())
+		{
+			$userid = $this->input->post('userid');
+			$sponserid = $this->input->post('sponserid');
+			$placement = $this->input->post('placement');			
 		}
 	}
 }
