@@ -88,7 +88,7 @@ class Profile extends CI_Controller {
 			        //now we initialize the upload library
 			        $this->upload->initialize($config);
 			        $data = array();
-			        unlink($config['upload_path'] . $profile_image_path);
+			        @unlink($config['upload_path'] . $profile_image_path);
 			        if ($this->upload->do_upload('uploadedimage'))
 			        {
 			        	$data['uploads'] = $this->upload->data();
