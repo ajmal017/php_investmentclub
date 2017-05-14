@@ -120,6 +120,7 @@ class Common_model extends CI_Model
 		{
 			$data = array(
 							'userid'=>$row->userid,
+							'username'=>$row->username,
 							'firstname'=>$row->firstname,
 							'middlename'=>$row->middlename,
 							'lastname'=>$row->lastname,
@@ -136,7 +137,7 @@ class Common_model extends CI_Model
 							'pancard'=>$row->pancard,
 							'pancard_image'=>$row->pancard_image,
 							'aadhaar_card'=>$row->aadhaar_card,
-							'aadhar_card_image'=>$row->aadhar_card_image,
+							'aadhaar_card_image'=>$row->aadhaar_card_image,
 							'bank_account_holder_name'=>$row->bank_account_holder_name,
 							'bank_name'=>$row->bank_name,
 							'branch'=>$row->branch,

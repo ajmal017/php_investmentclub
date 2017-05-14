@@ -1,12 +1,3 @@
-function alert_box(message)
-{
-	bootbox.alert({
-        message: message,
-        callback: function () {
-        },
-        className: 'bootbox-sm'
-    });
-}
 
 function phoneNumberValidation(phone)
 {
@@ -18,6 +9,23 @@ function phoneNumberValidation(phone)
 	}else{
 		return true;
 	}
+}
+
+function show_image(image_path,image_type)
+{
+    path = 'uploads/';
+    if(image_type == 'profile' && image_path == '')
+    {
+        path = path+'person.png';
+    }else if(image_type == 'documents' && image_path == '')
+    {
+        path = path+'download.png';
+    }else if(image_type == 'packages' && image_path == '')
+    {
+        path = path+'package.jpg';
+    }
+
+    return window._site_url+path;
 }
 
 function signout()
@@ -104,16 +112,30 @@ function checkVariable(data)
 	}
 }
 
-//window._error_log = {};
+
+function alert_box(message)
+{
+    bootbox.alert({
+        message: message,
+        callback: function () {
+        },
+        className: 'bootbox-sm'
+    });
+}
+
 function fail_callback(data)
 {
-    //window._error_log.push(data['message']);
-    //window._error_log = jQuery.unique( window._error_log);
-    window._error_log = {};
+    window._error_log = {};    
     $.each(data['message'], function( key, value ) {
         window._error_log[key]=value;
     });
     
+    var error_string = '';
+    console.log(window._error_log)
+    $.each(window._error_log, function( key, value ) {
+        error_string += value+'</br>';
+    });
+    alert_box(error_string);
 }
 
 SSK = {    

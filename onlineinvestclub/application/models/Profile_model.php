@@ -34,6 +34,17 @@ class Profile_model extends CI_Model
         return true;
     }
 
+    function editKycDocs($userid,$column,$image_path)
+    {
+		$this->db->trans_start();
+		
+		$array = array($column => $image_path);
+		$this->db->where('userid', $userid);
+		$this->db->update('userdetails', $array);
+		$this->db->trans_complete();
+        return true;
+    }
+
     function save_address_details($userid,$country,$state,$city,$address,$pincode)
     {
 		$this->db->trans_start();
@@ -50,6 +61,16 @@ class Profile_model extends CI_Model
     {
 		$this->db->trans_start();
 		$array = array('bank_account_holder_name' => $bank_account_holder_name,'bank_name'=>$bank_name,'branch'=>$branch,'account_number'=>$account_number,'ifsc_code'=>$ifsc_code);
+		$this->db->where('userid', $userid);
+		$this->db->update('userdetails', $array);
+		$this->db->trans_complete();
+        return true;    	
+    }
+
+    function save_kyc_details($userid,$pancard,$aadhaar_card)
+    {
+		$this->db->trans_start();
+		$array = array('pancard' => $pancard,'aadhaar_card'=>$aadhaar_card);
 		$this->db->where('userid', $userid);
 		$this->db->update('userdetails', $array);
 		$this->db->trans_complete();

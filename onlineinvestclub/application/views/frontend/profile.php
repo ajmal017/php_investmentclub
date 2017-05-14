@@ -11,7 +11,7 @@
           <h3>Personal Details</h3>
           <a data-toggle="modal" data-target="#personal_details">Edit</a>
           <ul class="reset first-part">
-            <li> <img src="<?= base_url(); ?>assets/frontend/images/person.png" />
+            <li> <img ng-src="<?= base_url(); ?>/uploads/profile/{{user_info.profile_image || default_profile}}" />
               <p>Name :</p>
               <h5>{{user_info.firstname}} {{user_info.lastname}}</h5>
             </li>
@@ -71,25 +71,30 @@
           </li>          
           </ul>
         </div>
+        <script src="http://localhost/projects/php_investmentclub/onlineinvestclub/assets/admin/assets/plugins/bootbox/bootbox.js"></script>
         <div id="Tokyo" class="tabcontent">
           <div class="security-form">
-            <h5>Upload Documnets</h5>
-            <form action="" method="get" class="form">
+            <h5>Documents</h5>
+            <a data-toggle="modal" data-target="#kyc_details">Edit</a>
               <ul class="reset">
                 <li>
-                  <label>ID/Passport</label>
-                  <input name="" type="text" />
+                  <p>Pan Card</p>
+                  <h6>{{user_info.pancard}}</h6>
                 </li>
                 <li>
-                  <label>Proo of Address</label>
-                  <input name="" type="text" />
+                  <p>Pan Card Image</p>
+                  <h6><img ng-src="<?= base_url(); ?>/uploads/documents/{{user_info.pancard_image || default_documents}}" style="width:100px;height:100px;"></h6>
                 </li>
                 <li>
-                  <input name="submit" type="submit"  class="submit"/>
+                  <p>Aadhaar Card</p>
+                  <h6>{{user_info.aadhaar_card}}</h6>
+                </li>
+                <li>
+                  <p>Aadhaar Card Image</p>
+                  <h6><img ng-src="<?= base_url(); ?>/uploads/documents/{{user_info.aadhaar_card_image || default_documents}}" style="width:100px;height:100px;"></h6>
                 </li>
               </ul>
-            </form>
-            <h3>Informetion</h3>
+            <h3>Information</h3>
             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,</p>
           </div>
         </div>
@@ -120,7 +125,7 @@
       </div>
       <div class="right-side">
         <h6>Invite Link</h6>
-        <input type="text" value="http://localhost/projects/amit-project/index.php" class="form-control"> </div>
+        <input type="text" value="<?= site_url(); ?>/register/{{user_info.username || ''}}" class="form-control"> </div>
       <div class="clear"></div>
     </div>
     <div class="clear"></div>

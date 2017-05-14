@@ -2,7 +2,7 @@ $('#personal_details_form').ajaxForm({
     beforeSend: function() {
         console.log('beforeSend')
         var percentVal = '0%';
-       	$('#save').attr('disabled',true);                
+       	$('#profile_save').attr('disabled',true);                
     },
     uploadProgress: function(event, position, total, percentComplete) {
         var percentVal = percentComplete + '%';
@@ -12,24 +12,54 @@ $('#personal_details_form').ajaxForm({
     },
     complete: function(xhr) {
         console.log(xhr)
+        
+        var response = xhr.responseJSON;
+        if(response.status == 'success')
+        {
+            alert_box('Profile added successfully');
+            angular.element($("body")).scope().fetch_user_data();
+            $('#personal_details').modal('hide');
+            /*setTimeout(function(){
+                window.location.reload();
+            }, 2000);*/
+
+        } else if(response.status == 'error') {
+            fail_callback(response);
+        }
+        $('#profile_save').attr('disabled',false);
+        
+    }
+});
+
+$('#kyc_details_form').ajaxForm({
+    beforeSend: function() {
+        var percentVal = '0%';
+        $('#save_kyc').attr('disabled',true);                
+    },
+    uploadProgress: function(event, position, total, percentComplete) {
+        var percentVal = percentComplete + '%';
+    },
+    success: function() {
+        var percentVal = '100%';
+    },
+    complete: function(xhr) {
+        console.log(xhr)
+
         if(xhr.status == 200)
         {
             var response = xhr.responseJSON;
             if(response.status == 'success')
             {
-                alert('Profile added successfully');
-                setTimeout(function(){
+                alert_box('KYC details added successfully');
+                angular.element($("body")).scope().fetch_user_data();
+                $('#kyc_details').modal('hide');
+                /*setTimeout(function(){
                     window.location.reload();
-                }, 2000);
-
+                }, 2000);*/
             } else if(response.status == 'error') {
-                var err_msg = '';
-                $.each(response.message, function( index, value ) {
-                    err_msg += value+'</br>';
-                });
-                alert_box(err_msg);
-                $('#save').attr('disabled',false);
+                fail_callback(response);
             }
+            $('#save_kyc').attr('disabled',false);
         }
     }
 });
@@ -40,7 +70,7 @@ angular.module("MyApp", []).controller("MyController", function($scope,$http) {
     {
         save_address_details_success_cb = function(data)
         {
-            alert('updated successfully');
+            alert_box('updated successfully');
             $scope.fetch_user_data();
             $('#address_details').modal('hide');
         }
@@ -57,7 +87,7 @@ angular.module("MyApp", []).controller("MyController", function($scope,$http) {
     {
         save_bank_details_success_cb = function(data)
         {
-            alert('updated successfully');
+            alert_box('updated successfully');
             $scope.fetch_user_data();
             $('#bank_details').modal('hide');
         }
@@ -76,25 +106,25 @@ angular.module("MyApp", []).controller("MyController", function($scope,$http) {
         {
             if(data.status == 'failure')
             {
-                alert('Current Password not matching');    
+                alert_box('Current Password not matching');    
             }else
             {
-                alert('Password Changed.')
+                alert_box('Password Changed.')
             }
             
             //$scope.fetch_user_data();
         }
         if($scope.current_password == '')
         {
-            alert('Please enter current password');
+            alert_box('Please enter current password');
             return false;
         }else if($scope.new_password == '')
         {
-            alert('Please enter new password');
+            alert_box('Please enter new password');
             return false;
         }else if($scope.reenter_password == '')
         {
-            alert('Please enter reenter password');
+            alert_box('Please enter reenter password');
             return false;
         }
         if($scope.reenter_password != $scope.new_password)
@@ -116,6 +146,7 @@ angular.module("MyApp", []).controller("MyController", function($scope,$http) {
             if(data.status == 'success')
             {
                 $scope['user_info']['userid']= data.message.userid;
+                $scope['user_info']['username']= data.message.username;
                 $scope['user_info']['firstname']=data.message.firstname;
                 $scope['user_info']['middlename']=data.message.middlename;
                 $scope['user_info']['lastname']=data.message.lastname;
@@ -132,7 +163,7 @@ angular.module("MyApp", []).controller("MyController", function($scope,$http) {
                 $scope['user_info']['pancard']=data.message.pancard;
                 $scope['user_info']['pancard_image']=data.message.pancard_image;
                 $scope['user_info']['aadhaar_card']=data.message.aadhaar_card;
-                $scope['user_info']['aadhar_card_image']=data.message.aadhar_card_image;
+                $scope['user_info']['aadhaar_card_image']=data.message.aadhaar_card_image;
                 $scope['user_info']['bank_account_holder_name']=data.message.bank_account_holder_name;
                 $scope['user_info']['bank_name']=data.message.bank_name;
                 $scope['user_info']['branch']=data.message.branch;
@@ -145,5 +176,26 @@ angular.module("MyApp", []).controller("MyController", function($scope,$http) {
         request_data = {};
         SSK.site_call("AJAX",window._site_url+"profile/get_user_info",request_data, fetch_user_data_success_cb);
     }
+
+    $scope.show_image = function(image_path,image_type)
+    {
+        path = 'uploads/';
+        if(image_type == 'profile' && image_path == '')
+        {
+            path = path+'person.png';
+        }else if(image_type == 'documents' && image_path == '')
+        {
+            path = path+'download.png';
+        }else if(image_type == 'packages' && image_path == '')
+        {
+            path = path+'package.jpg';
+        }
+        return window._site_url+path;
+    }
+
+    $scope.default_profile = 'person.png';
+    $scope.default_documents = 'download.png';
+    $scope.default_package = 'package.png';
+
     $scope.fetch_user_data();
 });

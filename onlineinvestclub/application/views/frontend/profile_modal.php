@@ -36,12 +36,13 @@
                         </div>
                         <div class="form-group col-md-8">
                             <label>Profile Image : </label>
+                            <input type="hidden" name="profile_image_path" value="{{user_info.profile_image}}">
                             <input type="file" class="form-control" ng-model="profile_image" name="profile_image">
                         </div>
                     </div>
                 </div>
               <div class="modal-footer">
-                <input type="submit" class="btn btn-primary" id="save1" value="Submit"/>
+                <input type="submit" class="btn btn-primary" id="profile_save" value="Submit"/>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
               </div>
             </form>
@@ -126,6 +127,47 @@
                 <input type="button" class="btn btn-primary" ng-click="save_bank_details()" value="Save"/>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
               </div>
+        </div>    
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="kyc_details" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">KYC Details</h4>
+            </div>
+            <form id="kyc_details_form" method="POST" action="<?php echo site_url(); ?>/profile/save_kyc_details" enctype="multipart/form-data" >
+                <div class="modal-body" style="overflow:auto;">
+                    <div class="col-md-12">
+                        <div class="form-group col-md-4">
+                            <label>Pan Card : </label>
+                            <input type="text" class="form-control" name="pancard" value="{{user_info.pancard}}" />
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>Pan Card Image : </label>
+                            <input type="file" class="form-control" name="pancard_image" />
+                            <input type="hidden" name="current_pancard_image" value="{{user_info.pancard_image}}"/>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>Aadhaar Card : </label>
+                            <input type="text" class="form-control" name="aadhaar_card" value="{{user_info.aadhaar_card}}">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>Aadhaar Card Image : </label>
+                            <input type="file" class="form-control" name="aadhaar_card_image">
+                            <input type="hidden" name="current_aadhaar_card_image" value="{{user_info.aadhaar_card_image}}"/>
+                        </div>
+                    </div>
+                </div>
+              <div class="modal-footer">
+                <input type="submit" class="btn btn-primary" value="Submit" id="save_kyc"/>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </form>
         </div>    
     </div>
 </div>

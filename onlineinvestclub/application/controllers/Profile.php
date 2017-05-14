@@ -88,7 +88,7 @@ class Profile extends CI_Controller {
 			        //now we initialize the upload library
 			        $this->upload->initialize($config);
 			        $data = array();
-			        @unlink($config['upload_path'] . $profile_image_path);
+			        unlink($config['upload_path'] . $profile_image_path);
 			        if ($this->upload->do_upload('uploadedimage'))
 			        {
 			        	$data['uploads'] = $this->upload->data();
@@ -192,6 +192,141 @@ class Profile extends CI_Controller {
 				$this->Profile_model->save_bank_details($userid,$bank_account_holder_name,$bank_name,$branch,$account_number,$ifsc_code);
 
 	        	$status = 'success';
+			    $message = 'updated successfully';
+			    $status_code = 200;
+	        }else
+			{
+				$status = 'error';
+			    $message = $error_array;
+			    $status_code = 501;
+			}
+			$response = array('status'=>$status,'message'=>$message);
+			echo responseObject($response,$status_code);			
+		}
+	}
+
+	public function save_kyc_details()
+	{
+		if($this->input->post())
+		{
+			$status = '';
+			$message = '';
+			$session_data = $this->session->userdata;
+			$userid = $session_data['logged_in']['userid'];
+		
+			$pancard = $this->input->post('pancard');
+			$aadhaar_card = $this->input->post('aadhaar_card');
+			
+			$current_pancard_image = $this->input->post('current_pancard_image');
+			$current_aadhaar_card_image = $this->input->post('current_aadhaar_card_image');
+			$pancardFilesCount=isset($_FILES['pancard_image']['name'])? count($_FILES['pancard_image']['name']):0;
+			$aadhaarcardFilesCount=isset($_FILES['aadhaar_card_image']['name'])? count($_FILES['aadhaar_card_image']['name']):0;
+
+			$this->load->library('form_validation');
+			$this->form_validation->set_rules('pancard', 'Pancard', 'required');
+			$this->form_validation->set_rules('aadhaar_card', 'Aadhaar Card', 'required');
+			
+			$this->form_validation->run();
+			$error_array = $this->form_validation->error_array();
+			
+			$allowed =  array('gif','png' ,'jpg','jpeg');
+	    	if($pancardFilesCount > 0)
+	        {
+				$file_name = $_FILES['pancard_image']['name'];
+				$error = false;
+				if($file_name != '')
+				{	
+					$ext = pathinfo($file_name, PATHINFO_EXTENSION);
+					if(!in_array($ext,$allowed) ) {
+					    $error = true;
+					}
+				}
+				if($error == true)
+				{
+					$error_array['pancard_image'] = 'Please choose valid format for Pancard image';
+				}
+	        }
+	        if($aadhaarcardFilesCount > 0)
+	        {
+				$file_name = $_FILES['aadhaar_card_image']['name'];
+				$error = false;
+				if($file_name != '')
+				{	
+					$ext = pathinfo($file_name, PATHINFO_EXTENSION);
+					if(!in_array($ext,$allowed) ) {
+					    $error = true;
+					}
+				}
+				if($error == true)
+				{
+					$error_array['aadhaar_card_image'] = 'Please choose valid format for Aadhaar image';
+				}
+	        }
+
+	        if(count($error_array) == 0 )
+	        {
+	        	$this->load->model('Profile_model');
+				$this->Profile_model->save_kyc_details($userid,$pancard,$aadhaar_card);
+
+	        	if($pancardFilesCount > 0)
+		        {
+		        	$this->load->library('upload');
+				    $config['upload_path'] = FCPATH . 'uploads/documents/';
+				    $config['allowed_types'] = 'gif|jpg|png';
+				    $files = $_FILES['pancard_image'];	
+		        	$_FILES['uploadedimage']['name'] = time().'_'.rand(1111,9999).'_'.$files['name'];
+			        $_FILES['uploadedimage']['type'] = $files['type'];
+			        $_FILES['uploadedimage']['tmp_name'] = $files['tmp_name'];
+			        $_FILES['uploadedimage']['error'] = $files['error'];
+			        $_FILES['uploadedimage']['size'] = $files['size'];
+			        //now we initialize the upload library
+			        $this->upload->initialize($config);
+			        $data = array();
+			        @unlink($config['upload_path'] . $current_pancard_image);
+			        if ($this->upload->do_upload('uploadedimage'))
+			        {
+			        	$data['uploads'] = $this->upload->data();
+			        }
+			        if(isset($data) && count($data) > 0)
+			        {	
+			        	foreach ($data as $du)
+			        	{
+			        		$image_path = $du['file_name'];
+			        		$this->Profile_model->editKycDocs($userid,'pancard_image',$image_path);
+			        	}
+			        }
+			    }
+
+			    if($aadhaarcardFilesCount > 0)
+		        {
+		        	$this->load->library('upload');
+				    $config['upload_path'] = FCPATH . 'uploads/documents/';
+				    $config['allowed_types'] = 'gif|jpg|png';
+				    $files = $_FILES['aadhaar_card_image'];	
+		        	$_FILES['uploadedimage']['name'] = time().'_'.rand(1111,9999).'_'.$files['name'];
+			        $_FILES['uploadedimage']['type'] = $files['type'];
+			        $_FILES['uploadedimage']['tmp_name'] = $files['tmp_name'];
+			        $_FILES['uploadedimage']['error'] = $files['error'];
+			        $_FILES['uploadedimage']['size'] = $files['size'];
+			        //now we initialize the upload library
+			        $this->upload->initialize($config);
+			        $data = array();
+			        @unlink($config['upload_path'] . $current_aadhaar_card_image);
+			        if ($this->upload->do_upload('uploadedimage'))
+			        {
+			        	$data['uploads'] = $this->upload->data();
+			        }
+			        if(isset($data) && count($data) > 0)
+			        {	
+			        	foreach ($data as $du)
+			        	{
+			        		$image_path = $du['file_name'];
+			        		$this->Profile_model->editKycDocs($userid,'aadhaar_card_image',$image_path);
+			        	}
+			        }
+			    }
+			    
+			    $status = 'success';
 			    $message = 'updated successfully';
 			    $status_code = 200;
 	        }else

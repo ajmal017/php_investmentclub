@@ -46,3 +46,30 @@
     </div>
     <marquee direction="left" behavior="right" class="marquee">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum is simply dummy text of the printing and typesetting industry</marquee>
 </marquee>
+
+
+
+
+
+<div id="error_log" class="modal fade" tabindex=-1 role="dialog" style="margin-top:30px;">
+    <div class="modal-dialog modal-md" style="float:none;margin:auto;">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header modal-header-danger" style="background:rgba(255, 0, 0, 0.62)">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Error Log</h4>
+            </div>
+            <div class="modal-body" style="overflow:auto;width:100%">
+                <center layout="column">
+                    <div class="col-xl-10 col-lg-12 col-md-12 col-sm-12">
+                        <ul id="error_log_text" style="color:red;">
+                        </ul>
+                    </div>
+                </center>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
