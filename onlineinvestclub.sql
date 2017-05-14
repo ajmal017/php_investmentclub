@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 13, 2017 at 02:14 PM
+-- Generation Time: May 15, 2017 at 02:21 AM
 -- Server version: 5.7.18-0ubuntu0.16.04.1
 -- PHP Version: 7.0.15-0ubuntu0.16.04.4
 
@@ -43,7 +43,9 @@ CREATE TABLE `package_master` (
 
 INSERT INTO `package_master` (`package_id`, `package_name`, `package_amount`, `package_type`, `package_image`, `package_desc`, `package_created_date`, `package_status`) VALUES
 (6, 'Gold', 10000, 'Lumsum', '1494010761_4322_package1.jpg', 'Gold New                                ', '2017-05-06 00:29:21', 'active'),
-(7, 'Platinum', 20000, 'Lumsum', '1494010804_4278_package3.jpg', 'Platinum', '2017-05-06 00:30:04', 'active');
+(7, 'Platinum', 20000, 'Lumsum', '1494010804_4278_package3.jpg', 'Platinum', '2017-05-06 00:30:04', 'active'),
+(8, 'new', 1231, 'Lumsum', '1494684537_4901_body-bg.png', 'asdasd', '2017-05-13 19:38:57', 'active'),
+(9, 'asd', 100000, 'Lumsum', '1494684595_3831_message_avatar2.png', 'asd', '2017-05-13 19:39:54', 'active');
 
 -- --------------------------------------------------------
 
@@ -64,8 +66,9 @@ CREATE TABLE `userdetails` (
   `pancard` varchar(20) NOT NULL,
   `pancard_image` text NOT NULL,
   `aadhaar_card` varchar(20) NOT NULL,
-  `aadhar_card_image` text NOT NULL,
+  `aadhaar_card_image` text NOT NULL,
   `bank_name` varchar(255) NOT NULL,
+  `bank_account_holder_name` varchar(255) NOT NULL,
   `branch` text NOT NULL,
   `account_number` varchar(255) NOT NULL,
   `ifsc_code` varchar(255) NOT NULL,
@@ -76,8 +79,8 @@ CREATE TABLE `userdetails` (
 -- Dumping data for table `userdetails`
 --
 
-INSERT INTO `userdetails` (`userid`, `address`, `city`, `state`, `country`, `pincode`, `dateofbirth`, `gender`, `mobile`, `pancard`, `pancard_image`, `aadhaar_card`, `aadhar_card_image`, `bank_name`, `branch`, `account_number`, `ifsc_code`, `last_updated`) VALUES
-(1, 'as', 'as', 'as', 'as', '123123', '2017-05-12', '', '123123', '', '', '', '', '', '', '', '', '2017-05-12 20:19:03');
+INSERT INTO `userdetails` (`userid`, `address`, `city`, `state`, `country`, `pincode`, `dateofbirth`, `gender`, `mobile`, `pancard`, `pancard_image`, `aadhaar_card`, `aadhaar_card_image`, `bank_name`, `bank_account_holder_name`, `branch`, `account_number`, `ifsc_code`, `last_updated`) VALUES
+(1, 'jkh', 'jkh', 'hju', 'INDIA', 'jhj', '1992-01-14', '', '123213123', '123', '1494793519_7506_GANESHA.jpg', '1234', '1494794851_3352_3291520494_da75bdb069.jpg', 'HDFC', 'Amit Jain', 'Vasai', '878987898798', '7878998', '2017-05-14 20:48:09');
 
 -- --------------------------------------------------------
 
@@ -113,9 +116,24 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`userid`, `username`, `password`, `sponsorid`, `placementid`, `placement`, `leftmember`, `rightmember`, `firstname`, `middlename`, `lastname`, `email`, `profile_image`, `email_verification_token`, `email_verified`, `role_id`, `status`, `entry`, `last_login`, `created_date`) VALUES
-(1, 'amitjain', 'e10adc3949ba59abbe56e057f20f883e', 0, 0, '', 0, 60, 'asd', 'asd', 'asd', 'asd', '1494617287_7797_3291520494_da75bdb069.jpg', '', 'true', '1', 'active', 1, '2017-05-13 00:44:24', '2017-05-11 01:08:12'),
+(1, 'amitjain', 'e10adc3949ba59abbe56e057f20f883e', 0, 0, '', 0, 60, 'Amit', 'a', 'Jain', 'amit@gmail.com', '1494794889_3300_3587478037_4f36f99023.jpg', '', 'true', '1', 'active', 1, '2017-05-15 00:56:09', '2017-05-11 01:08:12'),
 (57, 'ambekar1', '123456', 0, 1, 'right', 0, 0, '', '', '', '', '', '', '', '', '', 1, '2017-05-11 00:00:00', '2017-05-11 00:00:00'),
 (60, 'ambekar1', '123456', 0, 1, 'right', 0, 0, '', '', '', '', '', '', '', '', '', 0, '2017-05-11 00:00:00', '2017-05-11 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_packages`
+--
+
+CREATE TABLE `user_packages` (
+  `id` int(255) NOT NULL,
+  `userid` bigint(255) NOT NULL,
+  `package_id` int(255) NOT NULL,
+  `count` int(255) NOT NULL,
+  `status` varchar(50) NOT NULL,
+  `purchase_date` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -166,6 +184,12 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`userid`);
 
 --
+-- Indexes for table `user_packages`
+--
+ALTER TABLE `user_packages`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `user_settings`
 --
 ALTER TABLE `user_settings`
@@ -179,7 +203,7 @@ ALTER TABLE `user_settings`
 -- AUTO_INCREMENT for table `package_master`
 --
 ALTER TABLE `package_master`
-  MODIFY `package_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `package_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `userdetails`
 --
@@ -190,6 +214,11 @@ ALTER TABLE `userdetails`
 --
 ALTER TABLE `users`
   MODIFY `userid` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+--
+-- AUTO_INCREMENT for table `user_packages`
+--
+ALTER TABLE `user_packages`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `user_settings`
 --
