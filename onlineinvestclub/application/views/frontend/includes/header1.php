@@ -12,6 +12,7 @@
 <script src="<?= base_url(); ?>assets/js/jquery-ui.js"></script>
 <link rel="stylesheet" href="<?= base_url(); ?>assets/css/jquery-ui.css">
 <script src="<?= base_url(); ?>assets/js/angular.min.js"></script>
+<script src="<?= base_url(); ?>assets/admin/assets/plugins/bootbox/bootbox.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/libs/functions.js"></script>
 
 <script type="text/javascript">

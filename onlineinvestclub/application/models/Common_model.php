@@ -7,12 +7,18 @@ class Common_model extends CI_Model
         parent::__construct();	
     }
     
-    function getPackages($package_id)
+    function getPackages($package_id,$filterArray = array())
     {
     	$this->db->trans_start();
     	$this->db->select('*');
 		$this->db->from('package_master');
-		$this->db->where('package_status','active');
+
+		//$filterArray = array('package_status'=>'active','package_name'=>'Gold');
+		foreach($filterArray as $key=>$value)
+		{
+			$this->db->where($key,$value);
+		}
+		
 		if($package_id > 0)
 		{
 			$this->db->where('package_id',$package_id);	

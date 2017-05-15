@@ -6,7 +6,7 @@ class Admin_packages extends CI_Controller {
 	public function __construct() 
 	{
         parent::__construct();
-        $this->load->model('Package_model');
+        $this->load->model('Adminpackages_model');
    		$this->menu_active = 'packages';
     }
 
@@ -68,7 +68,7 @@ class Admin_packages extends CI_Controller {
 
 	        if(count($error_array) == 0 )
 	        {
-	        	$last_inserted_id = $this->Package_model->addPackage($package_name,$package_amount,$package_type,$package_desc);	
+	        	$last_inserted_id = $this->Adminpackages_model->addPackage($package_name,$package_amount,$package_type,$package_desc);	
 
 	        	$this->load->library('upload');
 			    $config['upload_path'] = FCPATH . 'uploads/packages/';
@@ -99,7 +99,7 @@ class Admin_packages extends CI_Controller {
 		        		$image_path = $du['file_name'];
 		        		$type= 'product';
 		        		$created_date = date("Y-m-d H:i:s");
-		        		$this->Package_model->addPackageMedia($package_id,$image_path,$type,$created_date);
+		        		$this->Adminpackages_model->addPackageMedia($package_id,$image_path,$type,$created_date);
 		        	}
 		        }
 		    }
@@ -164,7 +164,7 @@ class Admin_packages extends CI_Controller {
 
 	        if(count($error_array) == 0 )
 	        {
-	        	$this->Package_model->editPackage($package_id,$package_name,$package_amount,$package_type,$package_desc);	
+	        	$this->Adminpackages_model->editPackage($package_id,$package_name,$package_amount,$package_type,$package_desc);	
 	        
 		        if($filesCount > 0)
 		        {	
@@ -194,7 +194,7 @@ class Admin_packages extends CI_Controller {
 			        		$image_path = $du['file_name'];
 			        		$type= 'packages';
 			        		$created_date = date("Y-m-d H:i:s");
-			        		$this->Package_model->addPackageMedia($package_id,$image_path,$type,$created_date);
+			        		$this->Adminpackages_model->addPackageMedia($package_id,$image_path,$type,$created_date);
 			        	}
 			        }
 			    }

@@ -71,7 +71,7 @@
           </li>          
           </ul>
         </div>
-        <script src="http://localhost/projects/php_investmentclub/onlineinvestclub/assets/admin/assets/plugins/bootbox/bootbox.js"></script>
+        
         <div id="Tokyo" class="tabcontent">
           <div class="security-form">
             <h5>Documents</h5>
