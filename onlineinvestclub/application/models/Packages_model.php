@@ -9,7 +9,7 @@ class Packages_model extends CI_Model
     
     function add_user_package($userid,$package_id,$quantity){
 		$this->db->trans_start();
-        $array = array('userid' => $userid,'package_id'=>$package_id,'count'=>$quantity,'purchase_date'=> date("Y-m-d H:i:s"),'status'=>'requested');
+        $array = array('userid' => $userid,'package_id'=>$package_id,'quantity'=>$quantity,'purchase_date'=> date("Y-m-d H:i:s"),'status'=>'requested');
 		$this->db->set($array);
 		$this->db->insert('user_packages');
 		$last_inserted_id = $this->db->insert_id();

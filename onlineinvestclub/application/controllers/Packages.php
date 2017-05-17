@@ -20,7 +20,10 @@ class Packages extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('frontend/packages');
+		$session_data = $this->session->userdata;
+		$data = array();
+		$data['session_data'] = $session_data;
+		$this->load->view('frontend/packages',$data);
 	}
 
 	public function add_packages()

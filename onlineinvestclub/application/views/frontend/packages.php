@@ -5,17 +5,26 @@
     <thead>
       <tr>
         <th>Package Name</th>
+        <th>Package Image</th>
         <th>Amount</th>
+        <th>Quantity</th>
         <th>Purchase Date</th>
+        <th>Status</th>
       </tr>
     </thead>
     <tbody>
+      <?php $userPackagesList = getUserPackages($session_data['logged_in']['userid']); ?>
+      <?php foreach($userPackagesList as $upl){ ?>
+      <?php //dump($upl); ?>
       <tr>
-        <td>John</td>
-        <td>Doe</td>
-        <td>john@example.com</td>
+        <td><?= $upl['package_name']; ?></td>
+        <td><img src="<?= imagePath('packages/'.$upl['package_image']); ?>" style="width:100px;height:100px;"/></td>
+        <td><?= $upl['package_amount']; ?></td>
+        <td><?= $upl['quantity']; ?></td>
+        <td><?= $upl['purchase_date']; ?></td>
+        <td><?= $upl['status']; ?></td>
       </tr>
-      
+      <?php } ?>
     </tbody>
   </table>     
 </div>

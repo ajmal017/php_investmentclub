@@ -53,6 +53,51 @@ class Common_model extends CI_Model
 		return $main_data;
     }
 
+    function getUserPackages($userid,$filterArray = array())
+    {
+    	$this->db->trans_start();
+    	$this->db->select('*');
+		//$filterArray = array('package_status'=>'active','package_name'=>'Gold');
+		foreach($filterArray as $key=>$value)
+		{
+			$this->db->where($key,$value);
+		}
+		
+		if($userid > 0)
+		{
+			$this->db->where('user_packages.userid',$userid);	
+		}
+
+		$this->db->join('package_master', 'user_packages.package_id = package_master.package_id','left');
+		$query = $this->db->get('user_packages');
+		
+		$category_data = array();
+		$category_main_data = array();
+		$main_data = array();
+		$data = array();
+		foreach($query->result() as $row)
+		{
+			$data = array(
+							'package_id'=>$row->package_id,
+							'userid'=>$row->userid,
+							'package_name'=>$row->package_name,
+							'package_amount'=>$row->package_amount,
+							'quantity'=>$row->quantity,
+							'package_type'=>$row->package_type,
+							'package_image'=>$row->package_image,
+							'package_desc'=>$row->package_desc,
+							'package_status'=>$row->package_status,
+							'package_created_date'=>$row->package_created_date,
+							'purchase_date'=>$row->purchase_date,
+							'status'=>$row->status
+							);
+			
+			array_push($main_data,$data);
+		}
+    	$this->db->trans_complete();
+		return $main_data;
+    }
+
     function checkUsernameExists($username)
     {
     	$this->db->trans_start();
