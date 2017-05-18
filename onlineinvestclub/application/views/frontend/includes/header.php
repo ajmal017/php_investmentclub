@@ -35,7 +35,7 @@
 			<ul>
 				<!-- inser more links here -->
 				<li><a class="cd-signin" href="#0">Login</a></li>
-				<li><a class="cd-signup" href="#0">Register</a></li>
+				<li><a class="cd-signup" href="<?php echo site_url(); ?>/register">Register</a></li>
 			</ul>
 		</nav>
         <div class="cd-user-modal"> <!-- this is the entire modal form, including the background -->
@@ -140,9 +140,9 @@
       <div id="nav">
         <div class="nav">
           <ul>
-            <li><a href="index.php" class="hvr-rectangle-out">Home </a></li>
-            <li><a href="about-us.php" class="hvr-rectangle-out">About Us</a></li>
-            <li><a href="contact-us.php" class="hvr-rectangle-out">Contact Us</a></li>
+            <li><a href="<?php echo site_url(); ?>" class="hvr-rectangle-out">Home </a></li>
+            <li><a href="<?php echo site_url(); ?>" class="hvr-rectangle-out">About Us</a></li>
+            <li><a href="<?php echo site_url(); ?>" class="hvr-rectangle-out">Contact Us</a></li>
           </ul>
           <div class="clear"></div>
         </div>
