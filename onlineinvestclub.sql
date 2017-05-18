@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 16, 2017 at 01:32 AM
+-- Generation Time: May 18, 2017 at 09:35 PM
 -- Server version: 5.7.18-0ubuntu0.16.04.1
 -- PHP Version: 7.0.15-0ubuntu0.16.04.4
 
@@ -116,7 +116,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`userid`, `username`, `password`, `sponsorid`, `placementid`, `placement`, `leftmember`, `rightmember`, `firstname`, `middlename`, `lastname`, `email`, `profile_image`, `email_verification_token`, `email_verified`, `role_id`, `status`, `entry`, `last_login`, `created_date`) VALUES
-(1, 'amitjain', 'e10adc3949ba59abbe56e057f20f883e', 0, 0, '', 0, 60, 'Amit', 'a', 'Jain', 'amit@gmail.com', '1494794889_3300_3587478037_4f36f99023.jpg', '', 'true', '1', 'active', 1, '2017-05-15 23:40:30', '2017-05-11 01:08:12'),
+(1, 'amitjain', 'e10adc3949ba59abbe56e057f20f883e', 0, 0, '', 0, 60, 'Amit', 'A', 'jain', 'amit@gmail.com', '1494794889_3300_3587478037_4f36f99023.jpg', '', 'true', '1', 'active', 1, '2017-05-17 23:21:36', '2017-05-11 01:08:12'),
 (57, 'ambekar1', '123456', 0, 1, 'right', 0, 0, '', '', '', '', '', '', '', '', '', 1, '2017-05-11 00:00:00', '2017-05-11 00:00:00'),
 (60, 'ambekar1', '123456', 0, 1, 'right', 0, 0, '', '', '', '', '', '', '', '', '', 0, '2017-05-11 00:00:00', '2017-05-11 00:00:00');
 
@@ -130,7 +130,7 @@ CREATE TABLE `user_packages` (
   `id` int(255) NOT NULL,
   `userid` bigint(255) NOT NULL,
   `package_id` int(255) NOT NULL,
-  `count` int(255) NOT NULL,
+  `quantity` int(255) NOT NULL,
   `status` varchar(50) NOT NULL,
   `purchase_date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -139,8 +139,9 @@ CREATE TABLE `user_packages` (
 -- Dumping data for table `user_packages`
 --
 
-INSERT INTO `user_packages` (`id`, `userid`, `package_id`, `count`, `status`, `purchase_date`) VALUES
-(1, 1, 6, 2, 'requested', '2017-05-16 01:27:50');
+INSERT INTO `user_packages` (`id`, `userid`, `package_id`, `quantity`, `status`, `purchase_date`) VALUES
+(1, 1, 6, 2, 'requested', '2017-05-16 01:27:50'),
+(2, 1, 7, 123, 'requested', '2017-05-18 01:56:55');
 
 -- --------------------------------------------------------
 
@@ -225,7 +226,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `user_packages`
 --
 ALTER TABLE `user_packages`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `user_settings`
 --
