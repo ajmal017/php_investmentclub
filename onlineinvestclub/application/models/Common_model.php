@@ -56,8 +56,8 @@ class Common_model extends CI_Model
     function getUserPackages($userid,$filterArray = array())
     {
     	$this->db->trans_start();
-    	$this->db->select('*');
-		//$filterArray = array('package_status'=>'active','package_name'=>'Gold');
+    	$this->db->select('*,user_packages.status as user_package_status');
+    	//$filterArray = array('package_status'=>'active','package_name'=>'Gold');
 		foreach($filterArray as $key=>$value)
 		{
 			$this->db->where($key,$value);
@@ -68,6 +68,7 @@ class Common_model extends CI_Model
 			$this->db->where('user_packages.userid',$userid);	
 		}
 
+		$this->db->join('users', 'user_packages.userid = users.userid','left');
 		$this->db->join('package_master', 'user_packages.package_id = package_master.package_id','left');
 		$query = $this->db->get('user_packages');
 		
@@ -78,8 +79,12 @@ class Common_model extends CI_Model
 		foreach($query->result() as $row)
 		{
 			$data = array(
+							'user_package_id'=>$row->id,
 							'package_id'=>$row->package_id,
 							'userid'=>$row->userid,
+							'username'=>$row->username,
+							'fullname'=>$row->firstname.' '.$row->middlename.' '.$row->lastname,
+							'profile_image'=>$row->profile_image,
 							'package_name'=>$row->package_name,
 							'package_amount'=>$row->package_amount,
 							'quantity'=>$row->quantity,
@@ -89,7 +94,7 @@ class Common_model extends CI_Model
 							'package_status'=>$row->package_status,
 							'package_created_date'=>$row->package_created_date,
 							'purchase_date'=>$row->purchase_date,
-							'status'=>$row->status
+							'user_package_status'=>$row->user_package_status
 							);
 			
 			array_push($main_data,$data);
@@ -201,5 +206,34 @@ class Common_model extends CI_Model
 		}
     	$this->db->trans_complete();
 		return $data;
+    }
+
+    function getNotifications($notification_id = 0)
+    {
+    	$this->db->trans_start();
+    	$this->db->select('*');
+		$query = $this->db->get('notifications');
+		
+		$main_data = array();
+		$data = array();
+		foreach($query->result() as $row)
+		{
+			$data = array(
+							'notification_id'=>$row->notification_id,
+							'notification'=>$row->notification,
+							'notification_status'=>$row->notification_status,
+							'notification_created_time'=>$row->notification_created_time,
+							);
+
+		if($notification_id > 0)
+		{
+			$main_data = $data;
+		}else
+		{
+			array_push($main_data,$data);
+		}
+		}
+    	$this->db->trans_complete();
+		return $main_data;
     }
 }

@@ -22,7 +22,7 @@
         <td><?= $upl['package_amount']; ?></td>
         <td><?= $upl['quantity']; ?></td>
         <td><?= $upl['purchase_date']; ?></td>
-        <td><?= $upl['status']; ?></td>
+        <td><?= $upl['user_package_status']; ?></td>
       </tr>
       <?php } ?>
     </tbody>

@@ -27,6 +27,7 @@
         <div class="clear"></div>
       </li>
       <li><a href="<?= site_url(); ?>/profile" class="active"><span><img src="<?= base_url(); ?>assets/frontend/images/my-profile.png" /></span>My Profile</a></li>
+      <li><a href="<?= site_url(); ?>/packages"><span><img src="<?= base_url(); ?>assets/frontend/images/network-img.png" /></span>My Packages</a></li>
       <li><a href="<?= site_url(); ?>/mynetwork"><span><img src="<?= base_url(); ?>assets/frontend/images/network-img.png" /></span>My Network</a></li>
     </ul>
   </div>
@@ -45,7 +46,17 @@
         </div>
       </div>
     </div>
-    <marquee direction="left" behavior="right" class="marquee">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum is simply dummy text of the printing and typesetting industry</marquee>
+    <?php $notification_list = getNotifications(); ?>
+    <?php if(count($notification_list) > 0){ ?>
+      <marquee direction="left" behavior="right" class="marquee">
+          <span>
+              <?php foreach ($notification_list as $row) { ?>
+                  <?= $row['notification'];?> |    
+              <?php } ?>
+          </span>
+      </marquee>
+    <?php } ?>
+    
 </marquee>
 
 

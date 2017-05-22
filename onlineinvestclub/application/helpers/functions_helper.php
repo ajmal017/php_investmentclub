@@ -47,7 +47,7 @@ $config['charset'] = 'iso-8859-1';
     print_r($data);*/
 }
 
-function responseObject($response = array(),$status_code)
+function responseObject($response = array(),$status_code=200)
 {
 	http_response_code($status_code);
 	header('Content-type: application/json');
@@ -68,11 +68,11 @@ function getPackages($package_id=0)
 	return $result;	
 }
 
-function getUserPackages($userid=0)
+function getUserPackages($userid=0,$filterArray = array())
 {
 	global $CI;
 	$CI->load->model('Common_model');
-	$result = $CI->Common_model->getUserPackages($userid);
+	$result = $CI->Common_model->getUserPackages($userid,$filterArray);
 	return $result;
 }
 
@@ -105,6 +105,14 @@ function getUserInfo($userid)
 	global $CI;
 	$CI->load->model('Common_model');
 	$result = $CI->Common_model->getUserInfo($userid);
+	return $result;	
+}
+
+function getNotifications($notification_id = 0)
+{
+	global $CI;
+	$CI->load->model('Common_model');
+	$result = $CI->Common_model->getNotifications($notification_id);
 	return $result;	
 }
 //$CI->output->enable_profiler(TRUE);

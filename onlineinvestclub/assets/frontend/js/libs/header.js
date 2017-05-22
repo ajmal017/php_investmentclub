@@ -21,7 +21,6 @@ angular.module("MyApp", []).controller("MyController", function($scope,$http) {
 
     $scope.register = function(sponsername='')
     {
-        alert(sponsername)
         sponsername = sponsername || '';
         $('.cd-error-message').removeClass('is-visible');
         register_success_cb = function(data)
@@ -31,18 +30,10 @@ angular.module("MyApp", []).controller("MyController", function($scope,$http) {
                 alert('User registered successfully.')
             }
         }
-
-        register_failure_cb = function(data)
-        {
-            $.each(data['message'], function( key, value ) {
-                $('#r_'+key+'-error').addClass('is-visible').html(value);
-            });
-        }
-
         
         if($scope.r_password != $scope.r_password1)
         {
-            $('#r_password-error').addClass('is-visible').html('Please enter same password');
+            alert('Please enter same password');
             return false;
         }
         request_data = {}
@@ -51,7 +42,7 @@ angular.module("MyApp", []).controller("MyController", function($scope,$http) {
         request_data['password'] = $scope.r_password;
         request_data['sponserUsername'] = sponsername;
         
-        SSK.site_call("AJAX",window._site_url+"register/signUp",request_data, register_success_cb,register_failure_cb);
+        SSK.site_call("AJAX",window._site_url+"register/signUp",request_data, register_success_cb);
     }
 
     $scope.login = function()

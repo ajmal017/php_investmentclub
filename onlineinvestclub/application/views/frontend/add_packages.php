@@ -19,7 +19,7 @@
           <td><?= $row['package_amount'];?></td>
           <td><input type="text" class="package_quantity form-control"/></td>
           <td>
-              <button type="button" class="btn btn-primary addPackage" ng-click="add_package(<?php echo $row['package_id']; ?>)">Add Package</button>
+              <button type="button" class="btn btn-primary addPackage" ng-click="add_package(<?php echo $row['package_id']; ?>)">BUY</button>
           </td>
       </tr>
       <?php } ?>

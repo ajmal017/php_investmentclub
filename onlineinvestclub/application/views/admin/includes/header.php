@@ -40,7 +40,7 @@
                             I
                         </span>
                         <span class="sc-hidden">
-                            <span class="semi-bold">OnlineInestmentclub</span>
+                            <span class="semi-bold">OnlineInvestmentclub</span>
                             
                         </span>
                     </a>
@@ -172,7 +172,7 @@
                             <li><a href="javascript:;">Messages</a></li>-->
                             <li><a href="javascript:;">Settings</a></li>
                             <li class="divider"></li>
-                            <li><a href="<?php echo site_url(); ?>/admin/logout">Log Out</a></li>
+                            <li><a href="<?php echo site_url(); ?>/logout">Log Out</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -221,20 +221,25 @@
                             </a>
                             <ul class="nav-sub">
                                 <li>
-                                    <a href="<?= site_url(); ?>/admin/packages" title="Packages Master">
+                                    <a href="<?= site_url(); ?>/admin_packages" title="Packages Master">
                                         <i class="fa fa-fw fa-caret-right"></i> Packages Master
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="<?= site_url(); ?>/admin_notifications" title="Frontend Settings">
+                                        <i class="fa fa-fw fa-caret-right"></i> Notification Master
                                     </a>
                                 </li>
                             </ul>
                         </li>
                         <li class="nav-dropdown">
                             <a href="#" title="Users">
-                                <i class="fa fa-lg fa-fw fa-th-list"></i> Configurations
+                                <i class="fa fa-lg fa-fw fa-th-list"></i> User Packages
                             </a>
                             <ul class="nav-sub">
                                 <li>
-                                    <a href="<?= site_url(); ?>/admin/textconfig" title="Text Configurations">
-                                        <i class="fa fa-fw fa-caret-right"></i> Text Configurations
+                                    <a href="<?= site_url(); ?>/admin_user_packages" title="User Packages">
+                                        <i class="fa fa-fw fa-caret-right"></i> User Packages Request
                                     </a>
                                 </li>
                             </ul>

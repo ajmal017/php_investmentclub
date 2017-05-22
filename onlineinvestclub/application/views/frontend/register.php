@@ -35,18 +35,22 @@
         <ul class="reset">
           <li>
             <label class="image-replace cd-username" for="signup-username">Username</label>
-            <input class="full-width has-padding has-border" id="signup-username" type="text" placeholder="Username">
+            <input class="full-width has-padding has-border" id="signup-username" type="text" placeholder="Username" ng-model="r_username">
           </li>
           <li>
             <label class="image-replace cd-email" for="signup-email">E-mail</label>
-            <input class="full-width has-padding has-border" id="signup-email" type="email" placeholder="E-mail">
+            <input class="full-width has-padding has-border" id="signup-email" type="email" placeholder="E-mail" ng-model="r_email">
           </li>
           <li>
             <label class="image-replace cd-password" for="signup-password">Password</label>
-            <input class="full-width has-padding has-border" id="signup-password" type="text"  placeholder="Password">
+            <input class="full-width has-padding has-border" id="signup-password" type="password"  placeholder="Password" ng-model="r_password">
           </li>
           <li>
-            <input class="full-width has-padding submit" type="submit" value="Create account">
+            <label class="image-replace cd-password" for="signup-password">Re Enter Password</label>
+            <input class="full-width has-padding has-border" id="signup-password" type="password"  placeholder="Password" ng-model="r_password1">
+          </li>
+          <li>
+            <input class="full-width has-padding submit" type="button" value="Create account" ng-click="register('')">
           </li>
         </ul>
       </form>

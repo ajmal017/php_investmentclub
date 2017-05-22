@@ -18,8 +18,9 @@
 <script src="<?= base_url(); ?>assets/frontend/js/jquery.bxslider.js"></script>
 <script src="<?= base_url(); ?>assets/frontend/js/main.js"></script>
 
-<script src=https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/libs/functions.js"></script>
+<script src="<?= base_url(); ?>assets/admin/assets/plugins/bootbox/bootbox.js"></script>
 <script src="<?php echo base_url(); ?>assets/frontend/js/libs/header.js"></script>
 
 
@@ -34,8 +35,13 @@
       <nav class="main-nav">
 			<ul>
 				<!-- inser more links here -->
+				<?php if(isset($session_data['logged_in']['userid'])){ ?>
+				<li><a href="<?php echo site_url(); ?>/dashboard">Dashboard</a></li>
+				<li><a href="<?php echo site_url(); ?>/logout">Logout</a></li>
+				<?php }else{ ?>
 				<li><a class="cd-signin" href="#0">Login</a></li>
 				<li><a class="cd-signup" href="<?php echo site_url(); ?>/register">Register</a></li>
+				<?php } ?>
 			</ul>
 		</nav>
         <div class="cd-user-modal"> <!-- this is the entire modal form, including the background -->
@@ -141,8 +147,8 @@
         <div class="nav">
           <ul>
             <li><a href="<?php echo site_url(); ?>" class="hvr-rectangle-out">Home </a></li>
-            <li><a href="<?php echo site_url(); ?>" class="hvr-rectangle-out">About Us</a></li>
-            <li><a href="<?php echo site_url(); ?>" class="hvr-rectangle-out">Contact Us</a></li>
+            <li><a href="<?php echo site_url(); ?>/about_us" class="hvr-rectangle-out">About Us</a></li>
+            <li><a href="<?php echo site_url(); ?>/contact_us" class="hvr-rectangle-out">Contact Us</a></li>
           </ul>
           <div class="clear"></div>
         </div>

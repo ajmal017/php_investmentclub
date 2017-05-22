@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Home extends CI_Controller {
+class About_us extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -23,6 +23,6 @@ class Home extends CI_Controller {
 		$session_data = $this->session->userdata;
 		$data = array();
 		$data['session_data'] = $session_data;
-		$this->load->view('frontend/home',$data);
+		$this->load->view('frontend/about_us',$data);
 	}
 }
