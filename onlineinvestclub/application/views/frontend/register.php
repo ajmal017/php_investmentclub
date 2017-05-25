@@ -26,7 +26,7 @@
     <div class="clear"></div>
   </div>
   <div class="clear"></div>
-  
+
 <div id="register">
   <div class="container">
     <div class="register">
@@ -50,7 +50,7 @@
             <input class="full-width has-padding has-border" id="signup-password" type="password"  placeholder="Password" ng-model="r_password1">
           </li>
           <li>
-            <input class="full-width has-padding submit" type="button" value="Create account" ng-click="register('')">
+            <input class="full-width has-padding submit" type="button" value="Create account" ng-click="register('<?= $sponserUsername; ?>')">
           </li>
         </ul>
       </form>

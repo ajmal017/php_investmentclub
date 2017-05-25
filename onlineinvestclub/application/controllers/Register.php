@@ -57,14 +57,27 @@ class Register extends CI_Controller {
 				$this->load->model('Register_model');
 				$userid = $this->Register_model->register($username,$email,$password);
 				
+				$alignment_data = array();
 				if($sponserUsername > 0)
 				{
 					$alignment_data = checkAlignmentSetOfUser($sponserUsername);	
-				}else
-				{
-					$alignment_data = checkAlignmentSetOfUser('amitjain');
 				}
 
+				//$sponserid = 0;
+				//$placement = 'left';
+				if(count($alignment_data) > 0)
+				{
+					$sponserid = $alignment_data['userid'];
+					$placement = $alignment_data['user_alignment'];
+				}else
+				{
+					$alignment_data = checkAlignmentSetOfUser('amit');
+					$sponserid = $alignment_data['userid'];
+					$placement = $alignment_data['user_alignment'];
+				}
+
+				binary_tree_update($userid,$sponserid,$placement);
+				
 				$status = 'success';
 			    $message = 'user registered successfully';
 			    $status_code = 200;

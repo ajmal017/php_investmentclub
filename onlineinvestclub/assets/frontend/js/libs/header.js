@@ -27,7 +27,8 @@ angular.module("MyApp", []).controller("MyController", function($scope,$http) {
         {
             if(data.status == "success")
             {
-                alert('User registered successfully.')
+                alert('User registered successfully.');
+                window.location.reload();
             }
         }
         

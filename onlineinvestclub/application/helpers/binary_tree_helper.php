@@ -1,7 +1,8 @@
 <?php
 
+$conn = mysqli_connect("localhost", "root", "123456","onlineinvestclub");
 
-function update($userid,$sponsorid,$place)
+function binary_tree_update($userid,$placementid,$place)
 {
 	$conn = mysqli_connect("localhost", "root", "123456","onlineinvestclub");
 	//for starting users
@@ -13,30 +14,62 @@ function update($userid,$sponsorid,$place)
 		$columnname = "leftmember";
 	}
 	
-	echo $query = 'select * from users where userid = '.$sponsorid.' and '.$columnname.' = 0';
-	$result = mysqli_query($conn,$query);
-	while($row = mysqli_fetch_array($result))
+	$qry = 'select * from users WHERE userid = '.$placementid;
+	$res = mysqli_query($conn,$qry);
+	$next_placementid = 0;
+	while($rows = mysqli_fetch_array($res))
 	{
-		$updateQuery = "update users set placementid = $sponsorid,placement='$place' where userid='".$userid."'"; 
-		mysqli_query($conn,$updateQuery);
-
-		$updateQuery = "update users set $columnname='$userid' where userid='$sponsorid'";
-		mysqli_query($conn,$updateQuery);
+		$place_string = '';
+		if($rows[$columnname] == 0)
+		{
+			$place_string = $place;
+			$placement_column = $columnname;
+		}
+		if($place_string != '')
+		{
+			//echo "<br>".$place_string."=====".$userid."=====".$placement_column."=====".$rows['userid']."</br>";
+			$updateQuery = "update users set placementid = ".$rows['userid'].",placement='$place_string' where userid='".$userid."'"; 
+			mysqli_query($conn,$updateQuery);
+			$updateQuery = "update users set $placement_column='$userid' where userid='".$rows['userid']."'";
+			mysqli_query($conn,$updateQuery);
+			return "SUCCESS";	
+		}
+		$next_placementid = $rows[$columnname];
 	}
 
-
-	echo $query = 'select * from users where userid = '.$sponsorid.' and '.$columnname.' != 0';
+	$query = 'select * from users where userid >= '.$next_placementid;
+	//echo $query."<br>********FIRST*********";
 	$result = mysqli_query($conn,$query);
 	while($row = mysqli_fetch_array($result))
 	{
-
-		$updateQuery = "update users set placementid = $sponsorid,placement='$place' where userid='".$userid."'"; 
-		mysqli_query($conn,$updateQuery);
-
-		$updateQuery = "update users set $columnname='$userid' where userid='$sponsorid'";
-		mysqli_query($conn,$updateQuery);
+		$place_string = '';
+		if($row['leftmember'] == 0)
+		{
+			$place_string = 'left';
+			$placement_column = 'leftmember';
+		}
+		else if($row['rightmember'] == 0)
+		{
+			$place_string = 'right';
+			$placement_column = 'rightmember';
+		}
+		if($place_string != '')
+		{
+			//echo "<br>".$place_string."=====".$userid."=====".$placement_column."=====".$row['userid']."</br>";
+			$updateQuery = "update users set placementid = ".$row['userid'].",placement='$place_string' where userid='".$userid."'"; 
+			mysqli_query($conn,$updateQuery);
+			$updateQuery = "update users set $placement_column='$userid' where userid='".$row['userid']."'";
+			mysqli_query($conn,$updateQuery);
+			return "SUCCESS";	
+		}
 	}
 }
-	
-//update(60,1,'right')
+/*
+for ($i =1 ;$i < 10 ;$i++)
+{
+	mysqli_query($conn,"INSERT INTO `users` (`userid`, `username`, `password`, `sponsorid`, `placementid`, `placement`, `leftmember`, `rightmember`, `firstname`, `middlename`, `lastname`, `email`, `profile_image`, `email_verification_token`, `email_verified`, `role_id`, `status`, `entry`, `last_login`, `created_date`) VALUES (NULL, 'amit', '123456', '0', '0', '', '0', '0', '', '', '', '', '', '', '', '', '', '0', '2017-05-24 00:00:00', '2017-05-24 00:00:00');");
+	$id = mysqli_insert_id($conn);
+	update($id,6,'left');
+}*/
+
 ?>
