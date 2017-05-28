@@ -86,4 +86,19 @@ angular.module("MyApp", []).controller("MyController", function($scope,$http) {
             SSK.site_call("AJAX",window._site_url+"admin_packages/deletePackage",{"package_id":package_id}, deletePackage_success_cb);
         }
     }
+
+    $scope.delete_package_media = function(package_media_id)
+    {
+        if(confirm("Do you want to delete ?"))
+        {
+            delete_package_media_success_cb = function(data)
+            {
+                if(data.status == "success")
+                {
+                    $('#package-media-id-'+package_media_id).remove();
+                }
+            }
+            SSK.site_call("AJAX",window._site_url+"admin_packages/delete_package_media",{"package_media_id":package_media_id}, delete_package_media_success_cb);
+        }   
+    }
 });

@@ -8,7 +8,7 @@
 
 <?php 
 $package_data=getPackages($package_id);
-//print_r($package_data);
+//dump($package_data);
 ?>
 <div class="container-fluid-md">
         <div class="panel panel-primary">
@@ -62,6 +62,26 @@ $package_data=getPackages($package_id);
                             <div class="controls">
                                 <input type="hidden" name="package_image" id="package_image" value="<?php echo $package_data['package_image']; ?>"/>
                                 <input type="file" class="form-control" name="files" id="files" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="exampleInputText1">Package Downloadable Documents</label>
+                            <div class="controls">
+                                <?php 
+                                if(!empty($package_data['study_data'])){ ?>
+                                <div>
+                                    <ul>
+                                    <?php 
+                                    $downloadable_documents_already_count = 0;
+                                    foreach($package_data['study_data'] as $pi){ 
+                                        ?>
+                                        <li id="package-media-id-<?= $pi['package_media_id']; ?>"><a href="<?php echo base_url().'uploads/packages/online_study_docs/'.$pi['image_path']; ?>"><?php echo $pi['image_path']; ?></a>                           <span ng-click="delete_package_media(<?= $pi['package_media_id']; ?>)">X</span></li>
+                                    <?php $downloadable_documents_already_count++; } ?>   
+                                    </ul>
+                                </div>
+                                <?php } ?>
+                                <input type="hidden" name="downloadable_documents_already_count" value="<?php echo @$downloadable_documents_already_count; ?>">
+                                <input type="file" class="form-control" name="downloadable_documents[]" id="downloadable_documents" multiple/>
                             </div>
                         </div>
                         <div class="form-group">

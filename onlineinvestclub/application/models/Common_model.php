@@ -41,6 +41,25 @@ class Common_model extends CI_Model
 							'package_status'=>$row->package_status,
 							'package_created_date'=>$row->package_created_date,
 							);
+
+			$this->db->trans_start();
+	    	$this->db->select('*');
+			$this->db->from('package_media');
+			$this->db->where('package_id',$row->package_id); 
+			$query = $this->db->get();
+			$data1 = array();
+			foreach($query->result() as $row)
+			{
+				$data1[] = array(
+								'image_path'=>$row->image_path,
+								'file_type'=>$row->file_type,
+								'package_media_id'=>$row->package_media_id
+								);
+			}
+	    	$data['study_data'] = $data1;
+	    	
+	    	$this->db->trans_complete();
+
 			if($package_id > 0)
 			{
 				$main_data = $data;	

@@ -35,7 +35,8 @@ class Admin_packages extends CI_Controller {
 			$package_desc = $this->input->post('package_desc');
 			$package_type = $this->input->post('package_type');
 			$filesCount=isset($_FILES['files']['name'])? count($_FILES['files']['name']):0;
-			
+			$downloadable_documents_count=isset($_FILES['downloadable_documents']['name'])? count($_FILES['downloadable_documents']['name']):0;
+
 			$this->form_validation->set_rules('package_name', 'Package Name', 'required');
 			$this->form_validation->set_rules('package_amount', 'Package Amount', 'required|numeric');
 			$this->form_validation->set_rules('package_desc', 'Package Description', 'required');
@@ -49,6 +50,11 @@ class Admin_packages extends CI_Controller {
 	            $error_array['files'] = 'Please choose files for upload';
 	        } 
 	        
+	        if ($downloadable_documents_count == 0)
+	        {
+	            $error_array['downloadable_documents'] = 'Please choose Downloadable Documents for upload';
+	        }
+
 	        if($filesCount > 0)
 	        {
 				$file_name = $_FILES['files']['name'];
@@ -73,10 +79,11 @@ class Admin_packages extends CI_Controller {
 	        	$this->load->library('upload');
 			    $config['upload_path'] = FCPATH . 'uploads/packages/';
 			    $config['allowed_types'] = 'gif|jpg|png';
-			    $files = $_FILES['files'];
+			    
 	        
-	        if($files != '')
+	        if($filesCount > 0)
 	        {	
+	        	$files = $_FILES['files'];
 	        	$_FILES['uploadedimage']['name'] = time().'_'.rand(1111,9999).'_'.$files['name'];
 		        $_FILES['uploadedimage']['type'] = $files['type'];
 		        $_FILES['uploadedimage']['tmp_name'] = $files['tmp_name'];
@@ -103,6 +110,42 @@ class Admin_packages extends CI_Controller {
 		        	}
 		        }
 		    }
+
+		    if($downloadable_documents_count > 0 )
+		    {
+			    $files1 = $_FILES['downloadable_documents'];
+			    //dump($files1);
+			    for ($i = 0; $i < $downloadable_documents_count; $i++) {
+			    	
+			        $_FILES['downloadable_documents_image']['name'] = time().'_'.rand(1111,9999).'_'.$files1['name'][$i];
+			        $_FILES['downloadable_documents_image']['type'] = $files1['type'][$i];
+			        $_FILES['downloadable_documents_image']['tmp_name'] = $files1['tmp_name'][$i];
+			        $_FILES['downloadable_documents_image']['error'] = $files1['error'][$i];
+			        $_FILES['downloadable_documents_image']['size'] = $files1['size'][$i];
+			        //now we initialize the upload library
+			        $config['upload_path'] = FCPATH . 'uploads/packages/online_study_docs/';
+			        $config['max_size']    = '20048000000';
+			    	$config['allowed_types'] = '*';
+			        $this->upload->initialize($config);
+			        $img_data = array();
+			        //dump($_FILES['downloadable_documents_image']);
+			        if ($this->upload->do_upload('downloadable_documents_image'))
+			        {
+			        	$img_data['uploads'][$i] = $this->upload->data();
+			        }
+			        //dump($_FILES);
+			        if(isset($img_data['uploads']) && count($img_data['uploads']) > 0)
+			        {
+			        	foreach ($img_data['uploads'] as $du)
+			        	{
+			        		$image_path = $du['file_name'];
+			        		$file_type = $du['file_type'];
+			        		$created_date = date("Y-m-d H:i:s");
+			        		$this->Adminpackages_model->addPackageStudyDocs($package_id,$image_path,$file_type,$created_date);
+			        	}
+			        }
+			    }
+			}
 			    
 			    $status = 'success';
 			    $message = 'Added successfully';
@@ -128,10 +171,12 @@ class Admin_packages extends CI_Controller {
 			$package_amount = $this->input->post('package_amount');
 			$package_desc = $this->input->post('package_desc');
 			$package_type = $this->input->post('package_type');
+			
 			$package_image = $this->input->post('package_image');
-			
 			$filesCount=isset($_FILES['files']['name'])? count($_FILES['files']['name']):0;
-			
+			$downloadable_documents_count=isset($_FILES['downloadable_documents']['name'])? count($_FILES['downloadable_documents']['name']):0;
+			$downloadable_documents_already_count = $this->input->post('downloadable_documents_already_count');
+
 			$this->form_validation->set_rules('package_name', 'Package Name', 'required');
 			$this->form_validation->set_rules('package_amount', 'Package Amount', 'required|numeric');
 			$this->form_validation->set_rules('package_desc', 'Package Description', 'required');
@@ -141,6 +186,11 @@ class Admin_packages extends CI_Controller {
 	        $error_array = $this->form_validation->error_array();
 	        $allowed =  array('gif','png' ,'jpg','jpeg');
 	    	if ($filesCount == 0  && $package_image == '')
+	        {
+	            $error_array['files'] = 'Please choose files for upload';
+	        }
+
+	        if ($downloadable_documents_count == 0  && $downloadable_documents_already_count == 0)
 	        {
 	            $error_array['files'] = 'Please choose files for upload';
 	        } 
@@ -165,12 +215,11 @@ class Admin_packages extends CI_Controller {
 	        if(count($error_array) == 0 )
 	        {
 	        	$this->Adminpackages_model->editPackage($package_id,$package_name,$package_amount,$package_type,$package_desc);	
-	        
+	        	$this->load->library('upload');
 		        if($filesCount > 0)
 		        {	
 		        	$files = $_FILES['files'];
-		        	$this->load->library('upload');
-				    $config['upload_path'] = FCPATH . 'uploads/packages/';
+		        	$config['upload_path'] = FCPATH . 'uploads/packages/';
 				    $config['allowed_types'] = 'gif|jpg|png';
 
 		        	$_FILES['uploadedimage']['name'] = time().'_'.rand(1111,9999).'_'.$files['name'];
@@ -198,6 +247,42 @@ class Admin_packages extends CI_Controller {
 			        	}
 			        }
 			    }
+
+			    if($downloadable_documents_count > 0 )
+			    {
+				    $files1 = $_FILES['downloadable_documents'];
+				    //dump($files1);
+				    for ($i = 0; $i < $downloadable_documents_count; $i++) {
+				    	
+				        $_FILES['downloadable_documents_image']['name'] = time().'_'.rand(1111,9999).'_'.$files1['name'][$i];
+				        $_FILES['downloadable_documents_image']['type'] = $files1['type'][$i];
+				        $_FILES['downloadable_documents_image']['tmp_name'] = $files1['tmp_name'][$i];
+				        $_FILES['downloadable_documents_image']['error'] = $files1['error'][$i];
+				        $_FILES['downloadable_documents_image']['size'] = $files1['size'][$i];
+				        //now we initialize the upload library
+				        $config['upload_path'] = FCPATH . 'uploads/packages/online_study_docs/';
+				        $config['max_size']    = '20048000000';
+				    	$config['allowed_types'] = '*';
+				        $this->upload->initialize($config);
+				        $img_data = array();
+				        //dump($_FILES['downloadable_documents_image']);
+				        if ($this->upload->do_upload('downloadable_documents_image'))
+				        {
+				        	$img_data['uploads'][$i] = $this->upload->data();
+				        }
+				        //dump($_FILES);
+				        if(isset($img_data['uploads']) && count($img_data['uploads']) > 0)
+				        {
+				        	foreach ($img_data['uploads'] as $du)
+				        	{
+				        		$image_path = $du['file_name'];
+				        		$file_type = $du['file_type'];
+				        		$created_date = date("Y-m-d H:i:s");
+				        		$this->Adminpackages_model->addPackageStudyDocs($package_id,$image_path,$file_type,$created_date);
+				        	}
+				        }
+				    }
+				}
 			    
 			    $status = 'success';
 			    $message = 'Edited successfully';
@@ -247,4 +332,21 @@ class Admin_packages extends CI_Controller {
 			echo responseObject($response);	
 		}
     }
+
+    public function delete_package_media()
+	{
+		if($this->input->post())
+		{
+			$status = '';
+			$message = '';
+			$package_media_id = $this->input->post('package_media_id');
+			$this->Adminpackages_model->delete_package_media($package_media_id);
+			
+			$status = 'success';
+			$message = 'successfully deleted';	
+		
+			$response = array('status'=>$status,'message'=>$message);
+			echo responseObject($response);
+		}
+	}
 }
