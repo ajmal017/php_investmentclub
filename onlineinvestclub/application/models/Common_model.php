@@ -161,12 +161,20 @@ class Common_model extends CI_Model
 		return $data;
 	}
 
-	function getUserInfo($userid)
+	function getUserInfo($userid=0,$username = '')
     {
     	$this->db->trans_start();
     	$this->db->select('*');
-    	$this->db->where('users.userid',$userid);
+    	if($userid > 0)
+    	{
+    		$this->db->where('users.userid',$userid);
+    	}
+    	if($username != '')
+    	{
+    		$this->db->where('users.username',$username);
+    	}
 		$this->db->join('users', 'users.userid = userdetails.userid','left');
+		$this->db->join('user_settings', 'user_settings.userid = users.userid','left');
 		
 
 		$query = $this->db->get('userdetails');
@@ -177,6 +185,11 @@ class Common_model extends CI_Model
 			$data = array(
 							'userid'=>$row->userid,
 							'username'=>$row->username,
+							'sponsorid'=>$row->sponsorid,
+							'placementid'=>$row->placementid,
+							'placement'=>$row->placement,
+							'leftmember'=>$row->leftmember,
+							'rightmember'=>$row->rightmember,
 							'firstname'=>$row->firstname,
 							'middlename'=>$row->middlename,
 							'lastname'=>$row->lastname,
@@ -199,6 +212,7 @@ class Common_model extends CI_Model
 							'branch'=>$row->branch,
 							'account_number'=>$row->account_number,
 							'ifsc_code'=>$row->ifsc_code,
+							'user_alignment'=>$row->user_alignment,
 							'role_id'=>$row->role_id,
 							'status'=>$row->status,
 							'created_date'=>$row->created_date

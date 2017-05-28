@@ -20,7 +20,7 @@ class Login_model extends CI_Model
 							'userid'=>$row->userid,
                             'email'=> $row->email,
 							'password'=> $row->password,
-							'username'=> ucfirst($row->username),
+							'username'=> $row->username,
                             'fullname'=> ucfirst($row->firstname).' '.ucfirst($row->middlename).' '.ucfirst($row->lastname),
 							'role_id'=>$row->role_id,
                             'status'=>$row->status,

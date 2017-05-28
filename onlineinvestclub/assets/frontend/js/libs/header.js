@@ -19,9 +19,10 @@ angular.module("MyApp", []).controller("MyController", function($scope,$http) {
     $scope.r_password = '';
     $scope.r_password1 = '';
 
-    $scope.register = function(sponsername='')
+    $scope.register = function(sponsername,placement)
     {
         sponsername = sponsername || '';
+        placement = placement || '';
         $('.cd-error-message').removeClass('is-visible');
         register_success_cb = function(data)
         {
@@ -42,7 +43,7 @@ angular.module("MyApp", []).controller("MyController", function($scope,$http) {
         request_data['email'] = $scope.r_email;
         request_data['password'] = $scope.r_password;
         request_data['sponserUsername'] = sponsername;
-        
+        request_data['placement'] = placement;        
         SSK.site_call("AJAX",window._site_url+"register/signUp",request_data, register_success_cb);
     }
 

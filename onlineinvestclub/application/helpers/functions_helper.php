@@ -100,11 +100,11 @@ function checkAlignmentSetOfUser($username)
 	return $result;	
 }
 
-function getUserInfo($userid)
+function getUserInfo($userid=0,$username='')
 {
 	global $CI;
 	$CI->load->model('Common_model');
-	$result = $CI->Common_model->getUserInfo($userid);
+	$result = $CI->Common_model->getUserInfo($userid,$username);
 	return $result;	
 }
 

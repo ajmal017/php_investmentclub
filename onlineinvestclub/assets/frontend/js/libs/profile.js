@@ -169,6 +169,7 @@ angular.module("MyApp", []).controller("MyController", function($scope,$http) {
                 $scope['user_info']['branch']=data.message.branch;
                 $scope['user_info']['account_number']=data.message.account_number;
                 $scope['user_info']['ifsc_code']=data.message.ifsc_code;
+                $scope.placement=data.message.user_alignment;
                 if(!$scope.$$phase) $scope.$apply();
             }
             //console.log($scope.user_info);
@@ -191,6 +192,21 @@ angular.module("MyApp", []).controller("MyController", function($scope,$http) {
             path = path+'package.jpg';
         }
         return window._site_url+path;
+    }
+
+    $scope.placement = "left";
+    $scope.save_placement = function()
+    {
+        save_placement_success_cb = function(data)
+        {
+            if(data.status == 'success')
+            {
+                alert_box("Successfully changed alignment.");
+            }
+        }
+        request_data = {};
+        request_data['placement'] = $scope.placement;
+        SSK.site_call("AJAX",window._site_url+"profile/save_placement",request_data, save_placement_success_cb);
     }
 
     $scope.default_profile = 'person.png';

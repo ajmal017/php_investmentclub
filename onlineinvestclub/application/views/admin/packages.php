@@ -59,6 +59,12 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label class="control-label" for="exampleInputText1">Package Downloadable Documents</label>
+                            <div class="controls">
+                                <input type="file" class="form-control" name="downloadable_documents" id="downloadable_documents" />
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label class="control-label" for="exampleInputText1"></label>
                             <div class="controls">
                                 <input type="submit" class="btn btn-primary" id="save" value="Submit"/>

@@ -20,7 +20,8 @@ class Register extends CI_Controller {
 	 */
 	public function index($sponserUsername='')
 	{
-		$data = array('sponserUsername'=>$sponserUsername);
+		$placement = $this->input->get('placement');
+		$data = array('sponserUsername'=>$sponserUsername,'placement'=>$placement);
 		$this->load->view('frontend/register',$data);
 	}
 	
@@ -35,6 +36,7 @@ class Register extends CI_Controller {
 			$email = $this->input->post('email');
 			$password = $this->input->post('password');
 			$sponserUsername = $this->input->post('sponserUsername');
+			$placement1 = $this->input->post('placement');
 
 			$this->form_validation->set_rules('username', 'Username', 'required');
 			$this->form_validation->set_rules('email', 'Email ID', 'required|valid_email');
@@ -71,11 +73,15 @@ class Register extends CI_Controller {
 					$placement = $alignment_data['user_alignment'];
 				}else
 				{
-					$alignment_data = checkAlignmentSetOfUser('amit');
+					$alignment_data = checkAlignmentSetOfUser('amitjain');
 					$sponserid = $alignment_data['userid'];
 					$placement = $alignment_data['user_alignment'];
 				}
 
+				if($placement1 != '')
+				{
+					$placement = $placement1;
+				}
 				binary_tree_update($userid,$sponserid,$placement);
 				
 				$status = 'success';

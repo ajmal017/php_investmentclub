@@ -77,6 +77,16 @@ class Profile_model extends CI_Model
         return true;    	
     }
 
+    function save_placement($userid,$placement)
+    {
+		$this->db->trans_start();
+		$array = array('user_alignment' => $placement);
+		$this->db->where('userid', $userid);
+		$this->db->update('user_settings', $array);
+		$this->db->trans_complete();
+        return true;    	
+    }
+
     function change_password($userid,$current_password,$new_password)
     {
     	$current_password = md5($current_password);

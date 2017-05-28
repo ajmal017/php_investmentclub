@@ -394,7 +394,7 @@ class Profile extends CI_Controller {
 		$session_data = $this->session->userdata;
 		$userid = $session_data['logged_in']['userid'];
 		$data = getUserInfo($userid);
-
+		
 		if(count($data) > 0)
 		{
 	        $status = 'success';
@@ -408,5 +408,41 @@ class Profile extends CI_Controller {
 		}
 		$response = array('status'=>$status,'message'=>$message);
 		echo responseObject($response,$status_code);			
+	}
+
+	public  function save_placement()
+	{
+		if($this->input->post())
+		{
+			$status = '';
+			$message = '';
+			$session_data = $this->session->userdata;
+			$userid = $session_data['logged_in']['userid'];
+		
+			$placement = $this->input->post('placement');
+			
+			$this->load->library('form_validation');
+			$this->form_validation->set_rules('placement', 'Placement', 'required');
+			
+			
+			$this->form_validation->run();
+			$error_array = $this->form_validation->error_array();
+			
+			if(count($error_array) == 0 )
+	        {
+	        	$this->load->model('Profile_model');
+				$result = $this->Profile_model->save_placement($userid,$placement);
+				$status = 'success';
+			    $message = 'updated successfully';
+			    $status_code = 200;	
+	        }else
+			{
+				$status = 'error';
+			    $message = $error_array;
+			    $status_code = 501;
+			}
+			$response = array('status'=>$status,'message'=>$message);
+			echo responseObject($response,$status_code);			
+		}		
 	}
 }

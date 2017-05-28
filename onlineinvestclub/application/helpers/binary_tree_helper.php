@@ -5,6 +5,9 @@ $conn = mysqli_connect("localhost", "root", "123456","onlineinvestclub");
 function binary_tree_update($userid,$placementid,$place)
 {
 	$conn = mysqli_connect("localhost", "root", "123456","onlineinvestclub");
+	
+	$updateQuery = "update users set sponsorid = ".$placementid." where userid='".$userid."'"; 
+	mysqli_query($conn,$updateQuery);
 	//for starting users
 	if($place == 'right')
 	{
