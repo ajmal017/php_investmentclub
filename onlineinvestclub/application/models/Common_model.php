@@ -269,4 +269,27 @@ class Common_model extends CI_Model
     	$this->db->trans_complete();
 		return $main_data;
     }
+
+    function getPackageMedia($package_id = 0)
+    {
+    	$this->db->trans_start();
+    	$this->db->select('*');
+    	$this->db->where('package_id',$package_id);
+		$query = $this->db->get('package_media');
+		
+		$main_data = array();
+		$data = array();
+		foreach($query->result() as $row)
+		{
+			$data[] = array(
+							'package_media_id'=>$row->package_media_id,
+							'file_path'=>$row->image_path,
+							'file_type'=>$row->file_type,
+							);
+
+
+		}
+    	$this->db->trans_complete();
+		return $data;
+    }
 }

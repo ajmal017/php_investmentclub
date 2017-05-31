@@ -31,6 +31,13 @@ class Packages extends CI_Controller {
 		$this->load->view('frontend/add_packages');
 	}
 
+	public function content()
+	{
+		$package_id = $this->input->get('package_id');
+		$data = array('package_id'=>$package_id);
+		$this->load->view('frontend/package_content',$data);
+	}
+
 	public function add_user_package()
 	{
 		if($this->input->post())

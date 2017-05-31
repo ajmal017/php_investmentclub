@@ -11,6 +11,7 @@ angular.module("MyApp", []).controller("MyController", function($scope,$http) {
             add_package_success_cb = function(data)
             {
                 alert_box(package_name + ' package purchased successfully..!!');
+                window.location.href=window._site_url+'packages';
             }
             if(package_id == 0)
             {
@@ -31,5 +32,24 @@ angular.module("MyApp", []).controller("MyController", function($scope,$http) {
             SSK.site_call("AJAX",window._site_url+"packages/add_user_package",request_data, add_package_success_cb);    
         }
         
+    }
+
+    $scope.show_content = function(file_path)
+    {
+        $("#play_content").modal('show');
+        var config = {
+        file: file_path,
+        width: '100%',
+        aspectratio: '16:9',
+        controlbar: 'none',
+        androidhls: true,
+        mute: false,
+        controls:true,
+        }
+        jwplayer("myElement").setup(config);
+
+        $("#play_content").on("hide.bs.modal", function () {
+            jwplayer().stop();
+        });      
     }
 });

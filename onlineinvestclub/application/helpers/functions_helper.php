@@ -68,6 +68,14 @@ function getPackages($package_id=0)
 	return $result;	
 }
 
+function getPackageMedia($package_id=0)
+{
+	global $CI;
+	$CI->load->model('Common_model');
+	$result = $CI->Common_model->getPackageMedia($package_id);
+	return $result;	
+}
+
 function getUserPackages($userid=0,$filterArray = array())
 {
 	global $CI;
