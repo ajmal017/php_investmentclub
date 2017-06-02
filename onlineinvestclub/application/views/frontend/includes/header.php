@@ -14,6 +14,7 @@
 
 <script src="<?= base_url(); ?>assets/frontend/js/jquery-1.11.0.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <script src="<?= base_url(); ?>assets/frontend/js/modernizr.js"></script>
 <script src="<?= base_url(); ?>assets/frontend/js/jquery.bxslider.js"></script>
 <script src="<?= base_url(); ?>assets/frontend/js/main.js"></script>
@@ -23,8 +24,6 @@
 <script src="<?= base_url(); ?>assets/admin/assets/plugins/bootbox/bootbox.js"></script>
 <script src="<?php echo base_url(); ?>assets/frontend/js/libs/header.js"></script>
 
-
-
 <script type="text/javascript">
         window._site_url = '<?php echo site_url(); ?>/';
 </script>
@@ -32,6 +31,20 @@
 <body ng-app="MyApp" ng-controller="MyController">
 <div class="admin-sec">
     <div class="container">   
+    <div class="logo-section"> <a href="#"><img src="<?= base_url(); ?>assets/frontend/images/logo-1.png"> </a> </div>
+    <div id="nav">
+      <div class="nav">
+      
+        <ul>
+          <li><a href="<?php echo site_url(); ?>" class="hvr-rectangle-out">Home</a></li>
+          <li><a href="<?php echo site_url(); ?>" class="hvr-rectangle-out">About Us</a></li>
+          <li><a href="<?php echo site_url(); ?>" class="hvr-rectangle-out">Testimonials</a></li>
+          <li><a href="<?php echo site_url(); ?>" class="hvr-rectangle-out">Legal</a></li>
+          <li><a href="<?php echo site_url(); ?>" class="hvr-rectangle-out">Contact Us</a></li>
+        </ul>
+        <div class="clear"></div>
+      </div>
+    </div>
       <nav class="main-nav">
 			<ul>
 				<!-- inser more links here -->
@@ -140,21 +153,3 @@
     </div>
   </div>
   <div class="clear"></div>
-  <div class="header">
-    <div class="container">
-      <div class="logo-section"> <a href="#"><img src="<?= base_url(); ?>assets/frontend/images/logo.png"> </a> </div>
-      <div id="nav">
-        <div class="nav">
-          <ul>
-            <li><a href="<?php echo site_url(); ?>" class="hvr-rectangle-out">Home </a></li>
-            <li><a href="<?php echo site_url(); ?>/bankers" class="hvr-rectangle-out">Bankers </a></li>
-            <li><a href="<?php echo site_url(); ?>/legal" class="hvr-rectangle-out">Legal </a></li>
-            <li><a href="<?php echo site_url(); ?>/about_us" class="hvr-rectangle-out">About Us</a></li>
-            <li><a href="<?php echo site_url(); ?>/contact_us" class="hvr-rectangle-out">Contact Us</a></li>
-          </ul>
-          <div class="clear"></div>
-        </div>
-      </div>
-    </div>
-    <div class="clear"></div>
-  </div>
