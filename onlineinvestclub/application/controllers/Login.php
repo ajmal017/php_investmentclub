@@ -43,17 +43,22 @@ class Login extends CI_Controller {
 			{
 				$this->load->model('Login_model');
 				$result = $this->Login_model->check_login($username,$password);
-				if($result == true)
+				if($result == 1)
 				{
 					$status = 'success';
 				    $message = 'user login successfully';
 				    $status_code = 200;	
+				} elseif ($result === 'email_verified')
+				{
+					$status = 'failed';
+				    $message = 'Email Verification not completed';
+				    $status_code = 200;
 				}else
 				{
 					$status = 'failed';
 				    $message = 'username and password not matching';
 				    $status_code = 200;
-				}
+				} 
 				
 			}else
 			{

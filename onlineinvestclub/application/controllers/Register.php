@@ -57,7 +57,8 @@ class Register extends CI_Controller {
 			if(count($error_array) == 0 )
 			{
 				$this->load->model('Register_model');
-				$userid = $this->Register_model->register($username,$email,$password);
+				$email_verification_token = md5($username.$email);
+				$userid = $this->Register_model->register($username,$email,$password,$email_verification_token);
 				
 				$alignment_data = array();
 				if($sponserUsername > 0)
@@ -84,6 +85,16 @@ class Register extends CI_Controller {
 				}
 				binary_tree_update($userid,$sponserid,$placement);
 				
+				$email_data = array();
+				$template_data = array();
+				$template_data['email'] = $email;
+				$template_data['username'] = $username;
+				$template_data['email_verification_token'] = $email_verification_token;
+
+				$email_data['subject'] = 'New Registration Email Verfication';
+				$email_data['html'] = $this->load->view('frontend/email_templates/new_registration_email_verification',$template_data,true);;
+				$email_data['to'] = $email;
+				send_email($email_data);
 				$status = 'success';
 			    $message = 'user registered successfully';
 			    $status_code = 200;
@@ -106,6 +117,26 @@ class Register extends CI_Controller {
 			$userid = $this->input->post('userid');
 			$sponserid = $this->input->post('sponserid');
 			$placement = $this->input->post('placement');			
+		}
+	}
+
+	public function email_verification()
+	{
+		$email_verification_token = $this->input->get('email_verification_token');
+		$this->load->model('Register_model');
+		
+		$user_data = $this->Register_model->email_token_verification($email_verification_token);
+		
+		if(count($user_data)>0)
+		{
+			$this->load->model('Login_model');
+			$res = $this->Login_model->check_login($user_data['username'],$user_data['password'],true);		
+			$message = 'Email Verification Completed';
+		    redirect('dashboard?message='.$message);    
+		}else
+		{
+			$message = 'Verfication Token Not Matching';
+			redirect('home?message='.$message);
 		}
 	}
 }

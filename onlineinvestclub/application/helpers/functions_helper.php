@@ -7,7 +7,7 @@ function dump($data)
 	echo '</pre>';
 }
 
-function send_email($data = array()) {
+function send_email1($data = array()) {
 	global $CI;
 	$CI->load->library('email');
 	$to = $data['to'];
@@ -45,6 +45,41 @@ $config['charset'] = 'iso-8859-1';
     print_r($CI->email->print_debugger());
     
     print_r($data);*/
+}
+
+function send_email($data = array()) {
+	global $CI;
+	$CI->load->library('email');
+
+	$to = $data['to'];
+	$subject = $data['subject'];
+	$html = $data['html'];
+	if(isset($data['from']) && $data['from'] != '')
+	{
+		$from = $data['from']['email'];
+		$name = $data['from']['name'];			
+	}else{
+		$from = "info@onlinetradinginstitute.in";
+		$name = "Online Trading Institute";						
+	}
+
+
+	$config['protocol'] = 'sendmail';
+	$config['mailpath'] = '/usr/sbin/sendmail';
+	$config['charset'] = 'iso-8859-1';
+	$config['wordwrap'] = TRUE;
+	$config['mailtype'] = 'html';
+
+	$CI->email->initialize($config);
+
+	$CI->email->from($from, $name);
+	$CI->email->to($to);
+
+	$CI->email->subject($subject);
+	$CI->email->message($html);
+	echo $html;
+	//$CI->email->send();
+	//print_r($CI->email->print_debugger());
 }
 
 function responseObject($response = array(),$status_code=200)

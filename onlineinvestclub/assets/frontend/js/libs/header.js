@@ -1,5 +1,5 @@
 angular.module("MyApp", []).controller("MyController", function($scope,$http) {
-    $scope.login = function()
+    $scope.deletePackage1 = function()
     {
         if(confirm("Do you want to delete ?"))
         {
@@ -57,7 +57,7 @@ angular.module("MyApp", []).controller("MyController", function($scope,$http) {
                 window.location.href = window._site_url+"dashboard";
             }else if(data.status == 'failed')
             {
-                alert("Username and Password not matching.")
+                alert(data.message);
             }
         }
 
