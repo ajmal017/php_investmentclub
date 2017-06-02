@@ -10,6 +10,7 @@
         <th>Quantity</th>
         <th>Purchase Date</th>
         <th>Status</th>
+        <th>View Course Content</th>
       </tr>
     </thead>
     <tbody>
@@ -23,6 +24,10 @@
         <td><?= $upl['quantity']; ?></td>
         <td><?= $upl['purchase_date']; ?></td>
         <td><?= $upl['user_package_status']; ?></td>
+        <td>
+          <?php if($upl['user_package_status'] == 'accepted') { ?>
+          <a class="btn btn-primary" href="<?= site_url(); ?>/packages/content?package_id=<?= $upl['package_id']; ?>">View</a></td>
+          <?php } ?>
       </tr>
       <?php } ?>
     </tbody>
