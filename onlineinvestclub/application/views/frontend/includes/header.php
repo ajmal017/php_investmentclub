@@ -37,10 +37,12 @@
       
         <ul>
           <li><a href="<?php echo site_url(); ?>" class="hvr-rectangle-out">Home</a></li>
-          <li><a href="<?php echo site_url(); ?>" class="hvr-rectangle-out">About Us</a></li>
-          <li><a href="<?php echo site_url(); ?>" class="hvr-rectangle-out">Testimonials</a></li>
-          <li><a href="<?php echo site_url(); ?>" class="hvr-rectangle-out">Legal</a></li>
-          <li><a href="<?php echo site_url(); ?>" class="hvr-rectangle-out">Contact Us</a></li>
+          <li><a href="<?php echo site_url(); ?>/about_us" class="hvr-rectangle-out">About Us</a></li>
+          <li><a href="<?php echo site_url(); ?>/testimonials" class="hvr-rectangle-out">Testimonials</a></li>
+          <li><a href="<?php echo site_url(); ?>/legal" class="hvr-rectangle-out">Legal</a></li>
+          <li><a href="<?php echo site_url(); ?>/bankers" class="hvr-rectangle-out">Bankers</a></li>
+          <li><a href="<?php echo site_url(); ?>/faqs" class="hvr-rectangle-out">FAQ's</a></li>
+          <li><a href="<?php echo site_url(); ?>/contact_us" class="hvr-rectangle-out">Contact Us</a></li>
         </ul>
         <div class="clear"></div>
       </div>
