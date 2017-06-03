@@ -27,12 +27,13 @@
   </div>
   <div class="clear"></div>
   <div class="content">
+    <?php /*?>
     <div class="text-sec">
       <div class="container">
         <h3>ONLINE INVEST CLUB MEMBERS</h3>
         <img src="<?= base_url(); ?>assets/frontend/images/member.jpg">
       </div>
-    </div>
+    </div><?php */ ?>
     <div class="join-us">
     <div class="container">
     <a href="#">Join Us</a>

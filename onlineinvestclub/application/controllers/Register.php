@@ -61,19 +61,23 @@ class Register extends CI_Controller {
 				$userid = $this->Register_model->register($username,$email,$password,$email_verification_token);
 				
 				$alignment_data = array();
-				if($sponserUsername > 0)
+				if($sponserUsername != '')
 				{
 					$alignment_data = checkAlignmentSetOfUser($sponserUsername);	
 				}
 
 				//$sponserid = 0;
 				//$placement = 'left';
+				//dump($_REQUEST);
+				//dump($alignment_data);
 				if(count($alignment_data) > 0)
 				{
+					//echo "success1";
 					$sponserid = $alignment_data['userid'];
 					$placement = $alignment_data['user_alignment'];
 				}else
 				{
+					//echo "success2";
 					$alignment_data = checkAlignmentSetOfUser('amitjain');
 					$sponserid = $alignment_data['userid'];
 					$placement = $alignment_data['user_alignment'];
@@ -81,6 +85,7 @@ class Register extends CI_Controller {
 
 				if($placement1 != '')
 				{
+					//echo "success3";
 					$placement = $placement1;
 				}
 				binary_tree_update($userid,$sponserid,$placement);
