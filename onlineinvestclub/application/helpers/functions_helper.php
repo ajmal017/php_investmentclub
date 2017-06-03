@@ -77,7 +77,7 @@ function send_email($data = array()) {
 
 	$CI->email->subject($subject);
 	$CI->email->message($html);
-	echo $html;
+	//echo $html;
 	//$CI->email->send();
 	//print_r($CI->email->print_debugger());
 }
