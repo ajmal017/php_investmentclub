@@ -12,7 +12,7 @@
         <div class="text">
         	<p class="email">E-mail : <a href="mailto:" class="hvr-underline-from-center">demo@gmail.com</a></p>
           	<p class="phone">Phone Number : <a href="tel:" class="hvr-underline-from-center">9970236208</a></p>
-          	<p class="email">Address : <a href="#" class="hvr-underline-from-center">107, Vardhman Shopping Center, Above Tungareshwar Sweets, Opp.Vasai Railway Station,Vasai West – 401208</a></p>
+          	<p class="loction"><span>Address :</span> <a href="#" class="hvr-underline-from-center">107, Vardhman Shopping Center, Above Tungareshwar Sweets, Opp.Vasai Railway Station,Vasai West – 401208</a></p>
         </div>
       </div>
     </div>

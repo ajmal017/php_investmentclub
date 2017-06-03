@@ -4,7 +4,7 @@
   <div id="banner">
     <div class="bnr-sec">
       <ul class="bxslider">
-        <li><img src="<?= base_url(); ?>assets/frontend/images/PAYMENTBANK-1110x550.jpg" style="width:1286px;height:450px;">
+        <li><img src="<?= base_url(); ?>assets/frontend/images/banner-1.jpg" style="width:100%; height:250px">
           <div class="caption-sec">
             <h3>what can we do for you? </h3>
             <p>There Is Life After Debt. Let Us Help You Get There.</p>
@@ -12,7 +12,7 @@
             <div class="clear"></div>
           </div>
         </li>
-        <li><img src="<?= base_url(); ?>assets/frontend/images/Banner-finance.jpg" style="width:1286px;height:450px;">
+        <li><img src="<?= base_url(); ?>assets/frontend/images/banner-2.jpg" style="width:100%; height:250px">
           <div class="caption-sec">
             <h3>Lorem Ipsum is simpl</h3>
             <p>Lorem Ipsum is simply dummy text of the printing and typesetting indus</p>
