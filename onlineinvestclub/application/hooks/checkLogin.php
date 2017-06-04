@@ -11,7 +11,7 @@ function isLogin()
 	{
 		$CI->output->cache(15);
 	}*/
-	$login_required_pages = array('dashboard','mynetwork','admin_home','admin_packages','profile');
+	$login_required_pages = array('dashboard','mynetwork','admin_home','admin_packages','profile','packages');
 	if(in_array($controller_name, $login_required_pages)  && $CI->session->userdata('logged_in') == '')
 	{
 		redirect('home');
