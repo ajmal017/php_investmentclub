@@ -88,7 +88,7 @@
 					</p>
 				</form>
 				
-				<p class="cd-form-bottom-message"><a href="#0">Forgot your password?</a></p>
+				<p class="cd-form-bottom-message"><a href="<?= site_url(); ?>/login/forgot_password">Forgot your password?</a></p>
 				<!-- <a href="#0" class="cd-close-form">Close</a> -->
 			</div> <!-- cd-login -->
 
@@ -138,12 +138,12 @@
 				<form class="cd-form">
 					<p class="fieldset">
 						<label class="image-replace cd-email" for="reset-email">E-mail</label>
-						<input class="full-width has-padding has-border" id="reset-email" type="email" placeholder="E-mail">
+						<input class="full-width has-padding has-border" id="reset-email" type="text" ng-model="forgot_email" placeholder="E-mail">
 						<span class="cd-error-message">Error message here!</span>
 					</p>
 
 					<p class="fieldset">
-						<input class="full-width has-padding" type="submit" value="Reset password">
+						<input class="full-width has-padding" type="button" value="Reset password" ng-click="forgot_password()">
 					</p>
 				</form>
 
