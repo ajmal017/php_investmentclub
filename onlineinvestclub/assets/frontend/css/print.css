@@ -254,18 +254,15 @@ p, a{font-family: 'MontserratRegular' !important;}
 
 .cd-form-bottom-message a { color: #FFF; text-decoration: underline; font-size: 15px; padding-top: 19px;}
 .register h3{ margin-bottom: 25px;font-size: 21px;  color: #000; font-weight: bold;}
-.register .cd-form input.full-width{}
-
-
 
 /*dash-bord*/
-.nav-sec{position:fixed; left:0; height:100%; background:#222d32;width:190px;}
+.nav-sec{position:fixed; left:0; height:100%; background:#263379;width:190px;}
 .nav-sec ul{list-style:none; margin:0; padding:0;}
-.nav-sec li:first-child a{height: 53px; float:left; width:84%; text-align:left}
+.nav-sec li:first-child a{height: 67px; float:left; width:100%; text-align:left}
 .nav-sec li:first-child span{margin-right:20px}
 .nav-sec li{text-align:right; border-bottom:2px solid #366673;}
 .nav-sec li a{text-decoration:none; color:#FFFFFF; padding:15px; display:block; font-size:17px; }
-.nav-sec li a:hover, .nav-sec li a.active{background:#353e44;}
+.nav-sec li a:hover, .nav-sec li a.active{background:#ea212d;}
 
 .nav-sec li span{float:left; margin-top:-7px}
 .marquee{border: 2px solid #021e58; padding: 22px 0; font-size: 17px; display: inherit;  width: 80%;  margin: 20px auto; background:#dfeaf0; color:#a30b01}
@@ -276,9 +273,9 @@ p, a{font-family: 'MontserratRegular' !important;}
 .logo{width: 180px;  float: left;  margin-top: 5px;}
 .page-name{float: right; width: 41%; margin-top: 20px;}
 .page-name h3{color: #083858;  margin: 0;padding-top: 81px; text-align: right; padding-right: 15px;}
-.logout-sec{background:#ab040e;}
-.log-out{float:right; display: inline-block;font-size:20px; color:#FFFFFF; text-decoration:none; padding:9px 17px}
-.log-out:hover{background:#2e3e95; color:#fff}
+.logout-sec{background:#2e3e95;}
+.logout-sec .log-out{float:right; display: inline-block;font-size:20px; color:#FFFFFF; text-decoration:none; padding:9px 17px;-webkit-transition: all .3s linear;  -moz-transition: all .3s linear;-o-transition: all .3s linear;  transition: all .3s linear; font-family:Verdana, Arial, Helvetica, sans-serif}
+.logout-sec .log-out:hover{background:#ea212d; color:#fff}
 
 .middle-content{background:url(../images/blogback.jpg) repeat; padding:25px;}
 .center{margin: 0 auto;  width: 93%;text-align: center}
@@ -374,3 +371,43 @@ ul.third-part h5{display:inline-block;}
 .ques-1 h4 span{color:#98122e;}
 .ques-1 p{background: #fff; padding: 7px;  font-size: 16px;line-height: 25px;}
 .ques-1 p span{color:#6e031a; font-weight:bold;}
+
+
+
+/*packages*/
+.hvr-bounce-in {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+}
+.hvr-bounce-in:hover, .hvr-bounce-in:focus, .hvr-bounce-in:active {
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+  -webkit-transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
+  transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
+}
+
+.btn_primary{width:15% !important; background:#132aa8 !important;}
+
+.btn-primary{margin-bottom: 15px !important;width: 70%; background: #fff !important; color: #000 !important; font-weight: normal !important;}
+.btn-primary:hover{background:#021572 !important; color:#fff !important;}
+.table thead tr th { vertical-align: bottom; border-bottom: 2px solid #dfe3fa !important;  font-size: 17px;  text-align: center; padding:0 0 8px 0 !important}
+
+.package_name{font-size: 21px !important; text-transform: capitalize; text-align: center;}
+.table tbody tr td{text-align:center; border-top: 1px solid #3879d9 !important; font-size: 18px;}
+.form-control{width:50% !important; margin: auto; font-size:14px !important;}
+#package-id-7, #package-id-43{background:#fdfdfb;}
+
+.news_sec div{border:1px solid #fcfbfb; background:#fff; padding:15px 10px; margin-bottom:25px;}
+.news_sec h3{font-size: 27px; margin-bottom: 10px; color:#263379;}
+.news_sec h4{font-size: 18px; margin-bottom: 15px; font-weight:normal;}
+.news_sec h4 span { font-size: 32px; padding: 0 5px;font-size:18px;}
+.news_sec img{float:right;padding-left: 10px; padding-bottom: 10px;}
+.news_sec p{font-size:15px; line-height:26px; text-align:justify;}
