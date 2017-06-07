@@ -31,7 +31,7 @@
       <li><a href="<?= site_url(); ?>/packages"><span><img src="<?= base_url(); ?>assets/frontend/images/network-img.png" /></span>My Packages</a></li>
       <li><a href="<?= site_url(); ?>/mynetwork"><span><img src="<?= base_url(); ?>assets/frontend/images/network-img.png" /></span>My Network</a></li>
       <li><a href="<?= site_url(); ?>/news"><span><img src="<?= base_url(); ?>assets/frontend/images/network-img.png" /></span>News</a></li>
-      <li><a href="<?= site_url(); ?>/news"><span><img src="<?= base_url(); ?>assets/frontend/images/network-img.png" /></span>Bonus</a></li>
+      <li><a href="<?= site_url(); ?>/bonus"><span><img src="<?= base_url(); ?>assets/frontend/images/network-img.png" /></span>Bonus</a></li>
     </ul>
   </div>
   <div id="content">
