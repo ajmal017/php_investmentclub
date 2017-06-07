@@ -47,6 +47,50 @@ angular.module("MyApp", []).controller("MyController", function($scope,$http) {
         SSK.site_call("AJAX",window._site_url+"register/signUp",request_data, register_success_cb);
     }
 
+    $scope.forgot_password = function()
+    {
+        forgot_password_success_cb = function(data)
+        {
+            if(data.status == "success")
+            {
+                alert_box('Check your email id to reset password.');
+            
+            }
+        }
+        
+        request_data = {}
+        request_data['forgot_email'] = $scope.forgot_email;
+        SSK.site_call("AJAX",window._site_url+"login/forgot_password_token_generation",request_data, forgot_password_success_cb);
+    }
+    $scope.forgot_password_token = window._forgot_password_token;
+    $scope.change_password = function()
+    {
+        change_password_success_cb = function(data)
+        {
+            if(data.status == "success")
+            {
+                alert_box('Successfully changed password.');
+            }
+        }
+
+        if($scope.new_password == '')
+        {
+            alert_box('Please enter New Password field.')
+        }else if($scope.reenter_password == '')
+        {
+            alert_box('Please enter Re-Enter Password field.');
+        }else if($scope.new_password != $scope.reenter_password)
+        {
+            alert_box('Please enter same passwords.');
+        }
+        
+        request_data = {}
+        request_data['password'] = $scope.new_password;
+        request_data['forgot_password_token'] = $scope.forgot_password_token;
+        
+        SSK.site_call("AJAX",window._site_url+"login/change_password",request_data, change_password_success_cb);
+    }
+
     $scope.login = function()
     {
         $('.cd-error-message').removeClass('is-visible');
