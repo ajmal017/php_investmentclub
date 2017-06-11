@@ -1,10 +1,11 @@
 <?php
-
-$conn = mysqli_connect("localhost", "root", "123456","onlineinvestclub");
-
+$CI =& get_instance();
+        
 function binary_tree_update($userid,$placementid,$place)
 {
-	$conn = mysqli_connect("localhost", "root", "123456","onlineinvestclub");
+	global $CI;
+	$CI->load->database();
+	$conn = mysqli_connect($CI->db->hostname, $CI->db->username, $CI->db->password,$CI->db->database);
 	
 	$updateQuery = "update users set sponsorid = ".$placementid." where userid='".$userid."'"; 
 	mysqli_query($conn,$updateQuery);
@@ -78,7 +79,9 @@ for ($i =1 ;$i < 10 ;$i++)
 
 function direct_comm()
 {
-	$conn = mysqli_connect("localhost", "root", "123456","onlineinvestclub");
+	global $CI;
+	$CI->load->database();
+	$conn = mysqli_connect($CI->db->hostname, $CI->db->username, $CI->db->password,$CI->db->database);
 	$select_query = 'SELECT * FROM users WHERE status=\'active\'';
 	$result = mysqli_query($conn,$select_query);
 	while($row = mysqli_fetch_array($result))
