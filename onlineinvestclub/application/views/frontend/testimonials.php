@@ -2,30 +2,7 @@
 
 <div id="wrapper">
   <?php $this->view('frontend/includes/header'); ?>
-  <div id="banner">
-    <div class="bnr-sec">
-      <ul class="bxslider">
-        <li><img src="<?= base_url(); ?>assets/frontend/images/banner-1.jpg" style="width:100%; height:250px">
-          <div class="caption-sec">
-            <h3>what can we do for you? </h3>
-            <p>There Is Life After Debt. Let Us Help You Get There.</p>
-            <!--<a href="#">Learn More</a>-->
-            <div class="clear"></div>
-          </div>
-        </li>
-        <li><img src="<?= base_url(); ?>assets/frontend/images/banner-2.jpg" style="width:100%; height:250px">
-          <div class="caption-sec">
-            <h3>Lorem Ipsum is simpl</h3>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting indus</p>
-            <!--<a href="#">Learn More</a>-->
-            <div class="clear"></div>
-          </div>
-        </li>
-      </ul>
-      <div class="clear"></div>
-    </div>
-    <div class="clear"></div>
-  </div>
+  <div id="banner"> <img src="<?= base_url(); ?>assets/frontend/images/testimonial-bnr.jpg"></div>
   <div class="clear"></div>
   <div class="textsec">
     <div class="container">

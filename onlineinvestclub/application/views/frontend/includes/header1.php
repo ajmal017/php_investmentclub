@@ -26,12 +26,12 @@
       <li><a href="<?= site_url(); ?>/dashboard"><span><img src="<?= base_url(); ?>assets/frontend/images/person-img.png" /></span> ABC</a>
         <div class="clear"></div>
       </li>
-      <li><a href="<?= site_url(); ?>/profile"><span><img src="<?= base_url(); ?>assets/frontend/images/my-profile.png" /></span>Dashbord</a></li>
+      <li><a href="<?= site_url(); ?>/profile"><span><img src="<?= base_url(); ?>assets/frontend/images/dashbord.png" /></span>Dashbord</a></li>
       <li><a href="<?= site_url(); ?>/profile" class="active"><span><img src="<?= base_url(); ?>assets/frontend/images/my-profile.png" /></span>My Profile</a></li>
       <li><a href="<?= site_url(); ?>/packages"><span><img src="<?= base_url(); ?>assets/frontend/images/network-img.png" /></span>My Packages</a></li>
       <li><a href="<?= site_url(); ?>/mynetwork"><span><img src="<?= base_url(); ?>assets/frontend/images/network-img.png" /></span>My Network</a></li>
-      <li><a href="<?= site_url(); ?>/news"><span><img src="<?= base_url(); ?>assets/frontend/images/network-img.png" /></span>News</a></li>
-      <li><a href="<?= site_url(); ?>/bonus"><span><img src="<?= base_url(); ?>assets/frontend/images/network-img.png" /></span>Bonus</a></li>
+      <li><a href="<?= site_url(); ?>/news"><span><img src="<?= base_url(); ?>assets/frontend/images/news-img.png" /></span>News</a></li>
+      <li><a href="<?= site_url(); ?>/bonus"><span><img src="<?= base_url(); ?>assets/frontend/images/bonus-img.png" /></span>Bonus</a></li>
     </ul>
   </div>
   <div id="content">

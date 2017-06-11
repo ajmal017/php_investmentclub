@@ -31,7 +31,7 @@
 <body ng-app="MyApp" ng-controller="MyController">
 <div class="admin-sec">
     <div class="container">   
-    <div class="logo-section"> <a href="#"><img src="<?= base_url(); ?>assets/frontend/images/logo-1.png"> </a> </div>
+    <div class="logo-section"> <a href="#"><img src="<?= base_url(); ?>assets/frontend/images/logo.png"> </a> </div>
     <div id="nav">
       <div class="nav">
       

@@ -34,8 +34,6 @@
   </table>     
 </div>
    <div class="clear"></div> 
-  </div>
-  
-</div>
+<?php $this->view('frontend/includes/footer'); ?>
 </body>
 </html>

@@ -2,7 +2,7 @@
 <script src="<?php echo base_url(); ?>assets/frontend/js/libs/packages.js"></script>
 
 <div class="middle-content">
-  <table class="table table-striped">
+  <table class="table table-striped packages-table">
     <thead>
       <tr>
         <th>Package Name</th>
@@ -25,6 +25,6 @@
   </table>
 </div>
 <div class="clear"></div>
-</div>
-</div>
+<?php $this->view('frontend/includes/footer'); ?>
+
 </body></html>

@@ -102,7 +102,7 @@
           <div class="security-form">
             <h5>Change Password</h5>
             <form action="" method="get">
-              <ul class="reset">
+              <ul class="reset password">
                 <li>
                   <label>Current Password</label>
                   <input name="" type="password" ng-model="current_password" />
@@ -129,12 +129,13 @@
       </div>
       <div class="right-side" style="margin-top:10px;">
           <h6>Placement Of new Member</h6>
-          <input type="radio" ng-model="placement" value="left" ng-click="save_placement()"> Left
-          <input type="radio" ng-model="placement" value="right" ng-click="save_placement()"> Right
+          <input type="radio" ng-model="placement" value="left" ng-click="save_placement()"> <span>Left</span>
+          <input type="radio" ng-model="placement" value="right" ng-click="save_placement()"> <span>Right</span>
       </div>
       <div class="clear"></div>
     </div>
     <div class="clear"></div>
+    <?php $this->view('frontend/includes/footer'); ?>
   </div>
 <?php $this->view('frontend/profile_modal'); ?>  
 </div>

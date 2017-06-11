@@ -40,7 +40,7 @@
       </div>
     </div>
    <div class="clear"></div> 
-  </div>
+<?php $this->view('frontend/includes/footer'); ?>
 </div>
 <script>
 var acc = document.getElementsByClassName("accordion");

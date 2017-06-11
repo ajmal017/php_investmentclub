@@ -157,8 +157,7 @@ angular.module("MyApp", []).controller("MyController", function($scope,$http) {
         </table>
       </div>
     </div>
-  </div>4
-
-</div>
+ <?php $this->view('frontend/includes/footer'); ?>
 </body>
 </html>
+
