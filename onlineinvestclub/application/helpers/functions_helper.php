@@ -158,5 +158,5 @@ function getNotifications($notification_id = 0)
 	$result = $CI->Common_model->getNotifications($notification_id);
 	return $result;	
 }
-//$CI->output->enable_profiler(TRUE);
+$CI->output->enable_profiler(TRUE);
 ?>

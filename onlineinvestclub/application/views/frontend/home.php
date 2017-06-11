@@ -1,30 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 <div id="wrapper">
 <?php $this->view('frontend/includes/header'); ?>
-  <div id="banner">
-    <div class="bnr-sec">
-      <ul class="bxslider">
-        <li><img src="<?= base_url(); ?>assets/frontend/images/banner-1.jpg" style="width:100%; height:250px">
-          <div class="caption-sec">
-            <h3>what can we do for you? </h3>
-            <p>There Is Life After Debt. Let Us Help You Get There.</p>
-            <!--<a href="#">Learn More</a>-->
-            <div class="clear"></div>
-          </div>
-        </li>
-        <li><img src="<?= base_url(); ?>assets/frontend/images/banner-2.jpg" style="width:100%; height:250px">
-          <div class="caption-sec">
-            <h3>Lorem Ipsum is simpl</h3>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting indus</p>
-            <!--<a href="#">Learn More</a>-->
-            <div class="clear"></div>
-          </div>
-        </li>
-      </ul>
-      <div class="clear"></div>
-    </div>
-    <div class="clear"></div>
-  </div>
+  <?php $this->view('frontend/banner'); ?>
   <div class="clear"></div>
   <div class="content">
     <?php /*?>
@@ -36,7 +13,7 @@
     </div><?php */ ?>
     <div class="join-us">
     <div class="container">
-    <a href="#">Join Us</a>
+    <a href="<?= site_url(); ?>/register">Join Us</a>
     </div>
     </div>
     <div class="our-products">
@@ -44,24 +21,19 @@
     <h3>Our Products</h3>
     <p>Explore our e-learning opportunities</p>
     <ul class="reset">
-    <li><a href="#"><img src="<?= base_url(); ?>assets/frontend/images/package4.jpg">
-    <p>First time</p>
-    <span>Free</span></a>
-    </li>
-    <li><a href="#"><img src="<?= base_url(); ?>assets/frontend/images/package3.jpg">
-    <p>Platinum package</p>
-    <span>5,000 RS</span></a>
-    </li>
-    <li>
-    <a href="#"><img src="<?= base_url(); ?>assets/frontend/images/package2.jpg">
-    <p>silver package</p>
-    <span>15,000 RS</span></a>
-    </li>
-    <li>
-    <a href="#"><img src="<?= base_url(); ?>assets/frontend/images/package1.jpg">
-    <p>gold package</p>
-    <span>30,000 RS</span></a>
-    </li>
+      <?php $package_list = getPackages(); ?>
+      <?php 
+      foreach($package_list as $row)
+      { ?>
+        
+        <li>
+            <a href="#">
+                <img src="<?= base_url(); ?>uploads/packages/<?= $row['package_image']; ?>" style="width:138px;height:127px;">
+                <p><?= $row['package_name']; ?></p>
+                <span><?= $row['package_amount']; ?></span>
+            </a>
+        </li>
+      <?php } ?>
    </ul>
    <div class="clear"></div>
    </div>	
