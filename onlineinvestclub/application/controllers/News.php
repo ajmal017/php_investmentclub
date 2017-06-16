@@ -23,8 +23,9 @@ class News extends CI_Controller {
 		$this->load->view('frontend/news');
 	}
 
-	public function view()
+	public function view($news_id)
 	{
-		$this->load->view('frontend/news_page');
+		$data = array('news_id'=>$news_id);
+		$this->load->view('frontend/news_page',$data);
 	}
 }

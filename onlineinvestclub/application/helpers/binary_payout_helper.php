@@ -85,7 +85,7 @@ class binaryTree{
 					$in_query = " AND up.userid IN (".$userid_string.")";
 				}
 			}
-			echo $query = "SELECT sum(pm.package_amount*up.quantity) as total FROM user_packages up LEFT JOIN package_master pm ON up.package_id=pm.package_id WHERE up.acceptance_date >= '".$week_start."' AND up.acceptance_date <= '".$week_end."' ".$in_query;
+			$query = "SELECT sum(pm.package_amount*up.quantity) as total FROM user_packages up LEFT JOIN package_master pm ON up.package_id=pm.package_id WHERE up.acceptance_date >= '".$week_start."' AND up.acceptance_date <= '".$week_end."' ".$in_query;
 
 			$result = mysqli_query($this->conn,$query);
 			$total = 0;
@@ -96,12 +96,26 @@ class binaryTree{
 			return $total;	
 		}
 
+		function getCarryForwardTotal($userid)
+		{
+			$data = array("carry_forward"=>0,"placement"=>"");
+			$query = "SELECT * FROM binary_income WHERE userid = ".$userid." ORDER BY created_date limit 1";
+			$result = mysqli_query($this->conn,$query);
+			while($row = mysqli_fetch_array($result))
+			{
+				$data['carry_forward'] = $row['carry_forward'];
+				$data['placement'] = $row['placement'];
+			}
+			return $data;	
+		}
+
 		function release_payout()
 		{
+			$userid = 1;
 			$week_start = date("Y-m-d", strtotime('monday this week'));
 			$week_end =  date("Y-m-d", strtotime('sunday this week'));
 
-			$query = "SELECT * FROM users where userid = 1";
+			$query = "SELECT * FROM users where userid = ".$userid;
 			$result = mysqli_query($this->conn,$query);
 			while($row = mysqli_fetch_array($result))
 			{
@@ -117,8 +131,17 @@ class binaryTree{
 				{
 					$right_income_total = $this->getTotalAmount($members['right'],$week_start,$week_end);
 				}
-				//dump($left_income_total);
-				//dump($right_income_total);
+				dump("left_income_total=".$left_income_total);
+				dump("right_income_total=".$right_income_total);
+				$carry_forward_data = $this->getCarryForwardTotal($row['userid']);
+				if($carry_forward_data['placement'] == 'left')
+				{	
+					$left_income_total = $left_income_total + $carry_forward_data['carry_forward'];	
+				}else if($carry_forward_data['placement'] == 'right')
+				{
+					$right_income_total = $right_income_total + $carry_forward_data['carry_forward'];	
+				}
+
 				if($left_income_total > 0 && $right_income_total > 0)
 				{
 					$carry_forward = 0;
@@ -140,12 +163,13 @@ class binaryTree{
 						$carry_forward = 0;
 						$amt = $left_income_total;
 					}
-					echo "amt".$amt."perc".$this->payput_percentage;
-					dump($carry_forward);
+					//echo "</br>amt=".$amt."perc=".$this->payput_percentage."carry_forward=".$carry_forward."</br>";
+					//dump($carry_forward);
 
-					echo $release_payment = $amt * ($this->payput_percentage/100);
+					$release_payment = $amt * ($this->payput_percentage/100);
 					$insert_query = "INSERT INTO binary_income(userid,binary_total,left_binary_total,right_binary_total,carry_forward,placement,week_start,week_end,payout_status,created_date) VALUES(".$row['userid'].",".$release_payment.",".$left_income_total.",".$right_income_total.",".$carry_forward.",'".$placement."','".$week_start."','".$week_end."','generated','".date("Y-m-d H:i:s")."')";
-					mysqli_query($this->conn,$insert_query);
+					//echo $insert_query."</br>";
+					//mysqli_query($this->conn,$insert_query);
 				}
 			}
 		}
@@ -154,5 +178,5 @@ class binaryTree{
 
 
 //$obj = new binaryTree();
-//dump($obj->release_payout());
+//$obj->release_payout();
 ?>

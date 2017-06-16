@@ -270,6 +270,39 @@ class Common_model extends CI_Model
 		return $main_data;
     }
 
+    function getNews($news_id = 0)
+    {
+    	$this->db->trans_start();
+    	$this->db->select('*');
+		if($news_id > 0)
+		{
+			$this->db->where('news_id',$news_id);
+		}
+		$query = $this->db->get('news_master');
+		
+		$main_data = array();
+		$data = array();
+		foreach($query->result() as $row)
+		{
+			$data = array(
+							'news_id'=>$row->news_id,
+							'news_heading'=>$row->news_heading,
+							'news_desc'=>htmlspecialchars_decode($row->news_desc),
+							'created_date'=>$row->created_date,
+							);
+
+		if($news_id > 0)
+		{
+			$main_data = $data;
+		}else
+		{
+			array_push($main_data,$data);
+		}
+		}
+    	$this->db->trans_complete();
+		return $main_data;
+    }
+
     function getPackageMedia($package_id = 0)
     {
     	$this->db->trans_start();
