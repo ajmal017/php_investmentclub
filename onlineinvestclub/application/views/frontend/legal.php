@@ -1,7 +1,11 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 <div id="wrapper">
 <?php $this->view('frontend/includes/header'); ?>
-  <div id="banner"> <img src="<?= base_url(); ?>assets/frontend/images/legal-bnr.jpg"></div>
+<div class="example-animation">
+    <div data-lazy-background="<?= base_url(); ?>assets/frontend/images/inner-bnr.jpg">
+      <h3 data-pos="['27%', '110%', '27%', '40%']" data-duration="1500" data-effect="move">Legal</h3>
+    </div>
+  </div>
   <div class="clear"></div>
 
 <div class="textsec">

@@ -2,14 +2,17 @@
 
 <div id="wrapper">
   <?php $this->view('frontend/includes/header'); ?>
-  <div id="banner"> <img src="<?= base_url(); ?>assets/frontend/images/testimonial-bnr.jpg"></div>
+  <div class="example-animation">
+    <div data-lazy-background="<?= base_url(); ?>assets/frontend/images/inner-bnr.jpg">
+      <h3 data-pos="['27%', '110%', '27%', '40%']" data-duration="1500" data-effect="move">TESTIMONIALS</h3>
+    </div>
+  </div>
   <div class="clear"></div>
   <div class="textsec">
     <div class="container">
-      <h1>Testimonials</h1>
       <div class="attorny-sec">
         <div class="container">
-          <div class="attorny-1">
+          <div class="attorny-1 first-class">
             <div class="img-sec lf"> <img src="<?= base_url(); ?>assets/frontend/images/attorny-1.jpg" /> </div>
             <div class="info-sec">
               <h3>Abc xyz</h3>
