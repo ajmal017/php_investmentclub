@@ -18,8 +18,8 @@ function send_email1($data = array()) {
 		$from = $data['from']['email'];
 		$name = $data['from']['name'];			
 	}else{
-		$from = "sales@barvaconmech.com";
-		$name = "Barva ConMech";						
+		$from = "info@onlinetradinginstitute.in";
+		$name = "Online Trading Institute";						
 	}
 
 	
@@ -156,6 +156,14 @@ function getNotifications($notification_id = 0)
 	global $CI;
 	$CI->load->model('Common_model');
 	$result = $CI->Common_model->getNotifications($notification_id);
+	return $result;	
+}
+
+function getNews($news_id = 0)
+{
+	global $CI;
+	$CI->load->model('Common_model');
+	$result = $CI->Common_model->getNews($news_id);
 	return $result;	
 }
 //$CI->output->enable_profiler(TRUE);

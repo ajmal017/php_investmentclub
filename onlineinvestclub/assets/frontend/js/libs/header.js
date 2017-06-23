@@ -118,4 +118,31 @@ angular.module("MyApp", []).controller("MyController", function($scope,$http) {
         
         SSK.site_call("AJAX",window._site_url+"login/signIn",request_data, login_success_cb,login_failure_cb);
     }
+
+    $scope.save_contact = function()
+    {
+        $('.cd-error-message').removeClass('is-visible');
+        save_contact_success_cb = function(data)
+        {
+            if(data.status == "success")
+            {
+                $scope.contact_name = '';
+                $scope.contact_email = '';
+                $scope.contact_mobile = '';
+                $scope.contact_enquiry = '';
+                alert_box("Enquiry sent");
+            }else if(data.status == 'failed')
+            {
+                alert_box(data.message);
+            }
+        }
+
+        request_data = {}
+        request_data['name'] = $scope.contact_name;
+        request_data['email'] = $scope.contact_email;
+        request_data['mobile'] = $scope.contact_mobile;
+        request_data['enquiry'] = $scope.contact_enquiry;
+        
+        SSK.site_call("AJAX",window._site_url+"contact_us/save_contact",request_data, save_contact_success_cb);
+    }
 });
