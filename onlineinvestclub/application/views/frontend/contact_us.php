@@ -22,11 +22,11 @@
 <h3>GET IN TOUCH</h3>
 <form action="" method="get">
 <ul class="reset">
-<li><input name="User name" type="text" value="" placeholder="User Name" class="name"></li>
-<li><input name="email" type="text" value="" placeholder="Email" class="name" ></li>
-<li><input name="number" type="text" value="" placeholder="Number" class="name"></li>
-<li><textarea name="inquiry" cols="" rows="" placeholder="Inquiry" class="textarea"></textarea></li>
-<li><input name="Submit" type="submit" class="btn"></li>
+<li><input type="text" value="" placeholder="Name" ng-model="contact_name" class="name"></li>
+<li><input type="text" placeholder="Email" ng-model="contact_email" class="name" ></li>
+<li><input type="text" placeholder="Mobile Number" ng-model="contact_mobile" class="name"></li>
+<li><textarea cols="" rows="" placeholder="Inquiry" class="textarea" ng-model="contact_enquiry"></textarea></li>
+<li><input name="Submit" type="button" class="btn" ng-click="save_contact()"></li>
 </ul>
 <div class="clear"></div>
 </form>
