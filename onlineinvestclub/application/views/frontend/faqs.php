@@ -2,11 +2,14 @@
 
 <div id="wrapper">
   <?php $this->view('frontend/includes/header'); ?>
-  <div id="banner"> <img src="<?= base_url(); ?>assets/frontend/images/faqs-bnr.jpg"></div>
+   <div class="example-animation">
+    <div data-lazy-background="<?= base_url(); ?>assets/frontend/images/inner-bnr.jpg">
+      <h3 data-pos="['27%', '110%', '27%', '40%']" data-duration="1500" data-effect="move">FAQs</h3>
+    </div>
+  </div>
   <div class="textsec">
     <div class="container">
-      <h1>FAQ'S</h1>
-      <div class="attorny-sec">
+      <div class="attorny-sec  first-class">
         <div class="container">
           <div class="ques-1">
             <h4><span>Q1.</span> Lorem Ipsum is simply dummy text of the printing ? </h4>

@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 <div id="wrapper">
 <?php $this->view('frontend/includes/header'); ?>
-<?php $this->view('frontend/banner'); ?>
+<?php /*?><?php $this->view('frontend/banner'); ?><?php */?>
   <div class="clear"></div>
 
 <div id="register">

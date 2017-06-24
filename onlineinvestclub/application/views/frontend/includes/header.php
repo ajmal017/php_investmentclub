@@ -9,32 +9,35 @@
 <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 <link href="<?= base_url(); ?>assets/frontend/css/responsive.css" rel="stylesheet" type="text/css">
 <link href="<?= base_url(); ?>assets/frontend/css/jquery.bxslider.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="<?= base_url(); ?>assets/frontend/css/style.css"> 
+<link rel="stylesheet" href="<?= base_url(); ?>assets/frontend/css/style.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
 <script src="<?= base_url(); ?>assets/frontend/js/jquery-1.11.0.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
 <script src="<?= base_url(); ?>assets/frontend/js/modernizr.js"></script>
 <script src="<?= base_url(); ?>assets/frontend/js/jquery.bxslider.js"></script>
 <script src="<?= base_url(); ?>assets/frontend/js/main.js"></script>
-
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/libs/functions.js"></script>
 <script src="<?= base_url(); ?>assets/admin/assets/plugins/bootbox/bootbox.js"></script>
 <script src="<?php echo base_url(); ?>assets/frontend/js/libs/header.js"></script>
-
+<script src="http://localhost/projects/php_investmentclub/onlineinvestclub/assets/frontend/js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="http://devrama.com/static/devrama-slider/jquery.devrama.slider-0.9.4.js"></script>
 <script type="text/javascript">
         window._site_url = '<?php echo site_url(); ?>/';
 </script>
+<script type="text/javascript">
+            $(document).ready(function(){
+                $('.example-animation').DrSlider(); //Yes! that's it!
+            });
+        </script>
+
 </head>
 <body ng-app="MyApp" ng-controller="MyController">
 <div class="admin-sec">
-    <div class="container">   
+  <div class="container">
     <div class="logo-section"> <a href="#"><img src="<?= base_url(); ?>assets/frontend/images/logo.png"> </a> </div>
     <div id="nav">
       <div class="nav">
-      
         <ul>
           <li><a href="<?php echo site_url(); ?>" class="hvr-rectangle-out">Home</a></li>
           <li><a href="<?php echo site_url(); ?>/about_us" class="hvr-rectangle-out">About Us</a></li>
@@ -47,111 +50,93 @@
         <div class="clear"></div>
       </div>
     </div>
-      <nav class="main-nav">
-			<ul>
-				<!-- inser more links here -->
-				<?php if(isset($session_data['logged_in']['userid'])){ ?>
-				<li><a href="<?php echo site_url(); ?>/dashboard">Dashboard</a></li>
-				<li><a href="<?php echo site_url(); ?>/logout">Logout</a></li>
-				<?php }else{ ?>
-				<li><a class="cd-signin" href="#0">Login</a></li>
-				<li><a class="cd-signup" href="<?php echo site_url(); ?>/register">Register</a></li>
-				<?php } ?>
-			</ul>
-		</nav>
-        <div class="cd-user-modal"> <!-- this is the entire modal form, including the background -->
-		<div class="cd-user-modal-container"> <!-- this is the container wrapper -->
-			
-
-			<div id="cd-login"> <!-- log in form -->
-				<form class="cd-form">
-					<p class="fieldset">
-						<label class="image-replace cd-email" for="signin-username">Username</label>
-						<input class="full-width has-padding has-border" ng-model="username" type="text" placeholder="Username">
-						<span class="cd-error-message" id="username-error"></span>
-					</p>
-
-					<p class="fieldset">
-						<label class="image-replace cd-password" for="signin-password">Password</label>
-						<input class="full-width has-padding has-border" ng-model="password" type="password"  placeholder="Password">
-						<a href="#0" class="hide-password">Hide</a>
-						<span class="cd-error-message" id="password-error"></span>
-					</p>
-
-					<!--<p class="fieldset">
+    <nav class="main-nav">
+      <ul>
+        <!-- inser more links here -->
+        <?php if(isset($session_data['logged_in']['userid'])){ ?>
+        <li><a href="<?php echo site_url(); ?>/dashboard">Dashboard</a></li>
+        <li><a href="<?php echo site_url(); ?>/logout">Logout</a></li>
+        <?php }else{ ?>
+        <li><a class="cd-signin" href="#0">Login</a></li>
+        <li><a class="cd-signup" href="<?php echo site_url(); ?>/register">Register</a></li>
+        <?php } ?>
+      </ul>
+    </nav>
+    <div class="cd-user-modal">
+      <!-- this is the entire modal form, including the background -->
+      <div class="cd-user-modal-container">
+        <!-- this is the container wrapper -->
+        <div id="cd-login">
+          <!-- log in form -->
+          <form class="cd-form">
+            <p class="fieldset">
+              <label class="image-replace cd-email" for="signin-username">Username</label>
+              <input class="full-width has-padding has-border" ng-model="username" type="text" placeholder="Username">
+              <span class="cd-error-message" id="username-error"></span> </p>
+            <p class="fieldset">
+              <label class="image-replace cd-password" for="signin-password">Password</label>
+              <input class="full-width has-padding has-border" ng-model="password" type="password"  placeholder="Password">
+              <a href="#0" class="hide-password">Hide</a> <span class="cd-error-message" id="password-error"></span> </p>
+            <!--<p class="fieldset">
 						<input type="checkbox" id="remember-me" checked>
 						<label for="remember-me">Remember me</label>
 					</p>-->
-
-					<p class="fieldset">
-						<input class="full-width has-padding" type="button" value="Login" ng-click="login()">
-					</p>
-				</form>
-				
-				<p class="cd-form-bottom-message"><a href="<?= site_url(); ?>/login/forgot_password">Forgot your password?</a></p>
-				<!-- <a href="#0" class="cd-close-form">Close</a> -->
-			</div> <!-- cd-login -->
-
-			<div id="cd-signup"> <!-- sign up form -->
-				<form class="cd-form">
-					<p class="fieldset">
-						<label class="image-replace cd-username" for="signup-username">Username</label>
-						<input class="full-width has-padding has-border" ng-model="r_username" type="text" placeholder="Username">
-						<span class="cd-error-message" id="r_username-error"></span>
-					</p>
-
-					<p class="fieldset">
-						<label class="image-replace cd-email" for="signup-email">E-mail</label>
-						<input class="full-width has-padding has-border" ng-model="r_email" type="text" placeholder="E-mail">
-						<span class="cd-error-message" id="r_email-error"></span>
-					</p>
-
-					<p class="fieldset">
-						<label class="image-replace cd-password" for="signup-password">Password</label>
-						<input class="full-width has-padding has-border" ng-model="r_password" type="password"  placeholder="Password">
-						<a href="#0" class="hide-password">Hide</a>
-						<span class="cd-error-message" id="r_password-error"></span>
-					</p>
-					<p class="fieldset">
-						<label class="image-replace cd-password" for="signup-password">Re-enter Password</label>
-						<input class="full-width has-padding has-border" ng-model="r_password1" type="password"  placeholder="Password">
-						<a href="#0" class="hide-password">Hide</a>
-						<span class="cd-error-message"></span>
-					</p>
-
-					<!--<p class="fieldset">
+            <p class="fieldset">
+              <input class="full-width has-padding" type="button" value="Login" ng-click="login()">
+            </p>
+          </form>
+          <p class="cd-form-bottom-message"><a href="<?= site_url(); ?>/login/forgot_password">Forgot your password?</a></p>
+          <!-- <a href="#0" class="cd-close-form">Close</a> -->
+        </div>
+        <!-- cd-login -->
+        <div id="cd-signup">
+          <!-- sign up form -->
+          <form class="cd-form">
+            <p class="fieldset">
+              <label class="image-replace cd-username" for="signup-username">Username</label>
+              <input class="full-width has-padding has-border" ng-model="r_username" type="text" placeholder="Username">
+              <span class="cd-error-message" id="r_username-error"></span> </p>
+            <p class="fieldset">
+              <label class="image-replace cd-email" for="signup-email">E-mail</label>
+              <input class="full-width has-padding has-border" ng-model="r_email" type="text" placeholder="E-mail">
+              <span class="cd-error-message" id="r_email-error"></span> </p>
+            <p class="fieldset">
+              <label class="image-replace cd-password" for="signup-password">Password</label>
+              <input class="full-width has-padding has-border" ng-model="r_password" type="password"  placeholder="Password">
+              <a href="#0" class="hide-password">Hide</a> <span class="cd-error-message" id="r_password-error"></span> </p>
+            <p class="fieldset">
+              <label class="image-replace cd-password" for="signup-password">Re-enter Password</label>
+              <input class="full-width has-padding has-border" ng-model="r_password1" type="password"  placeholder="Password">
+              <a href="#0" class="hide-password">Hide</a> <span class="cd-error-message"></span> </p>
+            <!--<p class="fieldset">
 						<input type="checkbox" id="accept-terms">
 						<label for="accept-terms">I agree to the <a href="#0">Terms</a></label>
 					</p>-->
-
-					<p class="fieldset">
-						<input class="full-width has-padding" type="button" value="Create account" ng-click="register('<?php echo @$sponserUsername; ?>')">
-					</p>
-				</form>
-
-				<!-- <a href="#0" class="cd-close-form">Close</a> -->
-			</div> <!-- cd-signup -->
-
-			<div id="cd-reset-password"> <!-- reset password form -->
-				<p class="cd-form-message">Lost your password? Please enter your email address. You will receive a link to create a new password.</p>
-
-				<form class="cd-form">
-					<p class="fieldset">
-						<label class="image-replace cd-email" for="reset-email">E-mail</label>
-						<input class="full-width has-padding has-border" id="reset-email" type="text" ng-model="forgot_email" placeholder="E-mail">
-						<span class="cd-error-message">Error message here!</span>
-					</p>
-
-					<p class="fieldset">
-						<input class="full-width has-padding" type="button" value="Reset password" ng-click="forgot_password()">
-					</p>
-				</form>
-
-				<p class="cd-form-bottom-message"><a href="#0">Back to log-in</a></p>
-			</div> <!-- cd-reset-password -->
-			<a href="#0" class="cd-close-form">Close</a>
-		</div> <!-- cd-user-modal-container -->
-	</div>
+            <p class="fieldset">
+              <input class="full-width has-padding" type="button" value="Create account" ng-click="register('<?php echo @$sponserUsername; ?>')">
+            </p>
+          </form>
+          <!-- <a href="#0" class="cd-close-form">Close</a> -->
+        </div>
+        <!-- cd-signup -->
+        <div id="cd-reset-password">
+          <!-- reset password form -->
+          <p class="cd-form-message">Lost your password? Please enter your email address. You will receive a link to create a new password.</p>
+          <form class="cd-form">
+            <p class="fieldset">
+              <label class="image-replace cd-email" for="reset-email">E-mail</label>
+              <input class="full-width has-padding has-border" id="reset-email" type="text" ng-model="forgot_email" placeholder="E-mail">
+              <span class="cd-error-message">Error message here!</span> </p>
+            <p class="fieldset">
+              <input class="full-width has-padding" type="button" value="Reset password" ng-click="forgot_password()">
+            </p>
+          </form>
+          <p class="cd-form-bottom-message"><a href="#0">Back to log-in</a></p>
+        </div>
+        <!-- cd-reset-password -->
+        <a href="#0" class="cd-close-form">Close</a> </div>
+      <!-- cd-user-modal-container -->
     </div>
   </div>
-  <div class="clear"></div>
+</div>
+<div class="clear"></div>
