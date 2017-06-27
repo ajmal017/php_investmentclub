@@ -19,7 +19,7 @@
 </div>
 <div class="copy-right-sec">
   <div class="container">
-    <p>&copy; Copyright 2017 Lorem ipsum </p>
+    <p>&copy; Copyright 2017 Shreetechnosys Pvt. Ltd. </p>
     <div class="socail_icon-sec">
     	<ul class="reset">
         	<li><a href="#" class="fb"></a></li>

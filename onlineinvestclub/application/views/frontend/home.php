@@ -2,25 +2,8 @@
 
 <div id="wrapper">
   <?php $this->view('frontend/includes/header'); ?>
-  <?php /*?><?php $this->view('frontend/banner'); ?><?php */?>
-  <div class="example-animation">
-    <div data-lazy-background="<?= base_url(); ?>assets/frontend/images/bnr-1.jpg">
-      <h3 data-pos="['27%', '110%', '27%', '5%']" data-duration="700" data-effect="move"> Well Come to my web site</h3>
-      <div data-pos="['46%', '-40%', '46%', '5%']" data-duration="700" data-effect="move" class="bnr-btn">Lorem Ipsum is simply dummy text  </div>
-    </div>
-     <div data-lazy-background="<?= base_url(); ?>assets/frontend/images/bnr-2.jpg">
-       <h3 data-pos="['27%', '110%', '27%', '5%']" data-duration="700" data-effect="move"> Well Come to my web site</h3>
-      <div data-pos="['46%', '-40%', '46%', '5%']" data-duration="700" data-effect="move" class="bnr-btn">Lorem Ipsum is simply dummy text  </div>
-    </div>
-  <div data-lazy-background="<?= base_url(); ?>assets/frontend/images/bnr-3.jpg">
-      <h3 data-pos="['27%', '110%', '27%', '5%']" data-duration="700" data-effect="move"> Well Come to my web site</h3>
-      <div data-pos="['46%', '-40%', '46%', '5%']" data-duration="700" data-effect="move" class="bnr-btn">Lorem Ipsum is simply dummy text  </div>
-    </div>
-    <div data-lazy-background="<?= base_url(); ?>assets/frontend/images/bnr-4.jpg">
-      <h3 data-pos="['27%', '110%', '27%', '5%']" data-duration="700" data-effect="move"> Well Come to my web site</h3>
-      <div data-pos="['46%', '-40%', '46%', '5%']" data-duration="700" data-effect="move" class="bnr-btn">Lorem Ipsum is simply dummy text  </div>
-    </div>
-     </div>
+  <?php $this->view('frontend/banner'); ?>
+  
   <div class="clear"></div>
   <div class="content">
     <?php /*?>
@@ -67,7 +50,7 @@
               <?= $row['package_name']; ?>
             </h4>
             <img src="<?= base_url(); ?>uploads/packages/<?= $row['package_image']; ?>" style="width:138px;height:127px;"> <span>
-            <?= $row['package_amount']; ?>
+            <?= $row['package_desc']; ?>
             </span> <a href="#" class="hvr-rectangle-out">Read More</a> </li>
           <?php } ?>
         </ul>
@@ -82,19 +65,19 @@
         <form action="" method="get">
           <ul class="reset">
             <li>
-              <input name="User name" type="text" value="" placeholder="User Name" class="name">
+              <input type="text" value="" placeholder="Name" class="name" ng-model="contact_name"/>
             </li>
             <li>
-              <input name="email" type="text" value="" placeholder="Email" class="name" >
+              <input type="text" value="" placeholder="Email" class="name" ng-model="contact_email"/>
             </li>
             <li>
-              <input name="number" type="text" value="" placeholder="Number" class="name">
+              <input type="text" value="" placeholder="Mobile" class="name" ng-model="contact_mobile"/>
             </li>
             <li>
-              <textarea name="inquiry" cols="" rows="" placeholder="Inquiry" class="textarea"></textarea>
+              <textarea cols="" rows="" placeholder="Enquiry" class="textarea" ng-model="contact_enquiry"></textarea>
             </li>
             <li>
-              <input name="Submit" type="submit" class="btn">
+              <input name="Submit" type="button" class="btn" ng-click="save_contact()" value="Submit"/>
             </li>
           </ul>
           <div class="clear"></div>
@@ -105,9 +88,4 @@
   <?php $this->view('frontend/includes/footer'); ?>
 </div>
 </div>
-<script>
-$(document).ready(function(){
-  $('.bxslider').bxSlider();
-});
-</script>
 </body></html>
