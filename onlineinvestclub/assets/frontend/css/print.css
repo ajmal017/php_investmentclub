@@ -56,11 +56,10 @@ a{font-family: 'OpenSansLight';}
 .admin-sec li a:hover{background:#ea212d; color:#FFFFFF}
 
 .header{margin:-4px auto 0; background:url(../images/bg.png) repeat; width:100%;}
-.container{width:98%; margin:0 auto !important; padding:0!important;}
+.container{width:98% !important; margin:0 auto !important; padding:0!important;}
 
 .header{margin:-4px auto 0; background:url(../images/bg.png) repeat; width:100%;}
 .logo-section{float:left; margin-top:8px;}
-.container{width:98% !important; margin:0 auto !important;}
 
 .main-nav ul{margin-bottom:0;}
 .main-nav li{margin-left:0 !important;}
@@ -474,3 +473,10 @@ ul.password li label{font-size: 16px; width: 43%;}
 .bnr-btn{background:url(../images/caption-bg.png) repeat; padding:20px 15px; color:#FFFFFF; font-weight:normal; font-size:20px; font-family: 'OpenSansLight'; }
 .devrama-slider, .primary-img, .projector{width:100% !important;}
 .navigation{display:none;}
+
+.terms_and_conditions-sec h2{margin-top:0; font-size:25px;}
+.terms_and_conditions-sec h3{font-size:20px;}
+
+.terms_and_conditions-sec p{font-size: 14px;line-height: 24px; margin-bottom:15px;}
+.terms_and_conditions-sec ul, ol{margin-left:35px;}
+.terms_and_conditions-sec ul li, ol li{margin-bottom:5px;}

@@ -26,3 +26,4 @@ class Terms_and_conditions extends CI_Controller {
 		$this->load->view('frontend/terms_and_conditions',$data);
 	}
 }
+?>

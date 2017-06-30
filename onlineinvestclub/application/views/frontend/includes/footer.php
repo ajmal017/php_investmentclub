@@ -22,7 +22,7 @@ if (@$dashboard_footer == false) { ?>
 <?php } ?>
 <div class="copy-right-sec">
   <div class="container">
-    <p>&copy; Copyright 2017 Shreetechnosys Pvt. Ltd. </p>
+    <p>&copy; Copyright 2017 Shreetechnosys Pvt. Ltd. <a href="terms_and_conditions.php">Terms and Conditions</a></p>
     <div class="socail_icon-sec">
     	<ul class="reset">
         	<li><a href="#" class="fb"></a></li>
