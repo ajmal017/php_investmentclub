@@ -20,12 +20,18 @@ class News extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('frontend/news');
+		$session_data = $this->session->userdata;
+		$data = array();
+		$data['session_data'] = $session_data;
+		$this->load->view('frontend/news',$data);
 	}
 
 	public function view($news_id)
 	{
-		$data = array('news_id'=>$news_id);
+		$session_data = $this->session->userdata;
+		$data = array();
+		$data['session_data'] = $session_data;
+		$data['news_id']=$news_id;
 		$this->load->view('frontend/news_page',$data);
 	}
 }

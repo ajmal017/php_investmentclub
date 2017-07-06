@@ -20,7 +20,10 @@ class Profile extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('frontend/profile');
+		$session_data = $this->session->userdata;
+		$data = array();
+		$data['session_data'] = $session_data;
+		$this->load->view('frontend/profile',$data);
 	}
 
 	public function personal_details()

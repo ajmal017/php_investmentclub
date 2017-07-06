@@ -157,7 +157,7 @@ angular.module("MyApp", []).controller("MyController", function($scope,$http) {
         </table>
       </div>
     </div>
- <?php $this->view('frontend/includes/footer'); ?>
+ <?php $this->view('frontend/includes/footer',array('dashboard_footer'=>true)); ?>
 </body>
 </html>
 

@@ -23,9 +23,28 @@
                 </div>
                 <div class="col-md-12">
                         <div class="form-group">
+                            <?php $packages = getPackages(); ?>
+
+                            <label class="control-label" for="exampleInputText1">Packages</label>
+                            <div class="controls">
+                                <select class="form-control" ng-model="packages" multiple="multiple">
+                                    <?php foreach($packages as $row){ ?>
+                                    <option value="<?= $row['package_id']; ?>"><?= $row['package_name']; ?></option>    
+                                    <?php } ?>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
                             <label class="control-label" for="exampleInputText1">Notification </label>
                             <div class="controls">
                                 <textarea id="wysiwyg" class="form-control" placeholder="Enter notification ..." rows="10"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="exampleInputText1">Notification Email</label>
+                            <div class="controls">
+                                <textarea id="wysiwyg1" class="form-control" placeholder="Enter notification ..." rows="10"></textarea>
                             </div>
                         </div>
                         <div class="form-group">
@@ -82,6 +101,9 @@
 <script>
     jQuery(function ($) {
         $('#wysiwyg').wysihtml5({
+            stylesheets: ['assets/plugins/bootstrap-wysihtml5/css/wysiwyg-color.css']
+        });
+        $('#wysiwyg1').wysihtml5({
             stylesheets: ['assets/plugins/bootstrap-wysihtml5/css/wysiwyg-color.css']
         });
         $('.wysihtml5-toolbar .btn-default').removeClass('btn-default').addClass('btn-white');

@@ -20,8 +20,8 @@
 <script src="<?php echo base_url(); ?>assets/js/libs/functions.js"></script>
 <script src="<?= base_url(); ?>assets/admin/assets/plugins/bootbox/bootbox.js"></script>
 <script src="<?php echo base_url(); ?>assets/frontend/js/libs/header.js"></script>
-<script src="http://localhost/projects/php_investmentclub/onlineinvestclub/assets/frontend/js/jquery-1.11.0.min.js"></script>
-<script type="text/javascript" src="http://devrama.com/static/devrama-slider/jquery.devrama.slider-0.9.4.js"></script>
+
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/frontend/js/jquery.devrama.slider-0.9.4.js"></script>
 <script type="text/javascript">
         window._site_url = '<?php echo site_url(); ?>/';
 </script>

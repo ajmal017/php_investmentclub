@@ -13,10 +13,10 @@
       <div>
         <h2>Bank Details</h2>
         <ul class="reset">
-          <li>Bank Name : <span>SBI</span></li>
-          <li>Branch Name : <span>Vasai</span></li>
-          <li>Account Number : <span>0987654321098</span></li>
-          <li>IFSC : <span>7890</span></li>
+          <li>Bank Name : <span>Kotak Bank</span></li>
+          <li>Branch Name : <span>Manickpur Branch</span></li>
+          <li>Account Number : <span>2012208108</span></li>
+          <li>IFSC : <span>KKBK0000659</span></li>
         </ul>
       </div>
     </div>

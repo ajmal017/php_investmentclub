@@ -1,3 +1,5 @@
+<?php 
+if (@$dashboard_footer == false) { ?>
 <div class="footer">
   <div class="container">
     <!--<div class="flogo">
@@ -17,6 +19,7 @@
     </div>
   </div>
 </div>
+<?php } ?>
 <div class="copy-right-sec">
   <div class="container">
     <p>&copy; Copyright 2017 Shreetechnosys Pvt. Ltd. </p>

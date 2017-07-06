@@ -7,7 +7,6 @@
         <th>Package Name</th>
         <th>Package Image</th>
         <th>Amount</th>
-        <th>Quantity</th>
         <th>Purchase Date</th>
         <th>Status</th>
         <th>View Course Content</th>
@@ -19,9 +18,8 @@
       <?php //dump($upl); ?>
       <tr>
         <td><?= $upl['package_name']; ?></td>
-        <td><img src="<?= imagePath('packages/'.$upl['package_image']); ?>" style="width:100px;height:100px;"/></td>
+        <td><img src="<?= imagePath($upl['package_image'],'packages',100,100); ?>" /></td>
         <td><?= $upl['package_amount']; ?></td>
-        <td><?= $upl['quantity']; ?></td>
         <td><?= $upl['purchase_date']; ?></td>
         <td><?= $upl['user_package_status']; ?></td>
         <td>
@@ -34,6 +32,6 @@
   </table>     
 </div>
    <div class="clear"></div> 
-<?php $this->view('frontend/includes/footer'); ?>
+<?php $this->view('frontend/includes/footer',array('dashboard_footer'=>true)); ?>
 </body>
 </html>

@@ -5,12 +5,19 @@ angular.module("MyApp", []).controller("MyController", function($scope,$http) {
         {
             if(data.status == "success")
             {
-                alert_box("Successfully Saved")
+                alert_box("Successfully Saved");
+                window.location.reload();
             }
         }
         notification = $("#wysiwyg").val();
+        notification_email = $("#wysiwyg1").val();
+        
+        packages = $scope.packages || '';
+        packages = packages.toString();
         request_data = {};
         request_data['notification'] = notification;
+        request_data['packages'] = packages;
+        request_data['notification_email'] = notification_email;
         SSK.site_call("AJAX",window._site_url+"admin_notifications/add_notification",request_data, save_notification_success_cb);
     }
 

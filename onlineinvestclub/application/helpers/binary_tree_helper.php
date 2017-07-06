@@ -75,25 +75,4 @@ for ($i =1 ;$i < 10 ;$i++)
 	$id = mysqli_insert_id($conn);
 	update($id,6,'left');
 }*/
-
-
-function direct_comm()
-{
-	global $CI;
-	$CI->load->database();
-	$conn = mysqli_connect($CI->db->hostname, $CI->db->username, $CI->db->password,$CI->db->database);
-	$select_query = 'SELECT * FROM users WHERE status=\'active\'';
-	$result = mysqli_query($conn,$select_query);
-	while($row = mysqli_fetch_array($result))
-	{
-		$select_query1 = "select sum(total) as TOTAL_COMM from (SELECT up.userid,((sum(up.quantity)*pm.package_amount)*0.06) as total FROM  user_packages up  LEFT JOIN package_master pm ON up.package_id=pm.package_id WHERE up.status='accepted' AND up.userid='".$row['sponsorid']."' group by up.package_id) as a group by userid";
-		$result1 = mysqli_query($conn,$select_query1);
-		while($row1 = mysqli_fetch_array($result1))
-		{
-			$update = "INSERT INTO direct_comm(userid,direct_comm_from_userid,amount,date,status) VALUES(".$row['sponsorid'].",".$row['userid'].",".$row1['TOTAL_COMM'].",NOW(),'billed')";
-			mysqli_query($conn,$update);
-		}
-	}
-}
-//direct_comm();
 ?>

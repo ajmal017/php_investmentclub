@@ -20,8 +20,13 @@ class Register extends CI_Controller {
 	 */
 	public function index($sponserUsername='')
 	{
+		$session_data = $this->session->userdata;
+		$data = array();
+		$data['session_data'] = $session_data;
+
 		$placement = $this->input->get('placement');
-		$data = array('sponserUsername'=>$sponserUsername,'placement'=>$placement);
+		$data['sponserUsername']=$sponserUsername;
+		$data['placement']=$placement;
 		$this->load->view('frontend/register',$data);
 	}
 	

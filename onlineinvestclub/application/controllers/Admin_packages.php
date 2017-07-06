@@ -12,14 +12,22 @@ class Admin_packages extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('admin/includes/header');
-		$this->load->view('admin/packages');
+		$session_data = $this->session->userdata;
+		$data = array();
+		$data['session_data'] = $session_data;
+
+		$this->load->view('admin/includes/header',$data);
+		$this->load->view('admin/packages',$data);
 	}
 
 	public function edit($package_id = 0)
 	{
-		$this->load->view('admin/includes/header');
-		$data = array('package_id'=>$package_id);
+		$session_data = $this->session->userdata;
+		$data = array();
+		$data['session_data'] = $session_data;
+		$data['package_id']=$package_id;
+
+		$this->load->view('admin/includes/header',$data);
 		$this->load->view('admin/edit_package',$data);
 	}
 

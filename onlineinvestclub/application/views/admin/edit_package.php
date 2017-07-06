@@ -58,7 +58,7 @@ $package_data=getPackages($package_id);
                         </div>
                         <div class="form-group">
                             <label class="control-label" for="exampleInputText1">Package Image</label>
-                            <span><img src="<?php echo imagePath('/packages/'.$package_data['package_image'],100,100); ?>" style="width:100px;height:100px;"></span>
+                            <span><img src="<?php echo imagePath($package_data['package_image'],'packages',100,100); ?>" style="width:100px;height:100px;"></span>
                             <div class="controls">
                                 <input type="hidden" name="package_image" id="package_image" value="<?php echo $package_data['package_image']; ?>"/>
                                 <input type="file" class="form-control" name="files" id="files" />

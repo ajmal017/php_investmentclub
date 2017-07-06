@@ -1,3 +1,4 @@
+<script src="<?php echo base_url(); ?>assets/admin/js/libs/home.js"></script>
 <div class="page-subheading page-subheading-md">
     <ol class="breadcrumb">
         <li class="active"><a href="javascript:void(0);">Dashboard</a></li>
@@ -8,7 +9,7 @@
         <div class="col-sm-6 col-lg-4">
             <div class="panel">
                 <div class="panel-body">
-                    <button button="button" class="btn btn-primary clear_cache">Clear Cache</button>
+                    <button button="button" class="btn btn-primary">Clear Cache</button>
                 </div>
             </div>
         </div>

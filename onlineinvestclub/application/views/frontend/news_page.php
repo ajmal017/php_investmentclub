@@ -14,4 +14,4 @@ $date_create = date_create($news['created_date']);
     </div>
   </div>
 </div>
-<?php $this->view('frontend/includes/footer'); ?>
+<?php $this->view('frontend/includes/footer',array('dashboard_footer'=>true)); ?>

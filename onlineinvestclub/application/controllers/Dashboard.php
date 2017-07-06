@@ -20,6 +20,9 @@ class Dashboard extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('frontend/dashboard');
+		$session_data = $this->session->userdata;
+		$data = array();
+		$data['session_data'] = $session_data;
+		$this->load->view('frontend/dashboard',$data);
 	}
 }

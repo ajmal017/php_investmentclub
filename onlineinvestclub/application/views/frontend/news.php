@@ -22,4 +22,4 @@
       <?php } ?>
     </div>
   </div>
-<?php $this->view('frontend/includes/footer'); ?>
+<?php $this->view('frontend/includes/footer',array('dashboard_footer'=>true)); ?>

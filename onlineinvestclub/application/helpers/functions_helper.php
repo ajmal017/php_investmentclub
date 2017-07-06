@@ -23,7 +23,7 @@ function send_email1($data = array()) {
 	}
 
 	
-$config['charset'] = 'iso-8859-1';
+	$config['charset'] = 'iso-8859-1';
     $config['wordwrap'] = TRUE;
     $config['mailtype'] = 'html';
 	$config['useragent']           = "CodeIgniter";
@@ -89,17 +89,24 @@ function responseObject($response = array(),$status_code=200)
 	return json_encode($response);
 }
 
-function imagePath($path,$width = 70,$height=70)
+function imagePath($path,$image_type,$width = 70,$height=70)
 {
-	//return base_url('timthumb.php?src='.base_url('uploads/'.$path).'&w='.$width.'&h='.$height);
-	return base_url('uploads/'.$path);
+	if($image_type == 'profile')
+	{
+		$path = 'uploads/profile/'.$path;
+	}else if($image_type == 'packages')
+	{
+		$path = 'uploads/packages/'.$path;
+	}
+	return base_url('timthumb.php?src='.base_url($path).'&w='.$width.'&h='.$height);
+	//return base_url('uploads/'.$path);
 }
 
-function getPackages($package_id=0)
+function getPackages($package_id=0,$filterArray = array(),$wherein="")
 {
 	global $CI;
 	$CI->load->model('Common_model');
-	$result = $CI->Common_model->getPackages($package_id);
+	$result = $CI->Common_model->getPackages($package_id,$filterArray,$wherein);
 	return $result;	
 }
 
@@ -151,11 +158,11 @@ function getUserInfo($userid=0,$username='')
 	return $result;	
 }
 
-function getNotifications($notification_id = 0)
+function getNotifications($notification_id = 0,$packages = array())
 {
 	global $CI;
 	$CI->load->model('Common_model');
-	$result = $CI->Common_model->getNotifications($notification_id);
+	$result = $CI->Common_model->getNotifications($notification_id,$packages);
 	return $result;	
 }
 
@@ -164,6 +171,38 @@ function getNews($news_id = 0)
 	global $CI;
 	$CI->load->model('Common_model');
 	$result = $CI->Common_model->getNews($news_id);
+	return $result;	
+}
+
+function getBonus($userid = 0,$weekly = False)
+{
+	global $CI;
+	$CI->load->model('Common_model');
+	$result = $CI->Common_model->getBonus($userid,$weekly);
+	return $result;	
+}
+
+function totalPackageAmount($userid=0)
+{
+	global $CI;
+	$CI->load->model('Common_model');
+	$result = $CI->Common_model->totalPackageAmount($userid);
+	return $result;	
+}
+
+function getUserEmailIdUsingPackages($package_ids = array())
+{
+	global $CI;
+	$CI->load->model('Common_model');
+	$result = $CI->Common_model->getUserEmailIdUsingPackages($package_ids);
+	return $result;	
+}
+
+function user_payment_details($userids=array())
+{
+	global $CI;
+	$CI->load->model('Common_model');
+	$result = $CI->Common_model->user_payment_details($userids);
 	return $result;	
 }
 //$CI->output->enable_profiler(TRUE);

@@ -18,8 +18,8 @@ define ('VERSION', '1.35');					// version number (to force a cache refresh)
 define ('DIRECTORY_CACHE', './cache');		// cache directory
 define ('MAX_WIDTH', 1500);					// maximum image width
 define ('MAX_HEIGHT', 1500);				// maximum image height
-define ('MEMORY_LIMIT', '30M');				// set PHP memory limit
-define ('MAX_FILE_SIZE', 1500000);			// file size limit to prevent possible DOS attacks (roughly 1.5 megabytes)
+define ('MEMORY_LIMIT', '300M');				// set PHP memory limit
+define ('MAX_FILE_SIZE', 15000000);			// file size limit to prevent possible DOS attacks (roughly 1.5 megabytes)
 define ('CURL_TIMEOUT', 10);				// timeout duration. Tweak as you require (lower = better)
 
 // external domains that are allowed to be displayed on your website

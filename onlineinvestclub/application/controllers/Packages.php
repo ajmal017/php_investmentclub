@@ -28,7 +28,10 @@ class Packages extends CI_Controller {
 
 	public function add_packages()
 	{
-		$this->load->view('frontend/add_packages');
+		$session_data = $this->session->userdata;
+		$data = array();
+		$data['session_data'] = $session_data;
+		$this->load->view('frontend/add_packages',$data);
 	}
 
 	public function content()
@@ -48,11 +51,11 @@ class Packages extends CI_Controller {
 			$userid = $session_data['logged_in']['userid'];
 		
 			$package_id = $this->input->post('package_id');
-			$quantity = $this->input->post('quantity');
+			$quantity = 1;
 
 			$this->load->library('form_validation');
 			$this->form_validation->set_rules('package_id', 'Package', 'required');
-			$this->form_validation->set_rules('quantity', 'Quantity', 'required');
+			//$this->form_validation->set_rules('quantity', 'Quantity', 'required');
 			$this->form_validation->run();
 			$error_array = $this->form_validation->error_array();
 

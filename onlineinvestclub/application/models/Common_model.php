@@ -7,7 +7,7 @@ class Common_model extends CI_Model
         parent::__construct();	
     }
     
-    function getPackages($package_id,$filterArray = array())
+    function getPackages($package_id,$filterArray = array(),$wherein="")
     {
     	$this->db->trans_start();
     	$this->db->select('*');
@@ -23,6 +23,12 @@ class Common_model extends CI_Model
 		{
 			$this->db->where('package_id',$package_id);	
 		}
+
+		if($wherein != "")
+		{
+			$this->db->where($wherein);	
+		}
+		
 		$query = $this->db->get();
 		
 		$category_data = array();
@@ -241,10 +247,19 @@ class Common_model extends CI_Model
 		return $data;
     }
 
-    function getNotifications($notification_id = 0)
+    function getNotifications($notification_id = 0,$packages = array())
     {
     	$this->db->trans_start();
     	$this->db->select('*');
+		if($notification_id > 0)
+		{
+			$this->db->where('notification_id',$notification_id);
+		}
+		//dump($packages);
+		foreach($packages as $row)
+		{
+			$this->db->like('packages',$row, 'both');
+		}
 		$query = $this->db->get('notifications');
 		
 		$main_data = array();
@@ -325,4 +340,91 @@ class Common_model extends CI_Model
     	$this->db->trans_complete();
 		return $data;
     }
+
+    function getBonus($userid,$weekly)
+    {
+    	$this->db->trans_start();
+    	$this->db->select('sum(payout_amount) as amt');
+    	$this->db->where('userid',$userid);
+    	if($weekly == true)
+    	{
+    		$date = strtotime(date("Y-m-d"));
+	    	$week_start = date("Y-m-d", strtotime('monday last week',$date));
+			$week_end =  date("Y-m-d", strtotime('sunday last week',$date));
+    		$this->db->where('created_date >=',$week_start);
+    		$this->db->where("created_date < DATE_ADD('".$week_end."', INTERVAL 1 DAY) ");
+    	}
+		$query = $this->db->get('payout');
+		
+		$amt = 0;
+		foreach($query->result() as $row)
+		{
+			$amt = $row->amt;
+			
+		}
+    	$this->db->trans_complete();
+		return $amt;
+    }
+
+    function totalPackageAmount($userid)
+    {
+    	$this->db->trans_start();
+    	$this->db->select('sum(user_packages.quantity*package_master.package_amount) as total_amount');
+    	if($userid > 0)
+    	{
+    		$this->db->where('user_packages.userid',$userid);
+    	}
+    	$this->db->where('user_packages.status','accepted');
+    	
+		$this->db->join('package_master', 'package_master.package_id = user_packages.package_id','left');
+		$query = $this->db->get('user_packages');
+		
+		$amt = 0;
+		foreach($query->result() as $row)
+		{
+			$amt = $row->total_amount;
+			
+		}
+    	$this->db->trans_complete();
+		return $amt;
+    }
+
+    function getUserEmailIdUsingPackages($package_ids)
+    {
+    	$this->db->trans_start();
+    	$this->db->select('users.email');
+    	if(count($package_ids) > 0)
+    	{
+    		$this->db->where_in('user_packages.package_id',$package_ids);
+    	}
+    	
+		$this->db->join('user_packages', 'user_packages.userid = users.userid','left');
+		$this->db->group_by('users.email');
+		$query = $this->db->get('users');
+		
+		$data = array();
+		foreach($query->result() as $row)
+		{
+			$data[] = $row->email;
+			
+		}
+    	$this->db->trans_complete();
+		return $data;
+    }
+
+    function user_payment_details($userids)
+    {
+    	$this->db->trans_start();
+    	$sql_query = "SELECT users.userid,users.username,COALESCE(total_payout.total_amount,0) as Total_Amount,COALESCE(paid_payout.paid_amount,0) as Paid_Amount,COALESCE((total_payout.total_amount-paid_payout.paid_amount),0) as Remaining_Amount FROM users LEFT JOIN (SELECT payout.userid,sum(COALESCE(payout.payout_amount,0))*1.0 as total_amount FROM payout WHERE payout.status='generated' group by payout.userid) as total_payout ON users.userid=total_payout.userid LEFT JOIN (SELECT payout.userid,sum(COALESCE(payout.payout_amount,0))*1.0 as paid_amount FROM payout WHERE payout.status='paid' group by payout.userid) as paid_payout ON users.userid=paid_payout.userid  ORDER BY Total_Amount DESC";
+    	$query = $this->db->query($sql_query);
+		
+		$data = array();
+		foreach($query->result() as $row)
+		{
+			$data[] = (array)$row;		
+		}
+    	$this->db->trans_complete();
+		return $data;
+    }
+    
 }

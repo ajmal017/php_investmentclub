@@ -135,7 +135,7 @@
       <div class="clear"></div>
     </div>
     <div class="clear"></div>
-    <?php $this->view('frontend/includes/footer'); ?>
+    <?php $this->view('frontend/includes/footer',array('dashboard_footer'=>true)); ?>
   </div>
 <?php $this->view('frontend/profile_modal'); ?>  
 </div>

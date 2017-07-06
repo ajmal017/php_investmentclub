@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Online Invest</title>
+<title>Online Trading Institute</title>
 <link href="<?= base_url(); ?>assets/frontend/css/print.css" rel="stylesheet" type="text/css" />
 <link href="<?= base_url(); ?>assets/frontend/css/global.css" rel="stylesheet" type="text/css" />
 
@@ -24,7 +24,11 @@
   <div class="nav-sec">
     <?php $controller_name = $this->uri->segment(1); ?>
     <ul>
-      <li><a href="<?= site_url(); ?>/dashboard"><span><img src="<?= base_url(); ?>assets/frontend/images/person-img.png" /></span> ABC</a>
+      <?php $username = $session_data['logged_in']['username']; 
+      $user_info = getUserInfo(0,$username);
+      $profile_image = $user_info['profile_image'] != '' ? $user_info['profile_image'] : 'person.png';
+      ?>
+      <li><a href="<?= site_url(); ?>/dashboard"><span><img src="<?= imagePath($profile_image,'profile',57,54); ?>" /></span><?= $username; ?></a>
         <div class="clear"></div>
       </li>
       <li><a href="<?= site_url(); ?>/dashboard" <?php if(isset($controller_name) && $controller_name == 'dashboard'){ echo 'class="active"'; } ?>><span><img src="<?= base_url(); ?>assets/frontend/images/dashbord.png" /></span>Dashbord</a></li>
@@ -38,7 +42,13 @@
   <div id="content">
     <div class="content">
     <div class="logout-sec">
-     <a href="<?= site_url(); ?>/logout" class="log-out">Log Out</a>
+    <a href="<?= site_url(); ?>/logout" class="log-out">Log Out</a>
+    <?php $role_id = $session_data['logged_in']['role_id']; 
+    if($role_id == 1)
+    {
+    ?>
+    <a href="<?= site_url(); ?>/admin_home" class="log-out">Admin</a>
+    <?php } ?>
      <div class="clear"></div>
      </div>
       <div class="bnr"> 
@@ -50,7 +60,15 @@
         </div>
       </div>
     </div>
-    <?php $notification_list = getNotifications(); ?>
+    <?php 
+    $packages = getUserPackages($session_data['logged_in']['userid']);
+    $pack = array();
+    foreach($packages as $row)
+    {
+      $pack[] = $row['package_id'];
+    }
+    ?>
+    <?php $notification_list = getNotifications(0,$pack); ?>
     <?php if(count($notification_list) > 0){ ?>
       <marquee direction="left" behavior="right" class="marquee">
           <span>

@@ -6,7 +6,7 @@
         <!-- Meta, title, CSS, favicons, etc. -->
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Online Investment Club</title>
+        <title>Online Trading Institute</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
         <!--<link rel="shortcut icon" href="/favicon.ico">-->
@@ -40,7 +40,7 @@
                             I
                         </span>
                         <span class="sc-hidden">
-                            <span class="semi-bold">OnlineInvestmentclub</span>
+                            <span class="semi-bold">Online Trading Institute</span>
                             
                         </span>
                     </a>
@@ -160,9 +160,10 @@
                         </ul>
                     </li>-->
                     <li class="dropdown">
+                        <?php $username = $session_data['logged_in']['username']; ?>
                         <a data-toggle="dropdown" class="dropdown-toggle navbar-user" href="javascript:;">
                             <img class="img-circle" src="<?php echo base_url(); ?>/assets/admin/demo/images/profile.jpg">
-                            <span class="hidden-xs">Amit Jain</span>
+                            <span class="hidden-xs"><?= $username; ?></span>
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu pull-right-xs">
@@ -184,7 +185,7 @@
                     <img class="img-circle profile-image" src="<?php echo base_url(); ?>/assets/admin/demo/images/profile.jpg">
 
                     <div class="profile-body">
-                        <h4>Marlon Brice</h4>
+                        <h4><?= $username; ?></h4>
 
                         <!--<div class="sidebar-user-links">
                             <a class="btn btn-link btn-xs" href="pages-profile.html" data-placement="bottom" data-toggle="tooltip" data-original-title="Profile"><i class="fa fa-user"></i></a>
@@ -226,20 +227,30 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="<?= site_url(); ?>/admin_notifications" title="Frontend Settings">
+                                    <a href="<?= site_url(); ?>/admin_notifications" title="Notification Master">
                                         <i class="fa fa-fw fa-caret-right"></i> Notification Master
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="<?= site_url(); ?>/admin_news" title="News Master">
+                                        <i class="fa fa-fw fa-caret-right"></i> News Master
                                     </a>
                                 </li>
                             </ul>
                         </li>
                         <li class="nav-dropdown">
                             <a href="#" title="Users">
-                                <i class="fa fa-lg fa-fw fa-th-list"></i> User Packages
+                                <i class="fa fa-lg fa-fw fa-th-list"></i> Users
                             </a>
                             <ul class="nav-sub">
                                 <li>
-                                    <a href="<?= site_url(); ?>/admin_user_packages" title="User Packages">
+                                    <a href="<?= site_url(); ?>/admin_user_packages" title="User Packages Request">
                                         <i class="fa fa-fw fa-caret-right"></i> User Packages Request
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="<?= site_url(); ?>/admin_user_payment_details" title="User Payment Details">
+                                        <i class="fa fa-fw fa-caret-right"></i> User Payment Details
                                     </a>
                                 </li>
                             </ul>
