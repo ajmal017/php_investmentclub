@@ -59,16 +59,19 @@ a{font-family: 'OpenSansLight';}
 .container{width:98% !important; margin:0 auto !important; padding:0!important;}
 
 .header{margin:-4px auto 0; background:url(../images/bg.png) repeat; width:100%;}
-.logo-section{float:left; margin-top:8px;}
+.logo-section{float:left; margin-top:8px; width:165px; margin-bottom: 11px;}
+.logo-section img{width:100%;}
+.logo-section a{display:block;}
+
 
 .main-nav ul{margin-bottom:0;}
 .main-nav li{margin-left:0 !important;}
-.main-nav a{ margin-top: 30px; border-top:0 !important;}
+.main-nav a{ margin-top: 50px; border-top:0 !important;}
 
 #nav {float:left; margin-left: 20px;}
-.nav ul{margin:34px 0px 0 0 !important; padding:0px; list-style:none;}
+.nav ul{margin:48px 0px 0 0 !important; padding:0px; list-style:none;}
 .nav li{display:inline-block; padding-right:7px}
-.nav li a{font-size:16px; color:#fff; padding: 2px 13px; line-height:41px; display:block; text-transform:uppercase; font-family: 'OpenSansLight'; font-weight:bold;}
+.nav li a{font-size:16px; color:#fff; padding: 2px 13px; line-height:46px; display:block; text-transform:uppercase; font-family: 'OpenSansLight'; font-weight:bold;}
 .nav li a:hover{background:#f86a61; color:#FFF;}
 .nav li .arrow{background:url(../images/arrow.png) no-repeat; background-position:right; padding:0 20px;}
 
@@ -316,7 +319,7 @@ box-shadow: 1px 3px 15px 6px rgba(209,207,209,1);background:#f9f8f8;}
 #content{margin-left:190px; float:left; width:85.9%;}
 .bnr img{width:100%;}
 .bnrcap{width: 100%; background:#fcc8c5; overflow:hidden; padding:7px 0; border:4px solid #ef4e44; margin-bottom:1px;}
-.logo{width: 148px; float: left;  margin-top: 5px;}
+.logo{width: 175px; float: left;}
 .page-name{float: right; width: 41%; margin-top: 20px;}
 .page-name h3{color: #083858;  margin: 0;padding-top: 81px; text-align: right; padding-right: 15px;}
 .logout-sec{background:#2e3e95;}
