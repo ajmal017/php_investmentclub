@@ -37,7 +37,11 @@ class Packages extends CI_Controller {
 	public function content()
 	{
 		$package_id = $this->input->get('package_id');
-		$data = array('package_id'=>$package_id);
+		$session_data = $this->session->userdata;
+		$data = array();
+		$data['session_data'] = $session_data;
+		$data['package_id'] = $package_id;
+		
 		$this->load->view('frontend/package_content',$data);
 	}
 

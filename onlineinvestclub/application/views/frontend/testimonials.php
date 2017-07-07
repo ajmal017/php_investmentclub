@@ -3,7 +3,7 @@
 <div id="wrapper">
   <?php $this->view('frontend/includes/header'); ?>
   <div class="example-animation">
-    <div data-lazy-background="<?= base_url(); ?>assets/frontend/images/inner-bnr.jpg">
+    <div data-lazy-background="<?= imagePath('assets/frontend/images/testimonial.jpg','',1286,193); ?>">
       <h3 data-pos="['27%', '110%', '27%', '40%']" data-duration="1500" data-effect="move">TESTIMONIALS</h3>
     </div>
   </div>
@@ -84,6 +84,25 @@
               <div class="clear"></div>
             </div>
           </div>
+
+          <div class="attorny-1">
+            <div class="img-sec lf"> <img src="<?= base_url(); ?>timthumb.php?src=<?= base_url(); ?>assets/frontend/images/msi/mulchand.JPG&w=280&h=260&q=99" /> </div>
+            <div class="info-sec">
+              <h3>Mulchand Barai</h3>
+              <p>If you want to become financial success in your life, you have to learn. Amit sir teach us short and simple intra-day techniques so I am able to earn now. If I can do it, you can also do it by joining online trading institute. Thank you sir - Mulchand Barai </br>(Commodity & Option Trader) </p>
+              <div class="clear"></div>
+            </div>
+          </div>
+          <div class="attorny-1">
+            <div class="img-sec lf"> <img src="<?= base_url(); ?>timthumb.php?src=<?= base_url(); ?>assets/frontend/images/msi/suprita.jpg&w=280&h=260&q=99" /> </div>
+            <div class="info-sec">
+              <h3>Suprita Parashare</h3>
+              <p>I know Mr Amit Jain (MBA in Finance) since last one & half year.  He runs online trading classes & other classes also.  He is Hardworking, Honest  & Sincere.  He believes in financial freedom.
+He believes in distributing his knowledge for financial growth of self as well as other person attached with him. I & my friends have invested money with him for growth of our fund. I am proud to say that we all are getting good returns from him in time to time & sometimes before time.  Money invested with him is safe.</p>
+              <div class="clear"></div>
+            </div>
+          </div>
+
           <div class="clear"></div>
         </div>
       </div>
