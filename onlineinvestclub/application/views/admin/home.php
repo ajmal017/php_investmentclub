@@ -9,7 +9,7 @@
         <div class="col-sm-6 col-lg-4">
             <div class="panel">
                 <div class="panel-body">
-                    <button button="button" class="btn btn-primary">Clear Cache</button>
+                    <button button="button" class="btn btn-primary" ng-click="clear_cache()">Clear Cache</button>
                 </div>
             </div>
         </div>

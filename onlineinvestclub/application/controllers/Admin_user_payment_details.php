@@ -6,7 +6,7 @@ class Admin_user_payment_details extends CI_Controller {
 	public function __construct() 
 	{
         parent::__construct();
-        $this->load->model('Admin_notifications_model');
+        $this->load->model('Admin_user_payment_details_model');
     }
 
 	public function index()
@@ -18,62 +18,48 @@ class Admin_user_payment_details extends CI_Controller {
 		$this->load->view('admin/user_payment_details',$data);
 	}
 
-	public function edit($notification_id=0)
+	public function view($view_userid = 0)
 	{
 		$session_data = $this->session->userdata;
 		$data = array();
 		$data['session_data'] = $session_data;
-		$data['notification_id']=$notification_id;
-		
+		$data['view_userid'] = $view_userid;
 		$this->load->view('admin/includes/header',$data);
-		$this->load->view('admin/edit_notification',$data);
+
+		$this->load->view('admin/user_payment_details_view',$data);
 	}
 
-	function add_notification(){
+    function get_user_payment_details(){
 		if($this->input->post())
 		{
 			$status = '';
 			$message = '';
-			$notification = $this->input->post('notification');
-			$packages = $this->input->post('packages');
-			$notification_email = $this->input->post('notification_email');
+			$userid = $this->input->post('userid');
 			
+
 			$this->load->library('form_validation');
-			$this->form_validation->set_rules('notification', 'Notification', 'required');
+			$this->form_validation->set_rules('userid', 'User ID', 'required');
+			
 			
 			$this->form_validation->run();
 	        $error_array = $this->form_validation->error_array();
 
 	        if(count($error_array) == 0 )
 	        {
-		        $this->Admin_notifications_model->add_notification($notification,$packages,$notification_email);	
-				
-				/*start email */
-				if($notification_email != '')
-				{
-					$pack = array();
-					if($packages != '')
-					{
-						$pack = explode(",",$packages);	
-					}
-					
-					$emails = getUserEmailIdUsingPackages($pack);
-					foreach($emails as $email)
-					{
-						$email_data = array();
-						$email_data['subject'] = 'Notification';
-						$email_data['html'] = $notification_email;
-						$email_data['to'] = $email;
-						//dump($email_data);
-						send_email($email_data);	
-					}
-										
-				}
-
-				/*end email*/
-				$status = 'success';
-			    $message = 'added successfully';	
-			    $status_code = 200;
+	        	$result = user_payment_details($userid);
+	        	//dump($result);
+	        	if(count($result) > 0)
+	        	{
+		        	$status = 'success';
+				    $message = $result;	
+				    $status_code = 200;		
+	        	}else
+	        	{
+		        	$status = 'error';
+				    $message = 'User ID not found';	
+				    $status_code = 501;	
+	        	}
+		        
 	        }else
 	        {
 	        	$status = 'error';
@@ -86,60 +72,35 @@ class Admin_user_payment_details extends CI_Controller {
 		}
     }
 
-    function edit_notification(){
+    function release_payment(){
 		if($this->input->post())
 		{
 			$status = '';
 			$message = '';
-			$notification = $this->input->post('notification');
-			$notification_id = $this->input->post('notification_id');
-			$notification_status = $this->input->post('notification_status');
+			$userid = $this->input->post('userid');
+			$release_amount = $this->input->post('release_amount');
+			$payment_desc = $this->input->post('payment_desc');
+						
 
 			$this->load->library('form_validation');
-			$this->form_validation->set_rules('notification', 'Notification', 'required');
-			$this->form_validation->set_rules('notification_id', 'Notification ID', 'required');
-			$this->form_validation->set_rules('notification_status', 'Notification Status', 'required');
+			$this->form_validation->set_rules('userid', 'User ID', 'required');
+			$this->form_validation->set_rules('release_amount', 'Release Amount', 'required|numeric|greater_than[0]');
+			
 			
 			$this->form_validation->run();
 	        $error_array = $this->form_validation->error_array();
-
-	        if(count($error_array) == 0 )
+	        
+	        $payment_data = user_payment_details($userid);
+	        if($release_amount > $payment_data['Remaining_Amount'])
 	        {
-		        $this->Admin_notifications_model->edit_notification($notification,$notification_status,$notification_id);	
-				$status = 'success';
-			    $message = 'updated successfully';	
-			    $status_code = 200;
-	        }else
-	        {
-	        	$status = 'error';
-	        	$message = $error_array;
-	        	$status_code = 501;
+	        	$error_array['release_amount'] = 'Release Amount is greater than Remaining Amount.';	
 	        }
-			
-	        $response = array('status'=>$status,'message'=>$message);
-			echo responseObject($response,$status_code);	
-		}
-    }
-
-    function delete_notification(){
-		if($this->input->post())
-		{
-			$status = '';
-			$message = '';
-			$notification_id = $this->input->post('notification_id');
-
-			$this->load->library('form_validation');
-			$this->form_validation->set_rules('notification_id', 'Notification ID', 'required');
-			
-			$this->form_validation->run();
-	        $error_array = $this->form_validation->error_array();
-
 	        if(count($error_array) == 0 )
 	        {
-		        $this->Admin_notifications_model->delete_notification($notification_id);	
-				$status = 'success';
-			    $message = 'Deleted successfully';	
-			    $status_code = 200;
+	        	$result = $this->Admin_user_payment_details_model->release_payment($userid,$release_amount,$payment_desc);
+	        	$status = 'success';
+				$message = 'Successfully Released Payment';
+				$status_code = 200;
 	        }else
 	        {
 	        	$status = 'error';

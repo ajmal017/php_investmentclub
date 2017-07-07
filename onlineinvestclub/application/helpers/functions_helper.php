@@ -198,11 +198,19 @@ function getUserEmailIdUsingPackages($package_ids = array())
 	return $result;	
 }
 
-function user_payment_details($userids=array())
+function user_payment_details($userid=0)
 {
 	global $CI;
 	$CI->load->model('Common_model');
-	$result = $CI->Common_model->user_payment_details($userids);
+	$result = $CI->Common_model->user_payment_details($userid);
+	return $result;	
+}
+
+function user_payment_details_view($userid=0)
+{
+	global $CI;
+	$CI->load->model('Common_model');
+	$result = $CI->Common_model->user_payment_details_view($userid);
 	return $result;	
 }
 //$CI->output->enable_profiler(TRUE);

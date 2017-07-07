@@ -346,6 +346,7 @@ class Common_model extends CI_Model
     	$this->db->trans_start();
     	$this->db->select('sum(payout_amount) as amt');
     	$this->db->where('userid',$userid);
+    	$this->db->where('status','generated');
     	if($weekly == true)
     	{
     		$date = strtotime(date("Y-m-d"));
@@ -412,11 +413,44 @@ class Common_model extends CI_Model
 		return $data;
     }
 
-    function user_payment_details($userids)
+    function user_payment_details($userid=0)
     {
     	$this->db->trans_start();
-    	$sql_query = "SELECT users.userid,users.username,COALESCE(total_payout.total_amount,0) as Total_Amount,COALESCE(paid_payout.paid_amount,0) as Paid_Amount,COALESCE((total_payout.total_amount-paid_payout.paid_amount),0) as Remaining_Amount FROM users LEFT JOIN (SELECT payout.userid,sum(COALESCE(payout.payout_amount,0))*1.0 as total_amount FROM payout WHERE payout.status='generated' group by payout.userid) as total_payout ON users.userid=total_payout.userid LEFT JOIN (SELECT payout.userid,sum(COALESCE(payout.payout_amount,0))*1.0 as paid_amount FROM payout WHERE payout.status='paid' group by payout.userid) as paid_payout ON users.userid=paid_payout.userid  ORDER BY Total_Amount DESC";
+    	$where_string = '';
+    	if($userid > 0)
+    	{
+    		$where_string = " WHERE users.userid=".$userid;
+    	}
+    	$sql_query = "SELECT users.userid,users.username,COALESCE(total_payout.total_amount,0) as Total_Amount,COALESCE(paid_payout.paid_amount,0) as Paid_Amount,(COALESCE(total_payout.total_amount,0)-COALESCE(paid_payout.paid_amount,0)) as Remaining_Amount FROM users LEFT JOIN (SELECT payout.userid,sum(COALESCE(payout.payout_amount,0))*1.0 as total_amount FROM payout WHERE payout.status='generated' group by payout.userid) as total_payout ON users.userid=total_payout.userid LEFT JOIN (SELECT payout.userid,sum(COALESCE(payout.payout_amount,0))*1.0 as paid_amount FROM payout WHERE payout.status='paid' group by payout.userid) as paid_payout ON users.userid=paid_payout.userid ".$where_string."  ORDER BY Total_Amount DESC";
     	$query = $this->db->query($sql_query);
+		
+		$data = array();
+		foreach($query->result() as $row)
+		{
+			if($userid > 0)
+			{
+				$data = (array)$row;	
+			}else
+			{
+				$data[] = (array)$row;
+			}
+					
+		}
+    	$this->db->trans_complete();
+		return $data;
+    }
+
+    function user_payment_details_view($userid=0)
+    {
+    	$this->db->trans_start();
+    	
+    	$this->db->select('users.username,payout.*');
+    	if($userid > 0)
+    	{
+    		$this->db->where_in('payout.userid',$userid);
+    	}
+    	$this->db->join('users', 'users.userid = payout.userid','left');
+		$query = $this->db->get('payout');
 		
 		$data = array();
 		foreach($query->result() as $row)
