@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 08, 2017 at 11:24 PM
+-- Generation Time: Jul 09, 2017 at 01:50 AM
 -- Server version: 5.7.18-0ubuntu0.16.04.1
 -- PHP Version: 7.0.15-0ubuntu0.16.04.4
 
@@ -43,7 +43,7 @@ CREATE TABLE `binary_income` (
 --
 
 INSERT INTO `binary_income` (`id`, `userid`, `binary_total`, `left_binary_total`, `right_binary_total`, `carry_forward`, `placement`, `payout_status`, `created_date`) VALUES
-(1, 1, 750.0000, 25000.0000, 15000.0000, 10000.0000, 'left', 'generated', '2017-07-06');
+(1, 1, 1500.0000, 25000.0000, 15000.0000, 10000.0000, 'left', 'generated', '2017-07-09');
 
 -- --------------------------------------------------------
 
@@ -80,9 +80,9 @@ CREATE TABLE `direct_comm` (
 --
 
 INSERT INTO `direct_comm` (`id`, `userid`, `direct_comm_from_userid`, `amount`, `date`, `status`) VALUES
-(1, 1, 9, 750.0000, '2017-07-06', 'generated'),
-(2, 1, 10, 500.0000, '2017-07-06', 'generated'),
-(3, 10, 11, 750.0000, '2017-07-06', 'generated');
+(1, 1, 9, 1500.0000, '2017-07-09', 'generated'),
+(2, 1, 10, 1000.0000, '2017-07-09', 'generated'),
+(3, 10, 11, 1500.0000, '2017-07-09', 'generated');
 
 -- --------------------------------------------------------
 
@@ -203,7 +203,7 @@ CREATE TABLE `payout` (
   `payout_id` bigint(255) NOT NULL,
   `userid` bigint(255) NOT NULL,
   `payout_amount` double(255,4) NOT NULL,
-  `payment_desc` text NOT NULL,
+  `payment_desc` text,
   `status` varchar(255) NOT NULL,
   `created_date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -213,18 +213,8 @@ CREATE TABLE `payout` (
 --
 
 INSERT INTO `payout` (`payout_id`, `userid`, `payout_amount`, `payment_desc`, `status`, `created_date`) VALUES
-(1, 1, 2000.0000, '', 'generated', '2017-07-06 17:01:14'),
-(2, 10, 750.0000, '', 'generated', '2017-07-06 17:01:14'),
-(3, 1, 1000.0000, '', 'paid', '2017-07-07 22:23:42'),
-(4, 1, 500.0000, '', 'paid', '2017-07-07 22:24:05'),
-(5, 1, 150.0000, '', 'paid', '2017-07-07 22:24:48'),
-(6, 1, 100.0000, '', 'paid', '2017-07-07 22:25:42'),
-(7, 1, 50.0000, '', 'paid', '2017-07-07 22:26:00'),
-(8, 1, 10.0000, 'mnbnm', 'paid', '2017-07-07 22:46:24'),
-(10, 1, 1.0000, '', 'paid', '2017-07-07 22:54:27'),
-(11, 1, 9.0000, 'kjkljkllkjkllkjlkjkljlk', 'paid', '2017-07-07 22:54:50'),
-(12, 10, 50.0000, '', 'paid', '2017-07-07 23:08:25'),
-(13, 1, 80.0000, 'eighty rupees paid only/-', 'paid', '2017-07-08 00:52:39');
+(1, 1, 4000.0000, NULL, 'generated', '2017-07-09 01:41:42'),
+(2, 10, 1500.0000, NULL, 'generated', '2017-07-09 01:41:42');
 
 -- --------------------------------------------------------
 
@@ -321,7 +311,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`userid`, `username`, `password`, `sponsorid`, `placementid`, `placement`, `leftmember`, `rightmember`, `firstname`, `middlename`, `lastname`, `email`, `profile_image`, `forgot_password_token`, `email_verification_token`, `email_verified`, `role_id`, `status`, `entry`, `last_login`, `created_date`) VALUES
-(1, 'amitjain', 'e10adc3949ba59abbe56e057f20f883e', 0, 0, '', 10, 9, 'Amit', 'A', 'Jain', 'amit@onlinetradinginstitute.in', '1499287123_3688_6689430.jpg', '', '', 'yes', '1', 'active', 0, '2017-07-08 00:32:09', '2017-06-29 00:00:00'),
+(1, 'amitjain', 'e10adc3949ba59abbe56e057f20f883e', 0, 0, '', 10, 9, 'Amit', 'A', 'Jain', 'amit@onlinetradinginstitute.in', '1499287123_3688_6689430.jpg', '', '', 'yes', '1', 'active', 0, '2017-07-09 00:04:10', '2017-06-29 00:00:00'),
 (9, 'amit', 'e10adc3949ba59abbe56e057f20f883e', 1, 1, 'right', 13, 14, '', '', '', 'amit@gmail.com', '', '', '1749faeb8b38e01fb8ea2236b0c14816', 'yes', '', 'active', 0, '2017-07-06 16:49:27', '2017-07-06 16:27:45'),
 (10, 'amit1', 'e10adc3949ba59abbe56e057f20f883e', 1, 1, 'left', 11, 12, '', '', '', 'amit1@gmail.com', '', '', 'e16ed05da4b977861395c5fb297bb518', 'yes', '', 'active', 0, '2017-07-06 16:29:02', '2017-07-06 16:28:19'),
 (11, 'amit3', 'e10adc3949ba59abbe56e057f20f883e', 10, 10, 'left', 0, 0, '', '', '', 'amit3@gmail.com', '', '', '571ceb7dbd89c430f665bb4e5d99bafa', 'yes', '', 'active', 0, '2017-07-06 16:53:02', '2017-07-06 16:50:59'),
@@ -504,7 +494,7 @@ ALTER TABLE `package_media`
 -- AUTO_INCREMENT for table `payout`
 --
 ALTER TABLE `payout`
-  MODIFY `payout_id` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `payout_id` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `settings`
 --
