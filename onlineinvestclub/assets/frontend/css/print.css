@@ -105,7 +105,7 @@ a{font-family: 'OpenSansLight';}
 .our-products h4{font-family:Verdana, Arial, Helvetica, sans-serif; font-size: 25px; text-transform: capitalize;}
 .our-products p{ font-size:18px; color:#030e50; line-height:15px;}
 .our-products ul{margin:45px 0; overflow:hidden; margin-left:-15px; font-size:0; text-align:center;}
-.our-products li{display:inline-block; margin-left:53px; width:26%; margin-bottom:20px; background: #fff; padding: 5px 10px;
+.our-products li{display:inline-block; margin-left:10px; width:24%; margin-bottom:20px; background: #fff; padding: 5px 10px;
 -webkit-box-shadow: 3px 2px 12px 3px rgba(224,217,224,1);
 -moz-box-shadow: 3px 2px 12px 3px rgba(224,217,224,1);
 box-shadow: 3px 2px 12px 3px rgba(224,217,224,1);}
