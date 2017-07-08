@@ -10,6 +10,7 @@
             <div class="panel">
                 <div class="panel-body">
                     <button button="button" class="btn btn-primary" ng-click="clear_cache()">Clear Cache</button>
+                    <button button="button" class="btn btn-primary" ng-click="generate_payout()">Generate Payout</button>
                 </div>
             </div>
         </div>
