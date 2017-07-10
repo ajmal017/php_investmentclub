@@ -17,7 +17,7 @@
 <p>Regarding the distribution of our products and contact with  others, it is of utmost importance to ensure a consistently friendly and secure  experience for our clients marked by reliability and fair cooperation with each  other and with the entire world of network marketing, while upholding the law  and ethical principles.</p>
 <p>We therefore ask you to read the following Ethical rules as  well as our General Terms and Conditions thoroughly read and make these  principles your guide in your day-to-day exercise of your activity.</p>
 <h4>Ethical rules for dealing with clients</h4>
-<ul>
+<ul style="font-size: 12px;line-height: 16px;">
   <li>Our  IMAs advise their clients honestly and sincerely, clarifying any  misunderstandings about goods, the business opportunity, or other statements  made during consulting discussions.</li>
   <li>At  the clients's request, the sales conversation can be omitted, postponed, or  amicably discontinued once started.</li>
   <li>When  contacting a client, the IMA shall inform the client about all aspects of the  product (such as purpose, characteristics, or application) and also, if  requested, concerning the potential for further sales.</li>
@@ -39,7 +39,7 @@
 <p>(1) The following General Terms and Conditions are an integral part of every sales partnership agreement between the Company, represented by its Founders & Director(s) and the independent, self-employed IMA.</p>
 <p>(2) The Company provides its services solely on the basis of these General Terms and Conditions.</p>
 <h3>2 Subject of the General Terms and Conditions, equipment packages and additional services</h3>
-<ol>
+<ol style="font-size: 12px;line-height: 16px;">
 <li>The Company is a software and technology corporation that sells high-quality products and services such as training and continuing education courses, other digital and material goods and services (hereinafter referred to as "Goods") on the national & international markets. IMAs may market the Company's goods so that the procurement of products will be basis of all of their business. <strong>Free registration is the only requirement</strong>.</li>
 <li>In addition, there is a possibility, but not the obligation to recruit other IMA. Upon obtaining the required qualification, IMAs receive a bonus or sales commission for the support they provide to those IMAs they recruit. A bonus is expressly not paid for the mere recruitment of new IMA. The bonus and the manner in which it will be paid will be based on the compensation plan in force at that time.</li>
 <li>IMAs are provided with an online back office for their activities free of charge; said back office will provide an up-to-date and comprehensive overview of their sales, bonuses, and their growth in client and downlinefigures. In addition, IMAs may, but are not required to, purchase various services, continuing education packages, etc., whereas the acceptance of additional specific for the services Terms and Conditions of use may be required and applicable.</li>
@@ -68,18 +68,18 @@
 <p>The Company reserves the right, particularly taking into account any changing market conditions, to change the licensing structure and/or the prices to be paid by IMAs. Likewise, the Company reserves the right to change, and, in particular, increase, the shares in bonuses associated with its services, the compensation plan and usage fees at the beginning of each new billing period. IMAs will be given a reasonable advance notice of such changes. Price increases of more than 5% or changes to the compensation plan to the detriment of the IMA are grounds for the IMA to object to the change. Should IMAs not object to the changed conditions within one month after their announcement, the changed terms shall become an integral part of the present General Terms and Conditions. There is no requirement to notify the IMA of any changes that are known at the time of submission the application and such changes do not constitute grounds for future rejection of the same by the IMAs. If IMAs object to any change in these General Terms and Conditions, the Company is entitled to terminate the IMA Agreement as of the date on which the modified or amended General Terms and Conditions would come into effect.</p>
 <p>The Company shall be entitled to change the Compensation Plan at any time. The Company will announce any general amendments within a reasonable period. The IMA has the right to object to the amendment. In case of an objection the IMA is entitled to terminate the IMA Agreement at the date of entry into force of the modification. In case he/she does not terminate the IMA Agreement within two weeks after the entry into force of the modification, the IMA expressly accepts the modification.</p>
 <h4>Blocking of the IMA</h4>
-<ul>
+<ul style="font-size: 12px;line-height: 16px;">
 <li>Should IMAs fail to provide all of the necessary documents within 30 days of registration and acknowledgment of the requirements for the payment of bonuses, the said IMA shall be temporarily suspended until such time as the documents required by law are provided. The same applies if the IMA fails to comply with the deadline until such breaches are rectified, or if the IMA fails to pay the payable fees. The suspension period does not give the IMA the right to an extraordinary termination and does not create grounds for a refund of any initial orders and starting packages already paid or for a claim for damages, unless the IMA is not responsible for the situation leading to the suspension.</li>
 <li>Claims for bonuses or commission that cannot be paid for the aforementioned reasons will be posted as accrued liabilities in the Company's bookkeeping system and will expire no later than the statutory limitation deadlines.</li>
 </ul>
 <h4>Payment methods</h4>
 <p>The Company accepts the following payment methods for the purchase of goods:</p>
-  <ul>
+  <ul style="font-size: 12px;line-height: 16px;">
     <li>Bank  transfer </li>
     <li>E-Wallet </li>
 </ul>
 <h4>Disclaimer</h4>
-<ul>
+<ul style="font-size: 12px;line-height: 16px;">
 <li> The Company disclaims any liability for damage of any kind caused by data losses on computer servers, unless such losses are caused by gross negligence or intentional actions of the Company, its employees or agents. The Company treats any content stored on the servers by IMAs as third-party content in accordance with all relevant and applicable data protection legislation. The Company is not liable for any wrong data and/or information submitted by the IMA in the application. The Company is not responsible if incorrect usernames have been provided by IMAs.</li>
 <li>The Company is furthermore not responsible for any of its Independent Marketing Associates (IMAs) claims about income, team building or others. The Company has a ZERO tolerance when comes to unprofessional behavior that can in any way shape or form its business reputation. If an IMA encounter unprofessional behavior he/she must immediately notify the Company so that the appropriate actions against the said are taken timely.</li>
 <li>Domains that include the name of the Company, "ONLINETRADINGINSITUTE" or any other brand, business name, or product name owned by the Company or its business partners may no longer be used by the IMA after the IMA Agreement is terminated.</li>
@@ -90,7 +90,7 @@
 <h4>ANTI-SPAM POLICY</h4>
 <p>The abuse and misuse of email by an IMA is a serious problem. The Company will not tolerate SPAM.</p>
 <p>Definition of UCE (Unsolicited Commercial email), or SPAM:</p>
-  <ul>
+  <ul style="font-size: 12px;line-height: 16px;">
     <li>The  bulk UCE, promotional material, or other forms of solicitation sent via email  that advertise any IP address belonging to the Company or any URL (domain) that  is linked to <a href="http://www.onlinetradinginstitute.in">www.onlinetradinginstitute.in</a>and / or other web sites owned or operated by The Company.</li>
     <li>The  use of web pages set up on ISPs (Internet Service Providers) that allow SPAM  (also known as "ghost sites") that directly or indirectly reference clients to  domains or IP addresses linked by<a href="http://www.onlinetradinginstitute.in">www.onlinetradinginstitute.in</a>and / or other web sites owned or operated by the Company.</li>
     <li>Advertising,  transmitting, or otherwise making available any software, program, product, or  service that is designed to facilitate a means to SPAM.</li>
@@ -104,7 +104,7 @@
 <p>The Company reserves the right to terminate, without warning, any IMA that violates this policy. Usage of the ONLINETRADINGINSTITUTE NETWORK system and services constitutes acceptance and understanding of this policy. The Company reserves the right to decide what it considers "SPAM", "UCE", "mail bombing", or "bulk email", and to determine from all of the evidence whether or not the email recipients were from an "opt-in" email list.</p>
 <p>If an IMA or an IM's Web site is mentioned in a SPAM complaint, said IMA may be subject to immediate termination.</p>
 <p>The Company will not allow the actions of a spammer to compromise the ONLINETRADINGINSTITUTE NETWORK'S IMA community. The following actions against a violating IMA shall be applicable:</p>
-<ul>
+<ul style="font-size: 12px;line-height: 16px;">
     <li>Termination of position and Web site immediately without a refund of any kind</li>
     <li>Forfeit use of all services and products of the Company</li>
     <li>Face a possible fine of 25000</li>
@@ -117,7 +117,7 @@
 <p>If a person or entity indicates that they do not want to  receive email, IMA agree not to send email to such person or entity. If a  person initially agrees to receive email, but later asks to stop receiving  email, IMA must abide by that request.</p>
 <p>The  Company also prohibits engaging in any of the foregoing activities by using the  service of another provider, remailer service or otherwise.</p>
 <h4>Final provisions</h4>
-<ol>
+<ol style="font-size: 12px;line-height: 16px;">
 <li>The Company is entitled to change the General Terms and Conditions at any time, where modifications will be announced within a reasonable period. The IMA has the right to object to the amendment. In case of an objection, the IMA is entitled to terminate his/her relations with the Company at the date of entry into force of the modification. In case the IMA continue using the services and does not terminate his/her relations with the Company within two weeks after the entry into force of the modification, the IMA expressly accepts the modification.</li>
 <li> Furthermore, modifications and additions to these General Terms and Conditions are to be made in writing. This shall also apply to the revocation of the written form requirement.</li>
 <li>In case of invalidity or incompleteness of a clause of these General Terms and Conditions, the validity of the entire document shall not be affected. Instead of that, the invalid clause shall then be replaced by a valid one whose economic purpose comes as close as possible to that of the invalid clause. The same shall apply when covering a gap requiring regulation.</li>
