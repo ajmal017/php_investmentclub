@@ -3,7 +3,7 @@
       $slider = array(
                 array("image"=>"amitjain.jpg","text1"=>"Its About Capital & Risk Management","text2"=>"Mind Set & Trade setup"),
                 array("image"=>"amitjain1.jpg","text1"=>"Earn Per Day","text2"=>"₹ 2000 to ₹ 3000"),
-                array("image"=>"amitjain2.jpg","text1"=>"Right Opportunity + Patients","text2"=>"= 100% Sucess"),
+                array("image"=>"amitjain2.jpg","text1"=>"Right Opportunity + Patients","text2"=>"= 100% Success"),
                 array("image"=>"amitjain3.jpg","text1"=>"100 % SUCCESS = ","text2"=>"Observation + Learning + Practice")
                 );
       foreach($slider as $row) { 
