@@ -10,7 +10,8 @@
   <div class="clear"></div>
   <div class="textsec">
     <div class="container bank-details bank_details">
-      <div>
+       
+      <div class="lf">
         <h2>Bank Details</h2>
         <ul class="reset">
           <li>Bank Name : <span>Kotak Bank</span></li>
@@ -19,6 +20,15 @@
           <li>IFSC : <span>KKBK0000659</span></li>
         </ul>
       </div>
+      
+      <div class="rf">
+      <h2>Paytm</h2>
+      <img src="<?= base_url(); ?>assets/frontend/images/Paytm-Logo.png" />
+      <br />
+      <img src="<?= base_url(); ?>assets/frontend/images/barcode.png" class="nth-child"/>
+      <p>42153865</p>
+      </div>
+      <div class="clear"></div>
     </div>
   </div>
   <?php $this->view('frontend/includes/footer'); ?>
