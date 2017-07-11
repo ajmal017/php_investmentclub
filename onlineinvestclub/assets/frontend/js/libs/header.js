@@ -98,7 +98,7 @@ angular.module("MyApp", []).controller("MyController", function($scope,$http) {
         {
             if(data.status == "success")
             {
-                window.location.href = window._site_url+"dashboard";
+                window.location.href = window._site_url+"packages";
             }else if(data.status == 'failed')
             {
                 alert(data.message);

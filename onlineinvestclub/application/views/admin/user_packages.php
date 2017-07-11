@@ -23,7 +23,8 @@
                         <th>User Name</th>
                         <th>Package Name</th>
                         <th>Package Amount</th>
-                        <th>Quantity Requested</th>
+                        <th>Payment Details</th>
+                        <th>Payment Type</th>
                         <th>Total Amount</th>
                         <th>Purchase Date</th>
                     </tr>
@@ -37,7 +38,8 @@
                             <td><?= $row['username'];?></td>
                             <td><?= $row['package_name'];?></td>
                             <td><?= $row['package_amount'];?></td>
-                            <td><?= $row['quantity'];?></td>
+                            <td><?= $row['payment_details'];?></td>
+                            <td><?= $row['payment_type'];?></td>
                             <td><?= $row['package_amount']*$row['quantity'];?></td>
                             <td><?= $row['purchase_date'];?></td>
                             <td>

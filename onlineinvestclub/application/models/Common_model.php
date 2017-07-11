@@ -106,6 +106,8 @@ class Common_model extends CI_Model
 			$data = array(
 							'user_package_id'=>$row->id,
 							'package_id'=>$row->package_id,
+							'payment_details'=>$row->payment_details,
+							'payment_type'=>$row->payment_type,
 							'userid'=>$row->userid,
 							'username'=>$row->username,
 							'fullname'=>$row->firstname.' '.$row->middlename.' '.$row->lastname,
