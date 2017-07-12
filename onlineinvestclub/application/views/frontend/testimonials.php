@@ -60,7 +60,27 @@
             <div class="img-sec lf"> <img src="<?= base_url(); ?>timthumb.php?src=<?= base_url(); ?>assets/frontend/images/msi/mehul.png&w=280&h=260&q=99" /> </div>
             <div class="info-sec">
               <h3>MEHUL</h3>
-              <p>Hello all, after earnins technical chart trading I am able to earn 1% profit on capital average everyday. Thanks to Sir.</br>Crude Oil Trader</p>
+              <p>Hello all, after earnings technical chart trading I am able to earn 1% profit on capital average everyday. Thanks to Sir.</br>Crude Oil Trader</p>
+              <div class="clear"></div>
+            </div>
+          </div>
+          <div class="attorny-1">
+            <div class="img-sec lf"> <img src="<?= base_url(); ?>timthumb.php?src=<?= base_url(); ?>assets/frontend/images/msi/deepa.jpg&w=280&h=260&q=99" /> </div>
+            <div class="info-sec">
+              <h3>Deepa Modgekar</h3>
+              <p>To the world you may be just a teacher but to your student's you are a HERO - AMIT SIR.
+                </br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Being the first student of this Online Trading Institute. It gives me immense pleasure to say- Amit Sir has always been a source of inspiration. Never Say die attitude - always exploring much newer things and always helping there students as and when possible.
+                </br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The way I look into my life by joining Online Trading Institute is giving me a lot more information about the Stock Market than just numbers.
+                </br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Amit Sir's Online Trading Institute has always been a source of Inspiration - the knowledge regarding the fundamentals and technical analysis, chart readings work wonders. It multiples our finances and makes a usually complicated market easy to trade with. Showing us a way to financial freedom.
+              </br>Commodity Trader</p>
+              <div class="clear"></div>
+            </div>
+          </div>
+          <div class="attorny-1">
+            <div class="img-sec lf"> <img src="<?= base_url(); ?>timthumb.php?src=<?= base_url(); ?>assets/frontend/images/msi/rajesh.png&w=280&h=260&q=99" /> </div>
+            <div class="info-sec">
+              <h3>RAJESH MENEZES</h3>
+              <p>After doing the advanced option trading course I could totally explore a different world of trading. More safer and almost all times garunteed returns. The strike rate was almost 90% . I could see 10% monthly returns most of the times. It was unbelievable and I was more positive about trading irrespective of the ups and downs of the market.Selecting couple of shares like Ashok Ley, SBI, RIL montroting closely the history and future and investing would give 5 to 10% in 3 to 4 days.If u have good funds advance option writing is more safer and profitious than other forms of trading as per my opinion.</p>
               <div class="clear"></div>
             </div>
           </div>
