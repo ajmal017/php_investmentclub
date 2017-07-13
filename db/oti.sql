@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 08, 2017 at 12:55 AM
+-- Generation Time: Jul 13, 2017 at 10:15 PM
 -- Server version: 5.7.18-0ubuntu0.16.04.1
 -- PHP Version: 7.0.15-0ubuntu0.16.04.4
 
@@ -43,7 +43,7 @@ CREATE TABLE `binary_income` (
 --
 
 INSERT INTO `binary_income` (`id`, `userid`, `binary_total`, `left_binary_total`, `right_binary_total`, `carry_forward`, `placement`, `payout_status`, `created_date`) VALUES
-(1, 1, 750.0000, 25000.0000, 15000.0000, 10000.0000, 'left', 'generated', '2017-07-06');
+(1, 1, 1500.0000, 25000.0000, 15000.0000, 10000.0000, 'left', 'generated', '2017-07-09');
 
 -- --------------------------------------------------------
 
@@ -80,9 +80,9 @@ CREATE TABLE `direct_comm` (
 --
 
 INSERT INTO `direct_comm` (`id`, `userid`, `direct_comm_from_userid`, `amount`, `date`, `status`) VALUES
-(1, 1, 9, 750.0000, '2017-07-06', 'generated'),
-(2, 1, 10, 500.0000, '2017-07-06', 'generated'),
-(3, 10, 11, 750.0000, '2017-07-06', 'generated');
+(1, 1, 9, 1500.0000, '2017-07-09', 'generated'),
+(2, 1, 10, 1000.0000, '2017-07-09', 'generated'),
+(3, 10, 11, 1500.0000, '2017-07-09', 'generated');
 
 -- --------------------------------------------------------
 
@@ -165,9 +165,9 @@ CREATE TABLE `package_master` (
 --
 
 INSERT INTO `package_master` (`package_id`, `package_name`, `package_amount`, `package_type`, `package_image`, `package_desc`, `package_created_date`, `package_status`) VALUES
-(1, 'Options Trading', 15000, 'Lumsum', '1498758390_2316_package2.jpg', 'They say that only 5% of the people make money in the markets, well we say that 100% of these 5% people are trading derivatives, futures and options…', '2017-06-29 23:16:30', 'active'),
-(2, 'Technical Trading', 10000, 'Lumsum', '1498758539_7072_gold-icon.png', 'Technical Analysis is the study of discounting future happening in the market on the bases of charts with price action analysis & candlestick patterns', '2017-06-29 23:18:59', 'active'),
-(3, 'Stock Trading', 5000, 'Lumsum', '1498758627_6810_package3.jpg', 'We have often seen that the best traders are those who trades and understands the inter-markets relationships, i.e. they have a complete knowledge of stock market..', '2017-06-29 23:20:27', 'active');
+(1, 'Options Trading', 15000, 'Lumsum', '1499785243_4831_options.jpg', 'They say that only 5% of the people make money in the markets, well we say that 100% of these 5% people are trading derivatives, futures and options…', '2017-06-29 23:16:30', 'active'),
+(2, 'Technical Trading', 10000, 'Lumsum', '1499785266_3191_technical.jpg', 'Technical Analysis is the study of discounting future happening in the market on the bases of charts with price action analysis & candlestick patterns', '2017-06-29 23:18:59', 'active'),
+(3, 'Stock Trading', 5000, 'Lumsum', '1499785283_6663_stocks.jpg', 'We have often seen that the best traders are those who trades and understands the inter-markets relationships, i.e. they have a complete knowledge of stock market..', '2017-06-29 23:20:27', 'active');
 
 -- --------------------------------------------------------
 
@@ -203,7 +203,7 @@ CREATE TABLE `payout` (
   `payout_id` bigint(255) NOT NULL,
   `userid` bigint(255) NOT NULL,
   `payout_amount` double(255,4) NOT NULL,
-  `payment_desc` text NOT NULL,
+  `payment_desc` text,
   `status` varchar(255) NOT NULL,
   `created_date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -213,18 +213,9 @@ CREATE TABLE `payout` (
 --
 
 INSERT INTO `payout` (`payout_id`, `userid`, `payout_amount`, `payment_desc`, `status`, `created_date`) VALUES
-(1, 1, 2000.0000, '', 'generated', '2017-07-06 17:01:14'),
-(2, 10, 750.0000, '', 'generated', '2017-07-06 17:01:14'),
-(3, 1, 1000.0000, '', 'paid', '2017-07-07 22:23:42'),
-(4, 1, 500.0000, '', 'paid', '2017-07-07 22:24:05'),
-(5, 1, 150.0000, '', 'paid', '2017-07-07 22:24:48'),
-(6, 1, 100.0000, '', 'paid', '2017-07-07 22:25:42'),
-(7, 1, 50.0000, '', 'paid', '2017-07-07 22:26:00'),
-(8, 1, 10.0000, 'mnbnm', 'paid', '2017-07-07 22:46:24'),
-(10, 1, 1.0000, '', 'paid', '2017-07-07 22:54:27'),
-(11, 1, 9.0000, 'kjkljkllkjkllkjlkjkljlk', 'paid', '2017-07-07 22:54:50'),
-(12, 10, 50.0000, '', 'paid', '2017-07-07 23:08:25'),
-(13, 1, 80.0000, 'eighty rupees paid only/-', 'paid', '2017-07-08 00:52:39');
+(1, 1, 4000.0000, NULL, 'generated', '2017-07-09 01:41:42'),
+(2, 10, 1500.0000, NULL, 'generated', '2017-07-09 01:41:42'),
+(3, 1, 2000.0000, 'Paid', 'paid', '2017-07-11 20:11:30');
 
 -- --------------------------------------------------------
 
@@ -284,7 +275,8 @@ INSERT INTO `userdetails` (`userid`, `address`, `city`, `state`, `country`, `pin
 (11, '', '', '', '', '', '0000-00-00', '', '', '', '', '', '', '', '', '', '', '', '2017-07-06 11:20:59'),
 (12, '', '', '', '', '', '0000-00-00', '', '', '', '', '', '', '', '', '', '', '', '2017-07-06 11:21:18'),
 (13, '', '', '', '', '', '0000-00-00', '', '', '', '', '', '', '', '', '', '', '', '2017-07-06 11:21:37'),
-(14, '', '', '', '', '', '0000-00-00', '', '', '', '', '', '', '', '', '', '', '', '2017-07-06 11:21:54');
+(14, '', '', '', '', '', '0000-00-00', '', '', '', '', '', '', '', '', '', '', '', '2017-07-06 11:21:54'),
+(15, '', '', '', '', '', '0000-00-00', '', '', '', '', '', '', '', '', '', '', '', '2017-07-11 15:04:03');
 
 -- --------------------------------------------------------
 
@@ -321,13 +313,14 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`userid`, `username`, `password`, `sponsorid`, `placementid`, `placement`, `leftmember`, `rightmember`, `firstname`, `middlename`, `lastname`, `email`, `profile_image`, `forgot_password_token`, `email_verification_token`, `email_verified`, `role_id`, `status`, `entry`, `last_login`, `created_date`) VALUES
-(1, 'amitjain', 'e10adc3949ba59abbe56e057f20f883e', 0, 0, '', 10, 9, 'Amit', 'A', 'Jain', 'amit@onlinetradinginstitute.in', '1499287123_3688_6689430.jpg', '', '', 'yes', '1', 'active', 0, '2017-07-08 00:32:09', '2017-06-29 00:00:00'),
-(9, 'amit', 'e10adc3949ba59abbe56e057f20f883e', 1, 1, 'right', 13, 14, '', '', '', 'amit@gmail.com', '', '', '1749faeb8b38e01fb8ea2236b0c14816', 'yes', '', 'active', 0, '2017-07-06 16:49:27', '2017-07-06 16:27:45'),
-(10, 'amit1', 'e10adc3949ba59abbe56e057f20f883e', 1, 1, 'left', 11, 12, '', '', '', 'amit1@gmail.com', '', '', 'e16ed05da4b977861395c5fb297bb518', 'yes', '', 'active', 0, '2017-07-06 16:29:02', '2017-07-06 16:28:19'),
-(11, 'amit3', 'e10adc3949ba59abbe56e057f20f883e', 10, 10, 'left', 0, 0, '', '', '', 'amit3@gmail.com', '', '', '571ceb7dbd89c430f665bb4e5d99bafa', 'yes', '', 'active', 0, '2017-07-06 16:53:02', '2017-07-06 16:50:59'),
-(12, 'amit4', 'e10adc3949ba59abbe56e057f20f883e', 10, 10, 'right', 0, 0, '', '', '', 'amit4@gmail.com', '', '', '7a4508c10e21e462367a62e5a571fd64', 'yes', '', '', 0, '2017-07-06 22:45:40', '2017-07-06 16:51:18'),
-(13, 'amit5', 'e10adc3949ba59abbe56e057f20f883e', 9, 9, 'left', 0, 0, '', '', '', 'amit5@gmail.com', '', '', '1d2a7e333c86eb388d0e47903ba62e9d', 'yes', '', '', 0, '2017-07-08 00:49:03', '2017-07-06 16:51:37'),
-(14, 'amit6', 'e10adc3949ba59abbe56e057f20f883e', 9, 9, 'right', 0, 0, '', '', '', 'amit6@gmail.com', '', '', '2e1d1350228e6716e6b1fce50dd927ac', 'yes', '', '', 0, NULL, '2017-07-06 16:51:54');
+(1, 'amitjain', 'e10adc3949ba59abbe56e057f20f883e', 0, 0, '', 10, 9, 'Amit', 'A', 'Jain', 'amit@onlinetradinginstitute.in', '1499287123_3688_6689430.jpg', '', '', 'yes', '1', 'active', 0, '2017-07-11 20:36:23', '2017-06-29 00:00:00'),
+(9, 'amit', 'e10adc3949ba59abbe56e057f20f883e', 1, 1, 'right', 13, 14, '', '', '', 'amitt@onlinetradinginstitute.in', '', '', '1749faeb8b38e01fb8ea2236b0c14816', 'yes', '', 'active', 0, '2017-07-06 16:49:27', '2017-07-06 16:27:45'),
+(10, 'amit1', 'e10adc3949ba59abbe56e057f20f883e', 1, 1, 'left', 11, 12, '', '', '', 'amit1@onlinetradinginstitute.in', '', '', 'e16ed05da4b977861395c5fb297bb518', 'yes', '', 'active', 0, '2017-07-06 16:29:02', '2017-07-06 16:28:19'),
+(11, 'amit3', 'e10adc3949ba59abbe56e057f20f883e', 10, 10, 'left', 15, 0, '', '', '', 'amit3@onlinetradinginstitute.in', '', '', '571ceb7dbd89c430f665bb4e5d99bafa', 'yes', '', 'active', 0, '2017-07-06 16:53:02', '2017-07-06 16:50:59'),
+(12, 'amit4', 'e10adc3949ba59abbe56e057f20f883e', 10, 10, 'right', 0, 0, '', '', '', 'amit4@onlinetradinginstitute.in', '', '', '7a4508c10e21e462367a62e5a571fd64', 'yes', '', '', 0, '2017-07-06 22:45:40', '2017-07-06 16:51:18'),
+(13, 'amit5', 'e10adc3949ba59abbe56e057f20f883e', 9, 9, 'left', 0, 0, '', '', '', 'amit5@onlinetradinginstitute.in', '', '', '1d2a7e333c86eb388d0e47903ba62e9d', 'yes', '', '', 0, '2017-07-08 00:49:03', '2017-07-06 16:51:37'),
+(14, 'amit6', 'e10adc3949ba59abbe56e057f20f883e', 9, 9, 'right', 0, 0, '', '', '', 'amit6@onlinetradinginstitute.in', '', '', '2e1d1350228e6716e6b1fce50dd927ac', 'yes', '', '', 0, NULL, '2017-07-06 16:51:54'),
+(15, 'smith', '18c158022ef122cca464b98a2cc36974', 1, 11, 'left', 0, 0, '', '', '', 'sumitjpd@gmail.com', '', '', 'cda4b7f954362c6bb0ca56a44b5be782', 'yes', '', 'active', 0, '2017-07-11 20:34:59', '2017-07-11 20:34:03');
 
 -- --------------------------------------------------------
 
@@ -340,6 +333,8 @@ CREATE TABLE `user_packages` (
   `userid` bigint(255) NOT NULL,
   `package_id` int(255) NOT NULL,
   `quantity` int(255) NOT NULL,
+  `payment_details` text NOT NULL,
+  `payment_type` varchar(255) NOT NULL,
   `status` varchar(50) NOT NULL,
   `purchase_date` datetime NOT NULL,
   `acceptance_date` datetime NOT NULL
@@ -349,11 +344,12 @@ CREATE TABLE `user_packages` (
 -- Dumping data for table `user_packages`
 --
 
-INSERT INTO `user_packages` (`id`, `userid`, `package_id`, `quantity`, `status`, `purchase_date`, `acceptance_date`) VALUES
-(1, 1, 1, 1, 'accepted', '2017-07-06 16:25:42', '2017-07-06 16:26:02'),
-(2, 10, 2, 1, 'accepted', '2017-07-06 16:44:51', '2017-07-06 16:48:45'),
-(3, 9, 1, 1, 'accepted', '2017-07-06 16:49:35', '2017-07-06 16:49:44'),
-(4, 11, 1, 1, 'accepted', '2017-07-06 16:53:08', '2017-07-06 16:53:23');
+INSERT INTO `user_packages` (`id`, `userid`, `package_id`, `quantity`, `payment_details`, `payment_type`, `status`, `purchase_date`, `acceptance_date`) VALUES
+(1, 1, 1, 1, '', '', 'accepted', '2017-07-06 16:25:42', '2017-07-06 16:26:02'),
+(2, 10, 2, 1, '', '', 'accepted', '2017-07-06 16:44:51', '2017-07-06 16:48:45'),
+(3, 9, 1, 1, '', '', 'accepted', '2017-07-06 16:49:35', '2017-07-06 16:49:44'),
+(4, 11, 1, 1, '', '', 'accepted', '2017-07-06 16:53:08', '2017-07-06 16:53:23'),
+(5, 15, 3, 1, '', '', 'accepted', '2017-07-11 20:36:05', '2017-07-11 20:43:03');
 
 -- --------------------------------------------------------
 
@@ -377,7 +373,8 @@ INSERT INTO `user_settings` (`userid`, `user_alignment`) VALUES
 (11, 'left'),
 (12, 'left'),
 (13, 'left'),
-(14, 'left');
+(14, 'left'),
+(15, 'left');
 
 --
 -- Indexes for dumped tables
@@ -504,7 +501,7 @@ ALTER TABLE `package_media`
 -- AUTO_INCREMENT for table `payout`
 --
 ALTER TABLE `payout`
-  MODIFY `payout_id` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `payout_id` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `settings`
 --
@@ -514,22 +511,22 @@ ALTER TABLE `settings`
 -- AUTO_INCREMENT for table `userdetails`
 --
 ALTER TABLE `userdetails`
-  MODIFY `userid` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `userid` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `userid` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `userid` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `user_packages`
 --
 ALTER TABLE `user_packages`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `user_settings`
 --
 ALTER TABLE `user_settings`
-  MODIFY `userid` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `userid` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
