@@ -51,7 +51,7 @@
             </h4>
             <img src="<?= base_url(); ?>uploads/packages/<?= $row['package_image']; ?>" style="width:138px;height:127px;"> <span>
             <?= $row['package_desc']; ?>
-            </span> <a href="#" class="hvr-rectangle-out">Read More</a> </li>
+            </span> <a href="<?= site_url(); ?>/home/view_package/<?= $row['package_id']; ?>" class="hvr-rectangle-out">Read More</a> </li>
           <?php } ?>
         </ul>
         <div class="clear"></div>

@@ -18,11 +18,22 @@ class Home extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
+	public function __construct() 
+	{
+        parent::__construct();
+    }
+
 	public function index()
 	{
 		$session_data = $this->session->userdata;
 		$data = array();
 		$data['session_data'] = $session_data;
 		$this->load->view('frontend/home',$data);
+	}
+
+	public function view_package($package_id=0)
+	{
+		$data = array('package_id'=>$package_id);
+		$this->load->view('frontend/view_package',$data);
 	}
 }
