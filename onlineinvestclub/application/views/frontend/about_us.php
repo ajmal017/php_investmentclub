@@ -10,7 +10,7 @@
   </div>
 <div class="textsec">
   <div class="container about-us" >
-    <div class="aboutus"> <img src="<?= base_url(); ?>uploads/profile/person.png">
+    <div class="aboutus"> <img src="<?= base_url(); ?>assets/frontend/images/msi/amitjainpassport.jpg" style="height: 200px;">
       <h2>Amit Jain (The Founder Of Online Trading Institute)</h2>
       <p>Mr.Amit Jain is The Pioneer Of Trading Education such as Share Trading, Future And Option Etc... Mr. Jain has Managed to collect Funds By Diversifying It. He had done MBA in (Finance). He can change people mind set by ensuring them Success in their lives by having Communication With Positive Thinking Etc. He gives practical knowledge along with teaching lessons about trade. Option Writing Is Their Passion. He Has Done More Than 10000+ Trade From Last 10 Years. Now He Helps People To Grow Their Money By Different Means. He Is One Of The Top Believer In Passive Income System.</p>
     </div>
