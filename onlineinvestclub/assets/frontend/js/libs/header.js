@@ -113,8 +113,8 @@ angular.module("MyApp", []).controller("MyController", function($scope,$http) {
         }
 
         request_data = {}
-        request_data['username'] = $scope.username;
-        request_data['password'] = $scope.password;
+        request_data['username'] = $scope.login_username;
+        request_data['password'] = $scope.login_password;
         
         SSK.site_call("AJAX",window._site_url+"login/signIn",request_data, login_success_cb,login_failure_cb);
     }

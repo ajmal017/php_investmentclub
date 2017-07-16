@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="<?php echo base_url(); ?>assets/admin/assets/plugins/bootstrap-wysihtml5/css/bootstrap-wysihtml5.css">
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.form.js"></script>
 <script src="<?php echo base_url(); ?>assets/admin/js/libs/packages.js"></script>
 <div class="page-subheading page-subheading-md">
@@ -21,7 +22,7 @@
                     <button data-dismiss="alert" class="close" type="button">×</button>
                     <p class="error_message"></p>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-8">
                     <form id="addPackageForm" method="POST" action="<?php echo site_url(); ?>/admin_packages/add_package" enctype="multipart/form-data" >
                         <div class="form-group">
                             <label class="control-label" for="exampleInputText1">Package Name</label>
@@ -48,7 +49,7 @@
                         <div class="form-group">
                             <label class="control-label" for="exampleInputText1">Package Description</label>
                             <div class="controls">
-                                <textarea class="form-control" name="package_desc" id="package_desc">
+                                <textarea id="wysiwyg" class="form-control" name="package_desc" id="package_desc" rows="10">
                                 </textarea>
                             </div>
                         </div>
@@ -115,6 +116,19 @@
     </div>    
 </div>
 </div>
+<script src="<?php echo base_url(); ?>assets/admin/assets/plugins/bootstrap-wysihtml5/js/wysihtml5-0.3.0.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/admin/assets/plugins/bootstrap-wysihtml5/js/bootstrap-wysihtml5.js"></script>
+<script>
+    jQuery(function ($) {
+        $('#wysiwyg').wysihtml5({
+            stylesheets: ['assets/plugins/bootstrap-wysihtml5/css/wysiwyg-color.css']
+        });
+        $('#wysiwyg1').wysihtml5({
+            stylesheets: ['assets/plugins/bootstrap-wysihtml5/css/wysiwyg-color.css']
+        });
+        $('.wysihtml5-toolbar .btn-default').removeClass('btn-default').addClass('btn-white');
+    });
+</script>
             </div>
         </div>
     <?php $this->load->view('admin/includes/footer'); ?>    

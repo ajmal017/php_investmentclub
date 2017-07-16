@@ -9,25 +9,12 @@
   <div class="clear"></div>
   <div class="textsec">
     <div class="container product-sec">
+    <?php $packages = getPackages($package_id);?>
     <div>
-      	<h3>Options Trading</h3>
-        <img src="../../../assets/frontend/images/package2.jpg"> 
-        <p>They say that only 5% of the people make money in the markets, well we say that 100% of these 5% people are trading derivatives, futures and options They say that only 5% of the people make money in the markets, well we say that 100% of these 5% people are trading derivatives, futures and options They say that only 5% of the people make money in the markets, well we say that 100% of these 5% people are trading derivatives, futures and options They say that only 5% of the people make money in the markets, well we say that 100% of these 5% people are trading derivatives, futures and options They say that only 5% of the people make money in the markets, well we say that 100% of these 5% people are trading derivatives, futures and options</p>
-<p>They say that only 5% of the people make money in the markets, well we say that 100% of these 5% people are trading derivatives, futures and optionsThey say that only 5% of the people make money in the markets, well we say that 100% of these 5% people are trading derivatives, futures and options They say that only 5% of the people make money in the markets, well we say that 100% of these 5% people are trading derivatives, futures and options</p>      
+      	<h3><?= $packages['package_name'];?>  (₹ <?= $packages['package_amount'];?>)</h3>
+        <img src="<?= base_url(); ?>uploads/packages/<?= $packages['package_image']; ?>" style="width:138px;height:127px;"> 
+        <p><?= $packages['package_desc'];?></p>      
     </div>
-    <div>
-      	<h3>Options Trading</h3>
-        <img src="../../../assets/frontend/images/package2.jpg"> 
-        <p>They say that only 5% of the people make money in the markets, well we say that 100% of these 5% people are trading derivatives, futures and options They say that only 5% of the people make money in the markets, well we say that 100% of these 5% people are trading derivatives, futures and options They say that only 5% of the people make money in the markets, well we say that 100% of these 5% people are trading derivatives, futures and options They say that only 5% of the people make money in the markets, well we say that 100% of these 5% people are trading derivatives, futures and options They say that only 5% of the people make money in the markets, well we say that 100% of these 5% people are trading derivatives, futures and options</p>
-<p>They say that only 5% of the people make money in the markets, well we say that 100% of these 5% people are trading derivatives, futures and optionsThey say that only 5% of the people make money in the markets, well we say that 100% of these 5% people are trading derivatives, futures and options They say that only 5% of the people make money in the markets, well we say that 100% of these 5% people are trading derivatives, futures and options</p>      
-    </div>
-    <div>
-      	<h3>Options Trading</h3>
-        <img src="../../../assets/frontend/images/package2.jpg"> 
-        <p>They say that only 5% of the people make money in the markets, well we say that 100% of these 5% people are trading derivatives, futures and options They say that only 5% of the people make money in the markets, well we say that 100% of these 5% people are trading derivatives, futures and options They say that only 5% of the people make money in the markets, well we say that 100% of these 5% people are trading derivatives, futures and options They say that only 5% of the people make money in the markets, well we say that 100% of these 5% people are trading derivatives, futures and options They say that only 5% of the people make money in the markets, well we say that 100% of these 5% people are trading derivatives, futures and options</p>
-<p>They say that only 5% of the people make money in the markets, well we say that 100% of these 5% people are trading derivatives, futures and optionsThey say that only 5% of the people make money in the markets, well we say that 100% of these 5% people are trading derivatives, futures and options They say that only 5% of the people make money in the markets, well we say that 100% of these 5% people are trading derivatives, futures and options</p>      
-    </div>
-    
   </div>
   <?php $this->view('frontend/includes/footer'); ?>
 </div>

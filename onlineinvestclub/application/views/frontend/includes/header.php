@@ -57,7 +57,7 @@
         <li><a href="<?php echo site_url(); ?>/dashboard">Dashboard</a></li>
         <li><a href="<?php echo site_url(); ?>/logout">Logout</a></li>
         <?php }else{ ?>
-        <li><a class="cd-signin" href="#0">Login</a></li>
+        <li><a data-toggle="modal" data-target="#login_modal">Login</a></li>
         <li><a class="cd-signup" href="<?php echo site_url(); ?>/register">Register</a></li>
         <?php } ?>
       </ul>
@@ -140,3 +140,61 @@
   </div>
 </div>
 <div class="clear"></div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="login_modal" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Login</h4>
+            </div>
+                <div class="modal-body" style="overflow:auto;">
+                    <div class="col-md-12">
+                        <div class="form-group col-md-6">
+                            <label>Username : </label>
+                            <input type="text" class="form-control" ng-model="login_username" />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Password : </label>
+                            <input type="password" class="form-control" ng-model="login_password" />
+                        </div>
+                    </div>
+                </div>
+              <div class="modal-footer">
+                <p class="cd-form-bottom-message"><a data-toggle="modal" data-target="#forgot_password_modal" onclick="$('#login_modal').modal('hide');">Forgot your password?</a></p>
+                <button type="button" class="btn btn-primary" ng-click="login()">Login</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+        </div>    
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="forgot_password_modal" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Forgot Password</h4>
+            </div>
+                <div class="modal-body" style="overflow:auto;">
+                    <div class="col-md-12">
+                        <div class="form-group col-md-8">
+                            <label>Email : </label>
+                            <input type="text" class="form-control" ng-model="forgot_email" />
+                        </div>
+                    </div>
+                </div>
+              <div class="modal-footer">
+                <p class="cd-form-bottom-message"><a data-toggle="modal" data-target="#login_modal" onclick="$('#forgot_password_modal').modal('hide');">Login</a></p>
+                <button type="button" class="btn btn-primary" ng-click="forgot_password()">Submit</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+        </div>    
+    </div>
+</div>

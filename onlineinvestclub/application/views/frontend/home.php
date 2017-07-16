@@ -50,7 +50,7 @@
               <?= $row['package_name']; ?>
             </h4>
             <img src="<?= base_url(); ?>uploads/packages/<?= $row['package_image']; ?>" style="width:138px;height:127px;"> <span>
-            <?= $row['package_desc']; ?>
+            <?= substr(trim(strip_tags($row['package_desc'])), 0, 140); ?>...
             </span> <a href="<?= site_url(); ?>/home/view_package/<?= $row['package_id']; ?>" class="hvr-rectangle-out">Read More</a> </li>
           <?php } ?>
         </ul>

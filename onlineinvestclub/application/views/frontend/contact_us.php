@@ -3,7 +3,7 @@
 <div id="wrapper">
 <?php $this->view('frontend/includes/header'); ?>
 <div class="example-animation">
-    <div data-lazy-background="<?= base_url(); ?>assets/frontend/images/inner-bnr.jpg">
+    <div data-lazy-background="<?= imagePath('assets/frontend/images/Contact-us.jpg','',1286,182); ?>">
       <h3 data-pos="['27%', '110%', '27%', '40%']" data-duration="1500" data-effect="move">Contact Us</h3>
     </div>
   </div>
