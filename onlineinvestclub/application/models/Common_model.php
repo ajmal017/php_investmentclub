@@ -207,6 +207,16 @@ class Common_model extends CI_Model
 		$data = array();
 		foreach($query->result() as $row)
 		{
+			$this->db->select('*');
+	    	$this->db->where('user_packages.userid',$row->userid);
+	    	$query1 = $this->db->get('user_packages');
+	    	$package_list = array();
+	    	foreach($query1->result() as $row1)
+	    	{
+	    		$package_list[] = $row1->package_id;
+	    	}
+
+
 			$data = array(
 							'userid'=>$row->userid,
 							'username'=>$row->username,
@@ -240,6 +250,7 @@ class Common_model extends CI_Model
 							'user_alignment'=>$row->user_alignment,
 							'role_id'=>$row->role_id,
 							'status'=>$row->status,
+							'package_list'=>$package_list,
 							'created_date'=>$row->created_date
 							);
 		}

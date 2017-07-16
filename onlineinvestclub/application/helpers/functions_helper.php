@@ -102,6 +102,33 @@ function imagePath($path,$image_type,$width = 70,$height=70)
 	//return base_url('uploads/'.$path);
 }
 
+function imagePathMyNetwork($package_list,$width = 70,$height=70)
+{
+	if(in_array(1, $package_list))
+	{
+		$color = 'male-icon.png';
+	}
+	if(in_array(2, $package_list))
+	{
+		$color = 'male-icon-1.png';
+	}
+	if(in_array(3, $package_list))
+	{
+		$color = 'male-icon2.png';
+	}
+	if(in_array("default", $package_list))
+	{
+		$color = 'addnew2.png';
+	}
+
+	if(@$color == '')
+	{
+		$color = 'male-icon-3.png';
+	}
+	return base_url('timthumb.php?src='.base_url('assets/frontend/images/'.$color).'&w='.$width.'&h='.$height);
+	//return base_url('uploads/'.$path);
+}
+
 function getPackages($package_id=0,$filterArray = array(),$wherein="")
 {
 	global $CI;
