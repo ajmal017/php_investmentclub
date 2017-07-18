@@ -20,7 +20,7 @@
             <p><span>Ans:</span> Go to <a href="<?= site_url(); ?>/register">REGISTER</a>. Fill all details.After registration email verification link is send to your email ID. Click on verfication link given in your email ID.Registartion Completed</p>
           </div>
           <div class="ques-1">
-            <h4><span>Q3.</span> What income am I elegible to qualify for after joining the online trading institute ? </h4>
+            <h4><span>Q3.</span> What income am I eligible to qualify for after joining the online trading institute ? </h4>
             <p><span>Ans:</span> There are two types of income that the online trading institute give to its members.
             </br>a)  Binary (Matching Income)</br>b)  Direct Sales Income</p>
           </div>

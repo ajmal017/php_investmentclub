@@ -116,15 +116,18 @@ function imagePathMyNetwork($package_list,$width = 70,$height=70)
 	{
 		$color = 'male-icon2.png';
 	}
-	if(in_array("default", $package_list))
-	{
-		$color = 'addnew2.png';
-	}
 
-	if(@$color == '')
+	if(count($package_list) == 0)
 	{
 		$color = 'male-icon-3.png';
 	}
+
+	if(in_array("default", $package_list))
+	{
+		$color = 'male-icon-5.png';
+	}
+
+	
 	return base_url('timthumb.php?src='.base_url('assets/frontend/images/'.$color).'&w='.$width.'&h='.$height);
 	//return base_url('uploads/'.$path);
 }

@@ -51,7 +51,7 @@
           <div class="attorny-1">
             <div class="img-sec lf"> <img src="<?= base_url(); ?>timthumb.php?src=<?= base_url(); ?>assets/frontend/images/msi/amit singh.jpg&w=280&h=260&q=99" /> </div>
             <div class="info-sec">
-              <h3>AMIT SINGH (BMS-STUDENT)</h3>
+              <h3>AMIT SINGH (BFM-STUDENT)</h3>
               <p>Online trading institute has been essential in providing me the start that i needed in my trading career. I got the support and guidance from Amit sir that everyone needed to overcome the initial fear of losing money in financial markets.  Amit sir could be your edge in the financial market when it comes to mentorship and experience.</p>
               <div class="clear"></div>
             </div>

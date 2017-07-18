@@ -51,7 +51,7 @@ class Admin_notifications extends CI_Controller {
 				/*start email */
 				if($notification_email != '')
 				{
-					$pack = array();
+					/*$pack = array();
 					if($packages != '')
 					{
 						$pack = explode(",",$packages);	
@@ -66,7 +66,7 @@ class Admin_notifications extends CI_Controller {
 						$email_data['to'] = $email;
 						//dump($email_data);
 						send_email($email_data);	
-					}
+					}*/
 										
 				}
 
