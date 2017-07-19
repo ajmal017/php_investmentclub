@@ -1,10 +1,19 @@
 angular.module("MyApp", []).controller("MyController", function($scope,$http) {
 
-    $scope.add_package = function(package_id)
+    $scope.add_package_modal = function(package_id)
     {
-        package_id = package_id || 0;
-        //quantity = $("#package-id-"+package_id).find(".package_quantity").val() || 0;
-        package_name = $("#package-id-"+package_id).find(".package_name").html() || '';
+        $scope.package_id = package_id || 0;
+        $('#package_payment').modal('show');
+        if(!$scope.$$phase) $scope.$apply();
+        
+    }
+
+    $scope.add_package = function()
+    {
+        var package_id = $scope.package_id || 0;
+        var payment_details = $scope.payment_details || '';
+        var payment_type = $scope.payment_type || '';
+        var package_name = $("#package-id-"+package_id).find(".package_name").html() || '';
 
         if(confirm("Do you want to buy "+package_name+" package ?"))
         {
@@ -20,9 +29,10 @@ angular.module("MyApp", []).controller("MyController", function($scope,$http) {
             }
             request_data = {};
             request_data['package_id'] = package_id;
+            request_data['payment_details'] = payment_details;
+            request_data['payment_type'] = payment_type;
             SSK.site_call("AJAX",window._site_url+"packages/add_user_package",request_data, add_package_success_cb);    
-        }
-        
+        }   
     }
 
     $scope.show_content = function(file_path)
