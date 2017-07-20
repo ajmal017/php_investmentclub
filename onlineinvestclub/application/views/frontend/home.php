@@ -2,7 +2,7 @@
 
 <div id="wrapper">
   <?php $this->view('frontend/includes/header'); ?>
-  <?php $this->view('frontend/banner'); ?>
+	  <?php $this->view('frontend/banner'); ?>
   
   <div class="clear"></div>
   <div class="content">

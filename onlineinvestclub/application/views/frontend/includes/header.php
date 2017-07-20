@@ -41,14 +41,21 @@
         <ul>
           <li><a href="<?php echo site_url(); ?>" class="hvr-rectangle-out">Home</a></li>
           <li><a href="<?php echo site_url(); ?>/about_us" class="hvr-rectangle-out">About Us</a></li>
-          <li><a href="<?php echo site_url(); ?>/testimonials" class="hvr-rectangle-out">Testimonials</a></li>
+          <li><a href="<?php echo site_url(); ?>/testimonial" class="hvr-rectangle-out">Testimonials</a></li>
           <li><a href="<?php echo site_url(); ?>/legal" class="hvr-rectangle-out">Legal</a></li>
           <li><a href="<?php echo site_url(); ?>/bankers" class="hvr-rectangle-out">Bankers</a></li>
           <li><a href="<?php echo site_url(); ?>/faqs" class="hvr-rectangle-out">FAQ's</a></li>
           <li><a href="<?php echo site_url(); ?>/contact_us" class="hvr-rectangle-out">Contact Us</a></li>
-          <li><a href="<?php echo site_url(); ?>/resources" class="hvr-rectangle-out">Resources</a></li>
-          <li><a href="<?php echo site_url(); ?>/certifications" class="hvr-rectangle-out">Certifications</a></li>
-        </ul>
+           <li class="dropdown">
+              <a href="<?php echo site_url(); ?>/resources" class="dropbtn hvr-rectangle-out active">Resources</a>
+              <ul class="dropdown-content">
+                <a href="#">Link 1</a>
+                <a href="#">Link 2</a>
+                <a href="#">Link 3</a>
+              </ul>
+			</li>         
+ <li><a href="<?php echo site_url(); ?>/certifications" class="hvr-rectangle-out">Certifications</a></li>
+          </ul>
         <div class="clear"></div>
       </div>
     </div>
@@ -167,7 +174,7 @@
                     </div>
                 </div>
               <div class="modal-footer">
-                <p class="cd-form-bottom-message"><a data-toggle="modal" data-target="#forgot_password_modal" onclick="$('#login_modal').modal('hide');">Forgot your password?</a></p>
+                <p class="cd-form-bottom-message"><a data-toggle="modal" data-target="#forgot_password_modal" onClick="$('#login_modal').modal('hide');">Forgot your password?</a></p>
                 <button type="button" class="btn btn-primary" ng-click="login()">Login</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
               </div>
@@ -193,7 +200,7 @@
                     </div>
                 </div>
               <div class="modal-footer">
-                <p class="cd-form-bottom-message"><a data-toggle="modal" data-target="#login_modal" onclick="$('#forgot_password_modal').modal('hide');">Login</a></p>
+                <p class="cd-form-bottom-message"><a data-toggle="modal" data-target="#login_modal" onClick="$('#forgot_password_modal').modal('hide');">Login</a></p>
                 <button type="button" class="btn btn-primary" ng-click="forgot_password()">Submit</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
               </div>
