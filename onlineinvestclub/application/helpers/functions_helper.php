@@ -7,44 +7,31 @@ function dump($data)
 	echo '</pre>';
 }
 
-function send_email1($data = array()) {
-	global $CI;
-	$CI->load->library('email');
-	$to = $data['to'];
-	$subject = $data['subject'];
-	$html = $data['html'];
-	if(isset($data['from']) && $data['from'] != '')
+function curl_request($url,$method,$useragent)
+{
+	// Get cURL resource
+	$curl = curl_init();
+	// Set some options - we are passing in a useragent too here
+
+	$data = array();
+	$data[CURLOPT_RETURNTRANSFER] = 1;
+	$data[CURLOPT_URL] = $url;
+	$data[CURLOPT_USERAGENT] = $useragent;
+	if($method == "POST")
 	{
-		$from = $data['from']['email'];
-		$name = $data['from']['name'];			
-	}else{
-		$from = "info@onlinetradinginstitute.in";
-		$name = "Online Trading Institute";						
+		$data[CURLOPT_POST] = 1;	
 	}
+	$data[CURLOPT_POSTFIELDS] = array();
 
-	
-	$config['charset'] = 'iso-8859-1';
-    $config['wordwrap'] = TRUE;
-    $config['mailtype'] = 'html';
-	$config['useragent']           = "CodeIgniter";
-    $config['mailpath']            = "/usr/bin/sendmail"; // or "/usr/sbin/sendmail"
-    $config['protocol']            = "smtp";
-    $config['smtp_host']           = "localhost";
-    $config['smtp_port']           = "25";
-
-    $CI->email->initialize($config);
-	
-    $CI->email->from($from, $name);
-    $CI->email->to($to);
-
-    $CI->email->subject($subject);
-    $CI->email->message($html);
-
-    $CI->email->send();
-    /*echo "SUCCESS";
-    print_r($CI->email->print_debugger());
-    
-    print_r($data);*/
+	curl_setopt_array($curl, $data);
+	// Send the request & save response to $resp
+	$result = curl_exec($curl);
+	if(!$result){
+		die('Error: "' . curl_error($curl) . '" - Code: ' . curl_errno($curl));
+	}
+	// Close request to clear up some resources
+	curl_close($curl);
+	return $result;	
 }
 
 function send_email($data = array()) {
