@@ -57,6 +57,15 @@
         <div class="clear"></div>
       </div>
     </div>
+    <div class="btm_sec">
+    	<div class="container">
+        	<ul class="reset">
+            	<li><img src="../../../assets/frontend/images/img2.png"/><span>Binary.com </span></li>
+                <li><img src="../../../assets/frontend/images/Z_logo.svg"/><span>Zerodha</span></li>
+            </ul>
+           <div class="clear"></div>
+    	</div>
+    </div>
   </div>
   <div class="bg-sec">
     <div class="form_sec">

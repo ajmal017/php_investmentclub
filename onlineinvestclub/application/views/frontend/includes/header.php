@@ -20,7 +20,6 @@
 <script src="<?php echo base_url(); ?>assets/js/libs/functions.js"></script>
 <script src="<?= base_url(); ?>assets/admin/assets/plugins/bootbox/bootbox.js"></script>
 <script src="<?php echo base_url(); ?>assets/frontend/js/libs/header.js"></script>
-
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/frontend/js/jquery.devrama.slider-0.9.4.js"></script>
 <script type="text/javascript">
         window._site_url = '<?php echo site_url(); ?>/';
@@ -30,7 +29,6 @@
                 $('.example-animation').DrSlider(); //Yes! that's it!
             });
         </script>
-
 </head>
 <body ng-app="MyApp" ng-controller="MyController">
 <div class="admin-sec">
@@ -42,7 +40,7 @@
           <li><a href="<?php echo site_url(); ?>" class="hvr-rectangle-out">Home</a></li>
           <li><a href="<?php echo site_url(); ?>/business_plan" class="hvr-rectangle-out">Business Plan</a></li>
           <li class="dropdown">
-              <a  class="dropbtn hvr-rectangle-out active">Trading</a>
+              <button class="dropbtn hvr-rectangle-out">Trading</button>
               <ul class="dropdown-content">
                   <a href="#">Algo Trade</a>
                   <a data-toggle="modal" data-target="#zerodha_modal">Zerodha</a>
