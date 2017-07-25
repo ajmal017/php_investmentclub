@@ -166,7 +166,7 @@ box-shadow: 1px 3px 15px 6px rgba(209,207,209,1);background:#f9f8f8;}
 /*about-us*/
 .textsec{background:url(../images/blogback.jpg) repeat;}
 .textsec h1, .contact-sec h3{font-size:35px; color:#091664; text-transform:uppercase; padding:35px 0;}
-.textsec p{font-size:18px; color:#000312; line-height:32px; text-align:justify;}
+.textsec p{font-size:15px; color:#000312; line-height:32px; text-align:justify;}
 
 .aboutus{padding-top:50px;}
 .about_us{background:url(../images/aboutus_bg.jpg) no-repeat; background-attachment: fixed;}
