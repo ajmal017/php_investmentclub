@@ -37,7 +37,7 @@
         <p> Mr. Deepak Gupta is one of the core member of the Team. He specialises in Market Research Analysist, always trying his best to providing solutions which will enhance the knowledge towards Stock Market from last 3 years.</p>
     </div>
     <div class="aboutus"> 
-        <img src="<?= base_url(); ?>timthumb.php?src=<?= base_url(); ?>uploads/profile/person.png&w=280&h=260&q=99">
+        <img src="<?= base_url(); ?>timthumb.php?src=<?= base_url(); ?>assets/frontend/images/msi/bikrantdutta.jpg&w=280&h=260&q=99">
         <h2>Mr. Bikrant Dutt (Currency Trader)</h2>
         <p> Mr. Bikrant Dutt is an Accounts Professor cum Professional Crypto Currency Trader with 3 years of Bitcoins and Altcoins Trading. He also gives consultancy services for crypto and Alt coins. He mostly do Trade on demand and supply zone. He specializes in designing trading systems to profit from Market inconsistencies using various derivative strategies. He ensures that we don't compromise by taking excessive risk. He is new era trader, he likes to trade with digital era when trading happened 24*7. He also likes to play video game in free time.</p>
     </div>

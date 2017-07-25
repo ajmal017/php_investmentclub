@@ -33,7 +33,7 @@ if (@$dashboard_footer == false) { ?>
     </div>
   </div>
 </div>
-<div id="google_translate_element"></div>
+<?php /* ?><div id="google_translate_element"></div><?php */ ?>
 <script type="text/javascript">
 function googleTranslateElementInit() {
   new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
