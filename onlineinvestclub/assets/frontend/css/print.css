@@ -71,7 +71,7 @@ a{font-family: 'OpenSansLight';}
 #nav {float:left; margin-left: 20px;}
 .nav ul{margin:27px 0px 0 0 !important; padding:0px; list-style:none;}
 .nav li{display:inline-block; padding-right:7px}
-.nav li a{font-size:16px; color:#fff; padding: 2px 13px; line-height:46px; display:block; text-transform:uppercase; font-family: 'OpenSansLight'; font-weight:bold;}
+.nav li a{font-size:16px; color:#fff; padding: 2px 9px; line-height:46px; display:block; text-transform:uppercase; font-family: 'OpenSansLight'; font-weight:bold;}
 .nav li a:hover{background:#f86a61; color:#FFF;}
 .nav li .arrow{background:url(../images/arrow.png) no-repeat; background-position:right; padding:0 20px;}
 
