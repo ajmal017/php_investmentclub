@@ -140,11 +140,11 @@ function getPackages($package_id=0,$filterArray = array(),$wherein="")
 	return $result;	
 }
 
-function getPackageMedia($package_id=0)
+function getPackageMedia($package_id=0,$package_media_id=0)
 {
 	global $CI;
 	$CI->load->model('Common_model');
-	$result = $CI->Common_model->getPackageMedia($package_id);
+	$result = $CI->Common_model->getPackageMedia($package_id,$package_media_id);
 	return $result;	
 }
 

@@ -49,7 +49,7 @@ a{font-family: 'OpenSansLight';}
 
 /*Main COntent*/
 #wrapper{ width:100%; margin:0 auto; position:relative;}
-.admin-sec{width:100%; text-align:right; display:inline-block; position:relative; z-index:1;background:#2e3e95; height: 77px; border-bottom: 2px solid #ea212d;}
+.admin-sec{width:100%;height:100px !important; text-align:right; display:inline-block; position:relative; z-index:1;background:#2e3e95; height: 77px; border-bottom: 2px solid #ea212d;}
 .admin-sec li{display:inline-block;}
 .admin-sec li a{font-size: 17px; color: #fff; padding: 12px 15px; display: block;  -webkit-transition: all .3s linear;  -moz-transition: all .3s linear;-o-transition: all .3s linear;  transition: all .3s linear; font-family: 'OpenSansLight'; font-weight:bold;}
 

@@ -331,11 +331,18 @@ class Common_model extends CI_Model
 		return $main_data;
     }
 
-    function getPackageMedia($package_id = 0)
+    function getPackageMedia($package_id = 0,$package_media_id=0)
     {
     	$this->db->trans_start();
     	$this->db->select('*');
-    	$this->db->where('package_id',$package_id);
+    	if($package_id > 0)
+    	{
+    		$this->db->where('package_id',$package_id);
+    	}
+    	if($package_media_id > 0)
+    	{
+    		$this->db->where('package_media_id',$package_media_id);
+    	}
 		$query = $this->db->get('package_media');
 		
 		$main_data = array();
@@ -343,6 +350,7 @@ class Common_model extends CI_Model
 		foreach($query->result() as $row)
 		{
 			$data[] = array(
+							'package_id'=>$row->package_id,
 							'package_media_id'=>$row->package_media_id,
 							'file_path'=>$row->image_path,
 							'file_type'=>$row->file_type,

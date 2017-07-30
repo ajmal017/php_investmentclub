@@ -3,7 +3,7 @@
 <?php $this->view('frontend/includes/header'); ?>
 <div class="example-animation">
     <div data-lazy-background="<?= base_url(); ?>assets/frontend/images/inner-bnr.jpg">
-      <h3 data-pos="['27%', '110%', '27%', '40%']" data-duration="1500" data-effect="move">Resources</h3>
+      <h3 data-pos="['27%', '110%', '27%', '40%']" data-duration="1500" data-effect="move">Business Plan</h3>
     </div>
   </div>
   <div class="clear"></div>

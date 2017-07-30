@@ -1,7 +1,8 @@
 <?php $this->view('frontend/includes/header1'); ?>
 <script src="<?php echo base_url(); ?>assets/frontend/js/libs/packages.js"></script>
-<script type="text/javascript" src="https://content.jwplatform.com/libraries/L7fM8L0h.js"></script>
-<script type="text/javascript">jwplayer.key="f8LoCkNhHuEPU2LM86RdEX8n";</script>
+<link href="http://vjs.zencdn.net/5.8.8/video-js.css" rel="stylesheet">
+<script src="http://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+<script src="http://vjs.zencdn.net/5.8.8/video.js"></script>
 <div id="play_content" class="modal fade" tabindex=-1 role="dialog" style="margin-top:30px;">
     <div class="modal-dialog modal-md" style="float:none;margin:auto;">
         <!-- Modal content-->
@@ -25,32 +26,18 @@
 </div>
 
 <div class="middle-content">
-    <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>File Name</th>
-        <th>File Type</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <?php $package_media_list = getPackageMedia($package_id); ?>
+      <?php $package_media_list = getPackageMedia($package_id,$package_media_id); ?>
       <?php foreach($package_media_list as $row){ 
         $file_type_ext = explode('/', $row['file_type']);
         $ext = $file_type_ext[0];
         ?>
-      <tr>
-        <td><?= $row['file_path']; ?></td>
-        <td><?= $ext; ?></td>
         <?php if($ext == 'audio' || $ext == 'video'){ ?>
-        <td><a class="btn btn-primary" href="<?= site_url().'/packages/view/'.$row['package_id'].'/'.$row['package_media_id']; ?>" target="_blank_">View</a></td>
-        <?php }else{ ?>
-        <td><a class="btn btn-primary" href="<?= base_url().'/uploads/packages/online_study_docs/'.$row['file_path']; ?>" target="_blank_">View</a></td>
+            <video id="video-js" class="video-js vjs-default-skin" preload="auto" controls="controls" width="800" height="500" data-setup="\'{&quot;example_option&quot;:true}\'">
+              <source src="<?= base_url().'/uploads/packages/online_study_docs/'.$row['file_path']; ?>" type="<?= $row['file_type']; ?>" />
+                  To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+              </video>    
         <?php } ?>
-      </tr>
       <?php } ?>
-    </tbody>
-  </table>     
 </div>
    <div class="clear"></div> 
   </div>

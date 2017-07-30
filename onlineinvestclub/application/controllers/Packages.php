@@ -45,6 +45,17 @@ class Packages extends CI_Controller {
 		$this->load->view('frontend/package_content',$data);
 	}
 
+	public function view($package_id,$package_media_id)
+	{
+		$session_data = $this->session->userdata;
+		$data = array();
+		$data['session_data'] = $session_data;
+		$data['package_id'] = $package_id;
+		$data['package_media_id'] = $package_media_id;
+		
+		$this->load->view('frontend/package_content_view',$data);
+	}
+
 	public function add_user_package()
 	{
 		if($this->input->post())
