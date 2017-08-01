@@ -42,10 +42,10 @@
           <li><a href="<?php echo site_url(); ?>" class="hvr-rectangle-out">Home</a></li>
           <li><a href="<?php echo site_url(); ?>/business_plan" class="hvr-rectangle-out">Business Plan</a></li>
           <li class="dropdown">
-              <a href="<?php echo site_url(); ?>/trading" class="dropbtn hvr-rectangle-out active">Trading</a>
+              <a  class="dropbtn hvr-rectangle-out active">Trading</a>
               <ul class="dropdown-content">
                   <a href="#">Algo Trade</a>
-                  <a href="https://zerodha.com/">Zerodha</a>
+                  <a data-toggle="modal" data-target="#zerodha_modal">Zerodha</a>
                   <a href="https://www.binary.com/">Option Trading</a>
               </ul>
            </li>
@@ -151,6 +151,38 @@
 <div class="clear"></div>
 
 
+<!-- Modal -->
+<div class="modal fade" id="zerodha_modal" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Zerodha</h4>
+            </div>
+                <div class="modal-body" style="overflow:auto;">
+                    <div class="col-md-12">
+                        <div class="form-group col-md-6">
+                            <label>Name : </label>
+                            <input type="text" class="form-control" ng-model="zerodha_name" />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Phone : </label>
+                            <input type="text" class="form-control" ng-model="zerodha_phone" />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Email : </label>
+                            <input type="text" class="form-control" ng-model="zerodha_email" />
+                        </div>
+                    </div>
+                </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" ng-click="zerodha_lead()">Submit</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+        </div>    
+    </div>
+</div>
 
 <!-- Modal -->
 <div class="modal fade" id="login_modal" role="dialog">

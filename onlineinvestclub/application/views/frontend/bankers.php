@@ -14,6 +14,7 @@
       <div class="lf">
         <h2>Bank Details</h2>
         <ul class="reset">
+          <li>Account Name : <span>Online Trading Institute</span></li>
           <li>Bank Name : <span>Kotak Bank</span></li>
           <li>Branch Name : <span>Manickpur Branch</span></li>
           <li>Account Number : <span>2012208108</span></li>

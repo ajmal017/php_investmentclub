@@ -1,7 +1,7 @@
 
 function phoneNumberValidation(phone)
 {
-	var phone = phone;
+	var phone = phone.toString() || '';
     intRegex = /[0-9 -()+]+$/;
 	if((phone.length < 6) || (!intRegex.test(phone)))
 	{

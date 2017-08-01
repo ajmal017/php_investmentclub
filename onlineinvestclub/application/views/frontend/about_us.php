@@ -22,7 +22,7 @@
         <p>Mr.Amit Jain is the pioneer of trading education such as share trading, future and option etc...He has trained numerous people for IT education & other Profession from last 14 years.He has vast knowledge of marketing and network. He had done MBA in (Finance). He can change people mind set by ensuring them Success in their lives by having communication with positive thinking etc. He gives practical knowledge along with teaching lessons about trade. Option writing is his passion. He has done more than 10000+ trade from last 10 years. Now he helps people to grow their money by different means. He is one of the top believer in passive income system.</p>
     </div>
     <div class="aboutus"> 
-        <img src="<?= base_url(); ?>timthumb.php?src=<?= base_url(); ?>uploads/profile/person.png&w=280&h=260&q=99">
+        <img src="<?= base_url(); ?>timthumb.php?src=<?= base_url(); ?>assets/frontend/images/msi/sumitjain.jpg&w=280&h=260&q=99">
         <h2>Sumit Jain (Chief of operation & client relations)</h2>
         <p> Mr.Sumit Jain is the backbone of online trading institute taking care of operations and ensuring that we are compliant to rules and regulations. We take pride, the way we support our clients and Sumit is responsible for this with his never ending flow of energy. He is the man behind our support initiatives that helped us stay ahead of the game.</p>
     </div>

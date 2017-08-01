@@ -145,4 +145,41 @@ angular.module("MyApp", []).controller("MyController", function($scope,$http) {
         
         SSK.site_call("AJAX",window._site_url+"contact_us/save_contact",request_data, save_contact_success_cb);
     }
+
+    $scope.zerodha_lead = function()
+    {
+        zerodha_lead_success_cb = function(data)
+        {
+            console.log(data);
+        }
+
+        zerodha_lead_failure_cb = function(data)
+        {
+            console.log(data);
+        }
+
+        zerodha_name = $scope.zerodha_name || '';
+        zerodha_phone = $scope.zerodha_phone || '';
+        zerodha_email = $scope.zerodha_email || '';
+        partner_id = "ZMPAJN";
+        zerodha_link = "http://crm.zerodha.net/zlm/L2Lead/add/"+zerodha_name+"/"+zerodha_phone+"/"+zerodha_email+"/"+partner_id
+        
+        if(zerodha_name == '')
+        {
+            alert("Please enter your name.");
+            return false;
+        }else if(zerodha_phone == '' || !phoneNumberValidation(zerodha_phone))
+        {
+            alert("Please enter your phone number.");
+            return false;
+        }else if(zerodha_email == '' || !isValidEmailAddress(zerodha_email))
+        {
+            alert("Please enter your email address proper.");
+            return false;
+        }
+        var request = new XMLHttpRequest();                                        
+        request.open("get", zerodha_link, false, "false", "false");                                                                                                                             
+        request.send();
+        //SSK.site_call($http,zerodha_link,{}, zerodha_lead_success_cb,zerodha_lead_failure_cb,"GET",{'Access-Control-Allow-Origin':'*'});
+    }
 });
