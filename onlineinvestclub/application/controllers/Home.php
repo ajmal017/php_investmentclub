@@ -36,4 +36,40 @@ class Home extends CI_Controller {
 		$data = array('package_id'=>$package_id);
 		$this->load->view('frontend/view_package',$data);
 	}
+
+	public function zerodha_lead()
+	{
+		if($this->input->post())
+		{
+			$status = '';
+			$message = '';
+			$this->load->library('form_validation');
+			$zerodha_name = $this->input->post('zerodha_name');
+			$zerodha_phone = $this->input->post('zerodha_phone');
+			$zerodha_email = $this->input->post('zerodha_email');
+			$partner_id = "ZAPAJN";
+
+			$this->form_validation->set_rules('zerodha_name', 'Zerodha Name', 'required');
+			$this->form_validation->set_rules('zerodha_phone', 'Zerodha Phone', 'required|numeric');
+			$this->form_validation->set_rules('zerodha_email', 'Zerodha Email', 'required|valid_email');
+			
+			$this->form_validation->run();
+	        $error_array = $this->form_validation->error_array();
+	        
+	        if(count($error_array) == 0 )
+	        {
+	        	$url = "http://crm.zerodha.net/zlm/L2Lead/add/".$zerodha_name."/".$zerodha_phone."/".$zerodha_email."/".$partner_id;
+				$method = "GET";
+				$useragent = "ZERODHA LEAD";
+				$message = curl_request($url,$method,$useragent);
+			    $status = 'success';
+	        }else
+	        {
+	        	$status = 'error';
+	        	$message = $error_array;
+	        }
+	        $response = array('status'=>$status,'message'=>$message);
+			echo responseObject($response);
+		}
+	}
 }

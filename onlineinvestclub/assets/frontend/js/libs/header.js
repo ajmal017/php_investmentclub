@@ -150,36 +150,29 @@ angular.module("MyApp", []).controller("MyController", function($scope,$http) {
     {
         zerodha_lead_success_cb = function(data)
         {
-            console.log(data);
+            alert_box(data.message);
         }
 
-        zerodha_lead_failure_cb = function(data)
-        {
-            console.log(data);
-        }
+        request_data = {}
+        request_data['zerodha_name'] = $scope.zerodha_name || '';
+        request_data['zerodha_phone'] = $scope.zerodha_phone || '';
+        request_data['zerodha_email'] = $scope.zerodha_email || '';
 
-        zerodha_name = $scope.zerodha_name || '';
-        zerodha_phone = $scope.zerodha_phone || '';
-        zerodha_email = $scope.zerodha_email || '';
-        partner_id = "ZMPAJN";
-        zerodha_link = "http://crm.zerodha.net/zlm/L2Lead/add/"+zerodha_name+"/"+zerodha_phone+"/"+zerodha_email+"/"+partner_id
-        
-        if(zerodha_name == '')
+        if(request_data['zerodha_name'] == '')
         {
             alert("Please enter your name.");
             return false;
-        }else if(zerodha_phone == '' || !phoneNumberValidation(zerodha_phone))
+        }else if(request_data['zerodha_phone'] == '' || !phoneNumberValidation(request_data['zerodha_phone']))
         {
             alert("Please enter your phone number.");
             return false;
-        }else if(zerodha_email == '' || !isValidEmailAddress(zerodha_email))
+        }else if(request_data['zerodha_email'] == '' || !isValidEmailAddress(request_data['zerodha_email']))
         {
             alert("Please enter your email address proper.");
             return false;
         }
-        var request = new XMLHttpRequest();                                        
-        request.open("get", zerodha_link, false, "false", "false");                                                                                                                             
-        request.send();
-        //SSK.site_call($http,zerodha_link,{}, zerodha_lead_success_cb,zerodha_lead_failure_cb,"GET",{'Access-Control-Allow-Origin':'*'});
+        
+        
+        SSK.site_call("AJAX",window._site_url+"home/zerodha_lead",request_data, zerodha_lead_success_cb);
     }
 });
